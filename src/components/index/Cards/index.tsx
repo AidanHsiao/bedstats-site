@@ -25,7 +25,7 @@ export default function Cards(): ReactElement {
         src={stats}
         imageLoc="left"
         title="Stats Viewer"
-        content="Individually view anyone's stats through an interactive GUI. Change the gamemode filter to single out stats in solos, doubles, triples, or squads. Levels and names are appropriately colored to match in-game statuses."
+        content="Individually view anyone's stats through an interactive GUI. Change the gamemode filter to single out stats in solos, doubles, triples, or squads. Levels and names are appropriately colored to recreate in-game statuses."
       />
       <Card
         src={settings}

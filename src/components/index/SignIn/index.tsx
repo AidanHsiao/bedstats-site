@@ -21,7 +21,9 @@ export default function SignIn(): ReactElement {
           autoComplete="off"
           required
         />
-        <button id="signin">Sign In</button>
+        <button id="signin" onClick={(e) => e.preventDefault()}>
+          Sign In
+        </button>
       </form>
       <span className={styles.accountText}>
         Don't have an account?{" "}

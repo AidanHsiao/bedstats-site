@@ -1,0 +1,71 @@
+.friendsWrapper {
+  transition: opacity 0.2s;
+  position: absolute;
+  width: 70vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.friendsCount {
+  font-size: 5vw;
+  margin-top: 1.5vw;
+}
+
+.friendsText {
+  font-size: 2.5vw;
+  text-align: center;
+  width: 80%;
+}
+
+.friendsSubtitle {
+  font-size: 1.5vw;
+  margin-top: 0.5vw;
+  width: 50%;
+  text-align: center;
+}
+
+.friendsImport {
+  width: 50vw;
+  height: 4vw;
+  margin-top: 3vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2vw;
+  font-size: 2vw;
+  text-align: center;
+  background-color: rgb(186, 107, 178);
+  transition: background-color 0.2s;
+  color: white;
+  cursor: pointer;
+}
+
+.friendsImport:not(.friendsImportOff):active {
+  background-color: rgb(147, 59, 139);
+}
+
+.friendsImportOff {
+  background-color: rgba(186, 107, 178, 0.4);
+  cursor: not-allowed;
+}
+
+.friendsDeny {
+  width: 50vw;
+  height: 4vw;
+  margin-top: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2vw;
+  font-size: 2vw;
+  text-align: center;
+  color: #7a3a3a;
+  background-color: #e8e8e8;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.friendsDeny:active {
+  background-color: #ccc;
+}
