@@ -1,0 +1,7 @@
+.cardWrapper {
+  width: 100%;
+  height: auto;
+  padding-top: 11.25vw;
+  background-image: linear-gradient(to bottom, #e8e8e800, #e8e8e8 7.5%);
+  padding-bottom: 1vw;
+}

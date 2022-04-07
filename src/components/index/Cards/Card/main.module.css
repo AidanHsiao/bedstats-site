@@ -1,0 +1,29 @@
+.cardData {
+  flex: 1.2;
+  padding: 0 3vw;
+}
+
+.cardText {
+  font-size: 1.45vw;
+  text-align: center;
+  margin-top: 0.5vw;
+  transition: font-size 0.1s;
+}
+
+.cardTitle {
+  font-size: 2.7vw;
+  text-align: center;
+  margin-top: 1.7vw;
+}
+
+.card {
+  width: 70vw;
+  margin: auto;
+  height: 16vw;
+  background-color: rgba(161, 107, 233, 0.5);
+  border-radius: 2vw;
+  overflow: hidden;
+  display: flex;
+  margin-bottom: 2.7vw;
+  transition: width 0.1s, height 0.1s;
+}

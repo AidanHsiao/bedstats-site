@@ -1,0 +1,28 @@
+@font-face {
+  font-family: "Karla";
+  src: url("../../public/karla.ttf");
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Karla", sans-serif;
+  overscroll-behavior-y: none;
+  background-color: #e8e8e8;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input {
+  font-family: "Karla", sans-serif;
+  outline: none;
+}

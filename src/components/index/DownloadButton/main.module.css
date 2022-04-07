@@ -1,0 +1,37 @@
+.downloadButton {
+  width: 40vw;
+  border-radius: 2vw;
+  height: 7.5vw;
+  background-color: rgb(161, 107, 233);
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.25s, color 0.25s;
+  color: black;
+}
+.downloadButton:hover {
+  background-color: rgb(121, 61, 199);
+  color: white;
+}
+.downloadButtonText {
+  flex: 2.3;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  font-size: 2.5vw;
+}
+.downloadButtonIconWrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.downloadButtonIcon {
+  width: 4.4vw;
+  position: relative;
+  height: 3.8vw;
+  margin: auto;
+  margin-right: 6vw;
+  filter: invert(1);
+  transition: filter 0.25s;
+}

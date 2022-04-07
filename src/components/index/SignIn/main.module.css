@@ -1,0 +1,59 @@
+.signInWrapper {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 2vw;
+  border: 2px solid #cccccc;
+  background-color: #e8e8e8dd;
+}
+
+.signInTitle {
+  font-size: 2vw;
+  margin-bottom: 1vw;
+}
+
+.signIn {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.signIn input {
+  background: none;
+  border: none;
+  border-bottom: 2px solid #666666;
+  width: 20vw;
+  margin-bottom: 1vw;
+  font-size: 1.5vw;
+}
+
+.signIn button {
+  height: 3vw;
+  background-color: rgb(225, 196, 245);
+  border: 2px solid #b375d4;
+  border-radius: 1vw;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 2vw;
+}
+
+.signIn button:hover {
+  background-color: rgb(199, 152, 231);
+}
+
+.createAccount {
+  color: blue;
+  text-decoration: underline;
+}
+
+.createAccount:active {
+  color: purple;
+}
+
+.accountText {
+  margin-top: 1vw;
+  font-size: 1.2vw;
+}
