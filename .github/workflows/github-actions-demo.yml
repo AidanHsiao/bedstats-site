@@ -2,7 +2,7 @@ name: GitHub Actions Demo
 on:
   schedule:
     # Runs "at minute 55 past every hour" (see https://crontab.guru)
-    - cron: "*/20 * * * * *"
+    - cron: "* * * * *"
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
