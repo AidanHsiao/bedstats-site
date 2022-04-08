@@ -5,7 +5,7 @@ import Cards from "../components/index/Cards";
 import Footer from "../components/index/Footer";
 import BackgroundImage from "../components/index/BackgroundImage";
 
-export default function Home(): ReactElement {
+export default function Page(): ReactElement {
   return (
     <div className={classes.screenContent}>
       <BackgroundImage />

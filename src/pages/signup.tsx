@@ -31,7 +31,7 @@ interface friendsItem {
   uuid: string;
 }
 
-export default function Home(): ReactElement {
+export default function Page(): ReactElement {
   let [opacity1, setOpacity1] = useState(1);
   let [opacity2, setOpacity2] = useState(0);
   let [opacity3, setOpacity3] = useState(0);

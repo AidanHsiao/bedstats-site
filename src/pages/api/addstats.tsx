@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { sendStatusCode } from "next/dist/server/api-utils";
 import getUserList from "../../../db/getUserList";
 import setUserStats from "../../../db/setUserStats";
 import getStats from "../../../util/getStats";
@@ -19,13 +20,12 @@ export default async function handler(
     uuids.forEach(async (uuid, idx) => {
       const stats = await getStats(keys[idx], uuid, true);
       if (stats.stats) {
-        setUserStats(uuid, stats.stats);
+        res.status(400).json({ condition: "success" });
       }
       if (stats.code) {
-        console.log(stats.code);
+        res.status(500).json({ code: stats.code });
       }
     });
-    res.status(400).json({ condition: "success" });
     return;
   }
   res.status(401).json({ condition: "error" });
