@@ -16,14 +16,14 @@
 .mainTitle {
   font-size: 5vw;
   color: white;
-  text-shadow: 2px 2px 1vw black;
+  text-shadow: 0.2vw 0.2vw 1vw black;
   text-align: center;
   margin-top: 3vw;
 }
 .subtitle {
   font-size: 3vw;
   color: white;
-  text-shadow: 2px 2px 1vw black;
+  text-shadow: 0.2vw 0.2vw 1vw black;
   text-align: center;
 }
 

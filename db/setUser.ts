@@ -1,18 +1,14 @@
 import { initializeApp } from "firebase/app";
-import {
-  getFirestore,
-  setDoc,
-  doc,
-  DocumentData,
-} from "firebase/firestore/lite";
+import { getFirestore, setDoc, doc } from "firebase/firestore/lite";
 
 interface Friend {
   username: string;
   uuid: string;
 }
 
-interface User {
+export interface User {
   username: string;
+  uuid: string;
   password: string;
   hypixelAPIKey: string;
   friends: Friend[];

@@ -19,7 +19,7 @@
   height: 4vw;
   margin-top: 1vw;
   border: none;
-  border-bottom: 2px solid rgb(186, 107, 178);
+  border-bottom: 0.2vw solid rgb(186, 107, 178);
   border-radius: 1vw;
   font-size: 2vw;
   padding-left: 1vw;
@@ -65,7 +65,7 @@
   height: 39.375vw;
   margin: auto;
 
-  border: 2px solid rgb(186, 107, 178);
+  border: 0.2vw solid rgb(186, 107, 178);
   background-color: rgba(188, 153, 184, 0.5);
   border-radius: 5vw;
 }

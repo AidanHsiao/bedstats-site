@@ -130,6 +130,7 @@ export default function Home(): ReactElement {
       .digest("hex");
     await setUser(uuid, {
       username: username,
+      uuid: uuid,
       password: hash,
       hypixelAPIKey: apiKey,
       friends: friendsList,
@@ -163,13 +164,14 @@ export default function Home(): ReactElement {
     setOpacity4(1);
   }
 
+  const router = useRouter();
+
   async function goToDash(): Promise<void> {
     if (opacity4 === 0) return;
     setOpacity4(0);
     setProgress(100);
     setMessage("");
     await sleep(200);
-    const router = useRouter();
     router.push("/dashboard");
   }
 

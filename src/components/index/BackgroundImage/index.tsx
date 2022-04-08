@@ -6,7 +6,7 @@ import styles from "./main.module.css";
 export default function BackgroundImage(): ReactElement {
   return (
     <div className={styles.backgroundImage}>
-      <Image src={background} layout="fill" />
+      <Image src={background} layout="fill" priority={true} />
     </div>
   );
 }
