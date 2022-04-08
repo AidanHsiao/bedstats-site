@@ -8,6 +8,6 @@ export default async function handler(
   const uuid = req.query.uuid;
   if (typeof uuid === "string") {
     const stats = await getUserStats(uuid);
-    res.status(400).json({ stats: stats });
+    res.status(400).json({ env: process.env });
   }
 }
