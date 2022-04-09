@@ -55,13 +55,14 @@ export default function Page(): ReactElement {
     setCoverIndex(2);
     const resp = await getUser(username);
     setCoverIndex(-1);
-    if ((resp.code && resp.code !== 1) || !resp.code) {
+    console.log(resp);
+    if (resp.code !== 1) {
       setErrorMessage(resp.msg);
       setErrorVisibility(true);
       setTimeout(() => setErrorVisibility(false), 5000);
       return;
     }
-    if (resp.uuid && resp.username) {
+    if (resp.user) {
       setUuid(resp.uuid);
       setOpacity1(0);
       setProgress(progress2);
