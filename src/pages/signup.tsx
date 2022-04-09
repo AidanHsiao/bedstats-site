@@ -4,10 +4,10 @@ import React, { useState, ReactElement, SetStateAction, Dispatch } from "react";
 import { createHash } from "crypto";
 import { useRouter } from "next/router";
 
-import getUser from "../../lib/getUser";
-import setUser from "../../lib/setUser";
-import getFriends from "../../util/getFriends";
-import checkKeyValidity from "../../util/checkKeyValidity";
+import getUser from "../../lib/db/getUser";
+import setUser from "../../lib/db/setUser";
+import getFriends from "../../lib/getFriends";
+import checkKeyValidity from "../../lib/checkKeyValidity";
 import SignUp from "../components/signup/SignUp";
 import ProgressBar from "../components/signup/ProgressBar";
 import APIKey from "../components/signup/APIKey";

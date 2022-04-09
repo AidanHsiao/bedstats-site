@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import getUserList from "../../../../lib/getUserList";
-import getFirestore from "../../../../lib/initializeDB";
-import getStats from "../../../../util/getStats";
+import getUserList from "../../../../lib/db/getUserList";
+import getFirestore from "../../../../lib/db/initializeDB";
+import getStats from "../../../../lib/getStats";
 
 export default async function handler(
   req: NextApiRequest,
@@ -29,7 +29,7 @@ export default async function handler(
         res.status(500).json({ code: data.code });
       }
     });
-    res.status(400).json({ condition: "success" });
+    res.status(200).json({ condition: "success" });
     return;
   }
   res.status(401).json({ condition: "error" });
