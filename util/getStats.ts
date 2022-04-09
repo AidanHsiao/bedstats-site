@@ -9,6 +9,7 @@ export interface Stats {
   beds: number;
   wins: number;
   score: number;
+  timestamp?: number;
 }
 
 interface StatsResponse {

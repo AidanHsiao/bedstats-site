@@ -4,8 +4,8 @@ import React, { useState, ReactElement, SetStateAction, Dispatch } from "react";
 import { createHash } from "crypto";
 import { useRouter } from "next/router";
 
-import getUser from "../../db/getUser";
-import setUser from "../../db/setUser";
+import getUser from "../../lib/getUser";
+import setUser from "../../lib/setUser";
 import getFriends from "../../util/getFriends";
 import checkKeyValidity from "../../util/checkKeyValidity";
 import SignUp from "../components/signup/SignUp";
@@ -113,7 +113,6 @@ export default function Page(): ReactElement {
         `https://api.ashcon.app/mojang/v2/user/${uuid}`
       ).then((res) => res.json());
       friendsList.push({ username: user.username, uuid: uuid });
-      console.log(friendsList);
       searched++;
       setMessage(`Importing Friends (${searched}/${friendsArr.length})`);
       if (searched === friendsArr.length) {
