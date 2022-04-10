@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import getFirestore from "../../../../lib/initializeDB";
+import getFirestore from "../../../../lib/db/initializeDB";
 
 export default async function handler(
   req: NextApiRequest,
