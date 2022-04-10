@@ -32,12 +32,8 @@ export default async function handler(
         const timestamp = Math.floor(Date.now() / 1000);
         data.stats.timestamp = timestamp;
         const db = getFirestore();
-        await db
-          .collection("users")
-          .doc(uuids[idx])
-          .collection("stats")
-          .doc(`${timestamp}`)
-          .set(data.stats);
+        const ref = db.collection("users").doc(uuids[idx]).collection("stats");
+        await ref.doc(`${timestamp}`).set(data.stats);
       } else {
         console.log(data);
         res.status(500).json({ code: data.code });
