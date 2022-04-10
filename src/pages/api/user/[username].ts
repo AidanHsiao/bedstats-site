@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import getFirestore from "../../../../lib/initializeDB";
+import getFirestore from "../../../../lib/db/initializeDB";
 
 export default async function handler(
   req: NextApiRequest,
@@ -31,7 +31,7 @@ export default async function handler(
       const col = await db.collection("users").doc(uuid).collection("stats");
       const docs = await col.get();
       const stats: any[] = [];
-      docs.forEach((doc) => stats.push(doc.data()));
+      docs.forEach((doc: any) => stats.push(doc.data()));
       res.status(200).json({
         code: 0,
         username: userData.username,
