@@ -26,25 +26,26 @@ export default async function handler(
       if (idx >= uuids.length) {
         clearInterval(interval);
         return;
-      }
-      const data = await getStats(keys[idx], uuids[idx], true);
-      if (data.stats) {
-        const timestamp = Math.floor(Date.now() / 1000);
-        data.stats.timestamp = timestamp;
-        const db = getFirestore();
-        console.log(idx, userList);
-        await db
-          .collection("users")
-          .doc(uuids[idx])
-          .collection("stats")
-          .doc(`t:${timestamp}`)
-          .set(data.stats);
       } else {
-        console.log(data);
-        res.status(404).json({ code: data.code });
-        error = true;
+        const data = await getStats(keys[idx], uuids[idx], true);
+        if (data.stats) {
+          const timestamp = Math.floor(Date.now() / 1000);
+          data.stats.timestamp = timestamp;
+          const db = getFirestore();
+          console.log(idx, userList);
+          await db
+            .collection("users")
+            .doc(uuids[idx])
+            .collection("stats")
+            .doc(`t:${timestamp}`)
+            .set(data.stats);
+        } else {
+          console.log(data);
+          res.status(404).json({ code: data.code });
+          error = true;
+        }
+        idx++;
       }
-      idx++;
     }, 1000);
     if (!error) {
       res.status(200).json({ condition: "success" });
