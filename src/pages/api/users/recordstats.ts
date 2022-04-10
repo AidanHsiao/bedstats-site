@@ -28,11 +28,11 @@ export default async function handler(
           .collection("stats")
           .doc(`${timestamp}`)
           .set(data.stats);
-        res.status(200).json({ condition: result });
       } else {
         res.status(500).json({ code: data.code });
       }
     });
+    res.status(200).json({ condition: "success" });
     return;
   }
   res.status(401).json({ condition: "error" });
