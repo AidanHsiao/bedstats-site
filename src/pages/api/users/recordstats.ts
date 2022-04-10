@@ -39,6 +39,7 @@ export default async function handler(
         res.status(500).json({ code: data.code });
         error = true;
       }
+      idx++;
     }, 1000);
     if (!error) {
       res.status(200).json({ condition: "success" });
