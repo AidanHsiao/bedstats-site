@@ -22,17 +22,17 @@ export default async function handler(
         const timestamp = Math.floor(Date.now() / 1000);
         data.stats.timestamp = timestamp;
         const db = getFirestore();
-        await db
+        const result = await db
           .collection("users")
           .doc(uuid)
           .collection("stats")
           .doc(`${timestamp}`)
           .set(data.stats);
+        res.status(200).json({ condition: result });
       } else {
         res.status(500).json({ code: data.code });
       }
     });
-    res.status(200).json({ condition: "success" });
     return;
   }
   res.status(401).json({ condition: "error" });

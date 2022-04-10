@@ -1,0 +1,16 @@
+name: Trigger Stats Obtaination
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+
+env:
+  KEY: bccf5aa571212df31e9f481bbc770ca6
+
+jobs:
+  build:
+    name: Trigger Stats Obtaination
+    runs-on: ubuntu-latest
+    steps:
+      - name: cURL request
+        run: curl -X GET https://bedstats-site.vercel.app/api/users/recordstats?key=$KEY
