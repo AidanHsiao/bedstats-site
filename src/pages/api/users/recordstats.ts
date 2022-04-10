@@ -24,8 +24,7 @@ export default async function handler(
           .collection("stats")
           .doc(`${timestamp}`)
           .set(data.stats);
-      }
-      if (data.code) {
+      } else {
         res.status(500).json({ code: data.code });
       }
     });
