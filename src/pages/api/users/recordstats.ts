@@ -36,7 +36,7 @@ export default async function handler(
           .collection("users")
           .doc(uuids[idx])
           .collection("stats")
-          .doc(`${timestamp}`)
+          .doc(`t:${timestamp}`)
           .set(data.stats);
       } else {
         console.log(data);
