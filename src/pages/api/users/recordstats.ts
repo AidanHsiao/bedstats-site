@@ -12,6 +12,10 @@ export default async function handler(
     const data = await getUserList();
     const keys = data.map((doc: any) => doc.hypixelAPIKey);
     const uuids = data.map((doc: any) => doc.uuid);
+    if (!uuids) {
+      res.status(404).json({ condition: "error" });
+      return;
+    }
     uuids.forEach(async (uuid: string, idx: number) => {
       const data = await getStats(keys[idx], uuid, true);
       if (data.stats) {
