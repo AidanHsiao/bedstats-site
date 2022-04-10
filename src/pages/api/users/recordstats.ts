@@ -12,6 +12,7 @@ export default async function handler(
   res: NextApiResponse
 ): Promise<void> {
   const key = req.query.key;
+  let idx = 0;
   if (key === process.env.SITE_API_KEY) {
     const userList = await getUserList();
     const keys = userList.map((doc: any) => doc.hypixelAPIKey);
@@ -21,9 +22,8 @@ export default async function handler(
       return;
     }
     let error = false;
-    let idx = 0;
     const interval = setInterval(async () => {
-      if (idx >= keys.length) {
+      if (idx >= uuids.length) {
         clearInterval(interval);
         return;
       }
@@ -32,6 +32,7 @@ export default async function handler(
         const timestamp = Math.floor(Date.now() / 1000);
         data.stats.timestamp = timestamp;
         const db = getFirestore();
+        console.log(idx, db);
         await db
           .collection("users")
           .doc(uuids[idx])
