@@ -1,0 +1,18 @@
+.sidebar {
+  width: 288px;
+  background-color: red;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  position: fixed;
+  z-index: 1;
+}
+
+.main {
+  width: calc(100vw - 288px);
+  position: absolute;
+  left: 288px;
+  height: 100vh;
+  overflow-x: hidden;
+}

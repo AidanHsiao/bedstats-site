@@ -26,3 +26,8 @@ input {
   font-family: "Karla", sans-serif;
   outline: none;
 }
+
+select {
+  font-family: "Karla", sans-serif;
+  border: none;
+}

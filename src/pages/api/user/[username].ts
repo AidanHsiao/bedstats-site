@@ -7,6 +7,7 @@ export default async function handler(
 ) {
   switch (req.method) {
     default: {
+      let error = false;
       const { username } = req.query;
       const userData = await fetch(
         `https://api.ashcon.app/mojang/v2/user/${username}`
@@ -14,14 +15,18 @@ export default async function handler(
         .then((res) => res.json())
         .catch((e) => {
           res.status(400).json({ code: 3 });
+          error = true;
         });
+      if (error) {
+        return;
+      }
       if (userData.error) {
         res.status(400).json({ code: 2 });
       }
       const uuid = userData.uuid;
       let user;
       const db = getFirestore();
-      user = await (await db.collection("users").doc(uuid).get()).data();
+      user = (await db.collection("users").doc(uuid).get()).data();
       if (!user) {
         res
           .status(404)

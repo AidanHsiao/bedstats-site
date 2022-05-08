@@ -2,7 +2,7 @@ name: Trigger Stats Obtaination
 
 on:
   schedule:
-    - cron: "30 * * * *"
+    - cron: "42 * * * *"
 
 env:
   KEY: bccf5aa571212df31e9f481bbc770ca6

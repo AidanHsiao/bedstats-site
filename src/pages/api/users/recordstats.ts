@@ -12,7 +12,6 @@ export default async function handler(
   res: NextApiResponse
 ): Promise<void> {
   const key = req.query.key;
-  let idx = 0;
   if (key === process.env.SITE_API_KEY) {
     const userList = await getUserList();
     const keys = userList.map((doc: any) => doc.hypixelAPIKey);
@@ -28,11 +27,31 @@ export default async function handler(
         const timestamp = Math.floor(Date.now() / 1000);
         data.stats.timestamp = timestamp;
         const db = getFirestore();
-        console.log(idx, userList);
-        await db
+        const statsCollection = db
           .collection("users")
-          .doc(uuids[idx])
-          .collection("stats")
+          .doc(uuids[i])
+          .collection("stats");
+        const existingStatsDocs = await statsCollection.get();
+        const existingStats: any[] = [];
+        existingStatsDocs.forEach((doc: any) => existingStats.push(doc.data()));
+        const mostRecentRequest = existingStats.slice(-1)[0];
+        if (mostRecentRequest && existingStats.length > 1) {
+          let recentRequestEquality = true;
+          Object.keys(mostRecentRequest).forEach((key: string) => {
+            if (
+              data.stats &&
+              mostRecentRequest[key] !==
+                data.stats[key as keyof typeof data.stats] &&
+              key !== "timestamp"
+            ) {
+              recentRequestEquality = false;
+            }
+          });
+          if (recentRequestEquality) {
+            statsCollection.doc(`t:${mostRecentRequest.timestamp}`).delete();
+          }
+        }
+        await statsCollection
           .doc(`t:${timestamp}`)
           .set(data.stats)
           .catch((err: any) => {
@@ -44,6 +63,7 @@ export default async function handler(
         res.status(404).json({ code: data.code });
         error = true;
       }
+      await sleep(1000);
     }
     if (!error) {
       res.status(200).json({ condition: "success" });

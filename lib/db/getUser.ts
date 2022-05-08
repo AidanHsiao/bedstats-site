@@ -6,8 +6,13 @@ interface User {
   user?: any;
 }
 
+const config =
+  process.env.NODE_ENV !== "production"
+    ? "http://localhost:3000"
+    : "https://bedstats-site.vercel.app";
+
 export default async function getUser(username: string): Promise<User> {
-  const userData = await fetch(`/api/user/${username}`)
+  const userData = await fetch(`${config}/api/user/${username}`)
     .then((res) => res.json())
     .catch((e) => {});
   let msg = "";

@@ -1,0 +1,69 @@
+.chartWrapper {
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.2s;
+}
+
+.chartLoadingText {
+  position: absolute;
+  font-size: 45px;
+  transition: opacity 0.2s;
+  margin: auto;
+  text-align: center;
+  padding: 0 max(50px, 10vw);
+}
+
+.chart {
+  --width: max(90%, 800px);
+  width: var(--width);
+  height: calc(var(--width) / 2);
+  position: relative;
+  left: max(5%, 35px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-block: 2px solid rgb(82, 57, 82);
+}
+
+.chartTitle {
+  font-size: 55px;
+  text-align: center;
+  width: max(100%, 800px);
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chartSelectorWrapper {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.chartSelector {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  font-size: 22px;
+}
+
+.selectorItem {
+  padding-inline: 8px;
+  text-align: center;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.selectorItem:hover {
+  background-color: rgb(206, 206, 206);
+}
+
+.chartSelectorSpacing {
+  flex: 0.2;
+}
