@@ -24,8 +24,7 @@ export default async function handler(
     for (let i = 0; i < uuids.length; i++) {
       const data = await getStats(keys[i], uuids[i], true);
       if (data.stats) {
-        const timestamp = Math.floor(Date.now() / 1000);
-        data.stats.timestamp = timestamp;
+        const timestamp = data.stats.timestamp;
         const db = getFirestore();
         const statsCollection = db
           .collection("users")

@@ -35,7 +35,7 @@ export interface User {
     };
   };
 }
-export default async function setUser(uuid: string, user: User) {
+export default async function setUser(user: User) {
   if (!process.env.SITE_API_KEY) return;
   fetch(`/api/user/${user.username}`, {
     method: "POST",

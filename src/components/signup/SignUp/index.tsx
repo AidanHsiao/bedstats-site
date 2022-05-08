@@ -29,6 +29,7 @@ export default function SignUp(props: SignUpProps): ReactElement {
           id="username"
           type="text"
           value={props.name}
+          spellCheck={false}
           onChange={(v) => {
             props.setUsername(v.target.value);
             if (

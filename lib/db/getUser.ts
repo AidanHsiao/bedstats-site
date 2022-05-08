@@ -1,9 +1,13 @@
-interface User {
+import { StatsObject } from "../getStats";
+import { User } from "./setUser";
+
+interface UserResponse {
   msg: string;
   code: number;
   username: string;
   uuid: string;
-  user?: any;
+  user?: User;
+  stats?: StatsObject[];
 }
 
 const config =
@@ -11,8 +15,10 @@ const config =
     ? "http://localhost:3000"
     : "https://bedstats-site.vercel.app";
 
-export default async function getUser(username: string): Promise<User> {
-  const userData = await fetch(`${config}/api/user/${username}`)
+export default async function getUser(username: string): Promise<UserResponse> {
+  const userData = await fetch(
+    `${config}/api/user/${username}?key=${process.env.SITE_API_KEY}`
+  )
     .then((res) => res.json())
     .catch((e) => {});
   let msg = "";
@@ -34,8 +40,9 @@ export default async function getUser(username: string): Promise<User> {
   return {
     msg,
     code: userData.code,
-    username: userData.username,
-    uuid: userData.uuid,
-    user: userData ? userData : {},
+    username: userData?.username,
+    uuid: userData?.uuid,
+    user: userData?.user,
+    stats: userData?.stats,
   };
 }

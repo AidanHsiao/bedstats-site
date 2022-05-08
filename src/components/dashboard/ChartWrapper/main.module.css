@@ -10,26 +10,29 @@
   transition: opacity 0.2s;
   margin: auto;
   text-align: center;
-  padding: 0 max(50px, 10vw);
 }
 
 .chart {
-  --width: max(90%, 800px);
-  width: var(--width);
-  height: calc(var(--width) / 2);
+  width: 90%;
+  height: 300px;
   position: relative;
-  left: max(5%, 35px);
+  left: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
   border-block: 2px solid rgb(82, 57, 82);
 }
 
+.chart * {
+  transition: width 0.1s;
+}
+
 .chartTitle {
-  font-size: 55px;
+  font-size: min(3vw + 20px, 38px);
+  padding-top: 70px;
   text-align: center;
-  width: max(100%, 800px);
-  margin: 20px 0;
+  width: 100%;
+  margin-block: 20px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,13 +53,13 @@
   justify-content: center;
   align-items: center;
   height: 80%;
-  font-size: 22px;
+  font-size: clamp(16.5px, 2vw - 5px, 22px);
 }
 
 .selectorItem {
   padding-inline: 8px;
   text-align: center;
-  transition: background-color 0.2s;
+  transition: background-color 0.3s ease-in-out;
   cursor: pointer;
 }
 
@@ -66,4 +69,12 @@
 
 .chartSelectorSpacing {
   flex: 0.2;
+  min-width: 10px;
+}
+
+@media (max-width: 1056px) {
+  .chartSelectorWrapper {
+    margin-top: 20px;
+    flex-direction: column;
+  }
 }

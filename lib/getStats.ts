@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export interface Stats {
+export interface StatsObject {
   fkdr: number;
   bblr: number;
   wlr: number;
@@ -9,12 +9,12 @@ export interface Stats {
   beds: number;
   wins: number;
   score: number;
-  timestamp?: number;
+  timestamp: number;
 }
 
 interface StatsResponse {
   code: number;
-  stats?: Stats;
+  stats?: StatsObject;
 }
 
 const xpPerPrestige = 487000;
@@ -161,6 +161,7 @@ export default async function getStats(
       beds: stats.beds,
       wins: stats.wins,
       score: score,
+      timestamp: Date.now(),
     },
   };
 }
