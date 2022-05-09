@@ -5,6 +5,7 @@ import styles from "./main.module.css";
 export default function SignIn(): ReactElement {
   return (
     <div className={styles.signInWrapper}>
+      <div className={styles.signInImage}></div>
       <span className={styles.signInTitle}>Log In to BedStats</span>
       <form className={styles.signIn}>
         <input
@@ -21,6 +22,10 @@ export default function SignIn(): ReactElement {
           autoComplete="off"
           required
         />
+        <div className={styles.rememberMe}>
+          <input id="remember-me" type="checkbox" />
+          <span style={{ paddingLeft: "5px" }}>Remember Me</span>
+        </div>
         <button id="signin" onClick={(e) => e.preventDefault()}>
           Sign In
         </button>

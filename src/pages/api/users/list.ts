@@ -15,6 +15,5 @@ export default async function handler(
   col.forEach((doc) => {
     docs.push(doc.data());
   });
-  const data = docs.filter((doc: any) => !doc.uuid.includes("UUID"));
-  res.status(200).json(data);
+  res.status(200).json(docs);
 }

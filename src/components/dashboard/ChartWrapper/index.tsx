@@ -18,7 +18,13 @@ const defaultOptions = {
   curveType: "function",
 };
 
-export default function ChartWrapper() {
+export default function ChartWrapper({
+  setUserData,
+  username,
+}: {
+  setUserData: any;
+  username: string;
+}) {
   interface Tick {
     v: number;
     f: string;
@@ -84,7 +90,7 @@ export default function ChartWrapper() {
   useEffect(() => {
     setOpacity(0);
     setLoadingText("Loading chart...");
-    getBreakingIndex(chartDuration)
+    getBreakingIndex(chartDuration, username)
       .then((resp) => {
         if (!resp.stats.length) {
           const time = new Date();
@@ -127,6 +133,7 @@ export default function ChartWrapper() {
           ticks.push({ v: splicedDists[idx], f: display });
         });
         setData(tempData);
+        setUserData(resp.stats); // Transfer state between components
         const newOptions = defaultOptions;
         newOptions.hAxis.ticks = ticks;
         setOptions(newOptions);
@@ -134,6 +141,7 @@ export default function ChartWrapper() {
       })
       .catch((e) => {
         setLoadingText("Something went wrong. Try again later.");
+        setUserData(["kms"]);
         console.log(e);
       });
   }, [chartDuration, chartVars]);
@@ -143,10 +151,7 @@ export default function ChartWrapper() {
         Your {chartVarText} over {durationText}
       </div>
       <div className={styles.chart}>
-        <div
-          className={styles.chartLoadingText}
-          style={{ opacity: (opacity + 1) % 2 }}
-        >
+        <div className={styles.chartLoadingText} style={{ opacity: +!opacity }}>
           {opacity ? "" : loadingText}
         </div>
 
@@ -269,10 +274,10 @@ export function createDate(
   return `${hours}:${minute < 10 ? `0${minute}` : minute}${type}`;
 }
 
-async function getBreakingIndex(days: number) {
+async function getBreakingIndex(days: number, username: string) {
   const durationText = hour * days * 24;
 
-  const user = await getUser("Girly_Mike");
+  const user = await getUser(username);
   if (!user.stats) {
     throw new Error("something went wrong LMAO");
   }
@@ -283,7 +288,7 @@ async function getBreakingIndex(days: number) {
   let broke = false;
   for (let i = dists.length - 1; i >= 0; i--) {
     if (dists[i] >= durationText) {
-      breakingIndex = i;
+      breakingIndex = i + 1;
       broke = true;
       break;
     }

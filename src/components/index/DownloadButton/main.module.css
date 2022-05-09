@@ -1,37 +1,38 @@
 .downloadButton {
-  width: 40vw;
-  border-radius: 2vw;
-  height: 7.5vw;
+  width: min(60vw, 400px);
+  border-radius: min(7.5vw, 50px);
+  height: min(12vw, 80px);
   background-color: rgb(161, 107, 233);
-  margin: auto;
   display: flex;
   justify-content: center;
   cursor: pointer;
   transition: background-color 0.25s, color 0.25s;
   color: black;
+  position: relative;
+  margin-top: 50px;
 }
 .downloadButton:hover {
   background-color: rgb(121, 61, 199);
   color: white;
 }
 .downloadButtonText {
-  flex: 2.3;
+  width: 75%;
   display: flex;
-  justify-content: right;
   align-items: center;
-  font-size: 2.5vw;
+  font-size: min(3.5vw + 1px, 27px);
+  padding-left: min(4vw + 10px, 43px);
 }
 .downloadButtonIconWrapper {
-  flex: 1;
+  width: 25%;
   display: flex;
+  padding-left: min(1.5vw, 12px);
   align-items: center;
 }
 .downloadButtonIcon {
-  width: 4.4vw;
+  --width: min(5vw + 10px, 40px);
+  width: var(--width);
   position: relative;
-  height: 3.8vw;
-  margin: auto;
-  margin-right: 6vw;
+  height: calc(var(--width) * 7 / 8);
   filter: invert(1);
   transition: filter 0.25s;
 }

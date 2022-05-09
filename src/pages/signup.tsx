@@ -128,7 +128,7 @@ export default function Page(): ReactElement {
     const hash = createHash("sha256")
       .update(`${username.toLowerCase()}${password}`)
       .digest("hex");
-    await setUser(uuid, {
+    await setUser({
       username: username,
       uuid: uuid,
       password: hash,

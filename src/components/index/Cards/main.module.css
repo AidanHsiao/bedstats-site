@@ -1,7 +1,67 @@
 .cardWrapper {
-  width: 100%;
+  width: 90%;
   height: auto;
-  padding-top: 11.25vw;
+  margin-left: 5%;
+  margin-block: 50px;
   background-image: linear-gradient(to bottom, #e8e8e800, #e8e8e8 7.5%);
-  padding-bottom: 1vw;
+  padding-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(90vw, 380px), 1fr));
+  row-gap: 50px;
+  column-gap: 0px;
+}
+
+.cardData {
+  height: 185px;
+  width: 100%;
+  bottom: 0;
+  font-size: 1.45vw;
+}
+
+.cardText {
+  font-size: 17px;
+  padding-inline: 20px;
+  text-align: center;
+  transition: font-size 0.1s;
+  font-weight: 100;
+  margin-top: 4px;
+}
+
+.cardTitle {
+  font-size: 30px;
+  width: max-content;
+  margin: auto;
+  text-align: center;
+  margin-top: 2px;
+  background-image: linear-gradient(135deg, black, purple);
+  background-clip: text;
+  color: transparent;
+}
+
+.card {
+  width: min(90vw, 360px);
+  height: 350px;
+  margin: auto;
+  border: 2px solid #bbbbbb;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardImageWrapper {
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(135deg, black, purple);
+}
+
+.cardImage {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  filter: invert(1);
 }

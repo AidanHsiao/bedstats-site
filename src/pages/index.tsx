@@ -3,15 +3,22 @@ import React, { ReactElement } from "react";
 import Header from "../components/index/Header";
 import Cards from "../components/index/Cards";
 import Footer from "../components/index/Footer";
-import BackgroundImage from "../components/index/BackgroundImage";
+import FeatureSection from "../components/index/FeatureSection";
+import ElectronLogo from "../../public/index/electronlogo.png";
 
 export default function Page(): ReactElement {
   return (
     <div className={classes.screenContent}>
-      <BackgroundImage />
       <Header />
       <Cards />
-      <Footer />
+      <FeatureSection
+        src={ElectronLogo}
+        title={"Built with Electron."}
+        subtitle={
+          "Electron.js has made BedStats intuitive, feature-rich, and safe. If you can navigate a website, you can navigate BedStats."
+        }
+      />
+      {/* <Footer /> */}
     </div>
   );
 }

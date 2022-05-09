@@ -1,8 +1,5 @@
-import SignIn from "../components/index/SignIn";
+import SignIn from "../components/login/SignIn";
 import classes from "../common/globalclasses.module.css";
-import BackgroundImage from "../components/index/BackgroundImage";
-
-const scale = 1;
 
 export default function Page() {
   return (
@@ -14,19 +11,7 @@ export default function Page() {
         alignItems: "center",
       }}
     >
-      <BackgroundImage />
-      <div
-        style={{
-          width: "35vw",
-          height: "23vw",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          transform: `scale(${scale})`,
-        }}
-      >
-        <SignIn />
-      </div>
+      <SignIn />
     </div>
   );
 }

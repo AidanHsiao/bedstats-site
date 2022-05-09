@@ -7,7 +7,6 @@ export default function Navbar() {
         About You
       </div>
       <div className={styles.link + " " + styles.selectedLink}>Overview</div>
-      <div className={styles.link}>Estimated Play Time</div>
       <div className={styles.link}>Your BedWars Habits</div>
       <div className={styles.title}>Settings</div>
       <div className={styles.link}>App Settings</div>

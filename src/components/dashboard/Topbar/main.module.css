@@ -12,3 +12,14 @@
   align-items: center;
   font-size: 40px;
 }
+
+.title {
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+@media (max-width: 440px) {
+  .title {
+    opacity: 0;
+  }
+}

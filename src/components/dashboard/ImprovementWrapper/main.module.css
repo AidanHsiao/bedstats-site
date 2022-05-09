@@ -1,0 +1,79 @@
+.improvementWrapper {
+  width: 100%;
+  height: 250px;
+  border-top: 2px dotted rgb(121, 95, 126);
+  position: relative;
+}
+
+.improvementWrapper * {
+  transition: opacity 0.2s;
+}
+
+.improvementTitle {
+  width: max-content;
+  margin: 0 auto;
+  height: 50px;
+  font-size: min(3.5vw + 10px, 38px);
+  text-align: center;
+  margin-block: 20px 10px;
+  background-image: linear-gradient(135deg, #000000 20%, #8e4ea5 100%);
+  background-clip: text;
+  color: transparent;
+}
+
+.percentageWrapper {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  position: relative;
+  overflow-y: visible;
+}
+
+.percentageItem {
+  flex: 1;
+  height: max-content;
+  position: relative;
+  overflow-y: visible;
+  transition: top 0.5s, opacity 0.5s;
+}
+
+.percentageTitle {
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.percentage {
+  width: 100%;
+  font-size: 80px;
+  color: red;
+  font-weight: 900;
+  margin-top: 10px;
+  text-align: center;
+  text-shadow: 2px 2px 10px black;
+}
+
+@media (max-width: 1056px) {
+  .improvementWrapper {
+    margin-top: 15px;
+  }
+  .percentageWrapper {
+    flex-direction: column;
+  }
+  .percentage {
+    margin-block: 0px 10px;
+  }
+}
+
+.improvementLoading {
+  width: 80%;
+  height: 60%;
+  position: absolute;
+  left: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 50px;
+}

@@ -1,6 +1,9 @@
 .chartWrapper {
   width: 100%;
   height: 100%;
+}
+
+.chartWrapper * {
   transition: opacity 0.2s;
 }
 
@@ -14,7 +17,7 @@
 
 .chart {
   width: 90%;
-  height: 300px;
+  height: 370px;
   position: relative;
   left: 5%;
   display: flex;
@@ -28,14 +31,19 @@
 }
 
 .chartTitle {
-  font-size: min(3vw + 20px, 38px);
+  font-size: min(3.5vw + 10px, 38px);
   padding-top: 70px;
   text-align: center;
-  width: 100%;
+  width: max-content;
+  margin: 0 auto;
   margin-block: 20px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: linear-gradient(135deg, #000000 20%, #8e4ea5 100%);
+  background-repeat: no-repeat;
+  background-clip: text;
+  color: transparent;
 }
 
 .chartSelectorWrapper {
@@ -76,5 +84,16 @@
   .chartSelectorWrapper {
     margin-top: 20px;
     flex-direction: column;
+  }
+}
+
+@media (max-width: 375px) {
+  .chartSelector {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  .chartSelectorWrapper {
+    height: max-content;
+    margin-top: 10px;
   }
 }

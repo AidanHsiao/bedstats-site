@@ -1,8 +1,0 @@
-.backgroundImage {
-  width: 100vw;
-  height: 56.25vw;
-  position: fixed;
-  z-index: -1;
-  background-attachment: fixed;
-  filter: blur(8px);
-}

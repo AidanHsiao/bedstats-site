@@ -10,16 +10,13 @@ export default function DropdownMenu() {
         <div className={styles.dropdownContent}>
           <DropdownSection
             title={"About You"}
-            options={[
-              "Your Stats Overview",
-              "Estimated Play Time",
-              "Your BedWars Habits",
-            ]}
+            options={["Your Stats Overview", "Your BedWars Habits"]}
+            width={"700px"}
           />
           <DropdownSection
             title={"BedStats Settings"}
             options={["App Settings", "Website Settings"]}
-            width={"70%"}
+            width={"400px"}
           />
         </div>
       </div>
@@ -39,7 +36,9 @@ export function DropdownSection(props: DropdownProps) {
       <div className={styles.dropdownTitle}>{props.title}</div>
       <div className={styles.dropdownList} style={{ width: props.width }}>
         {props.options.map((option) => (
-          <div className={styles.dropdownItem}>{option}</div>
+          <div className={styles.dropdownItem} key={option}>
+            {option}
+          </div>
         ))}
       </div>
     </div>

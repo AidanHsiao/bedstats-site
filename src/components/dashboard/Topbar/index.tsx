@@ -4,7 +4,7 @@ import DropdownMenu from "./DropdownMenu";
 export default function Topbar() {
   return (
     <div className={styles.topbar}>
-      Stats Overview
+      <div className={styles.title}>Stats Overview</div>
       <DropdownMenu />
     </div>
   );

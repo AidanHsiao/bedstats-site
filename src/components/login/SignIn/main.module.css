@@ -1,17 +1,17 @@
 .signInWrapper {
-  width: 80%;
-  height: 80%;
+  width: 400px;
+  height: 350px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  border-radius: 2vw;
-  border: 0.2vw solid #cccccc;
+  border-radius: 20px;
+  border: 2px solid #cccccc;
   background-color: #e8e8e8dd;
 }
 
 .signInTitle {
-  font-size: 2vw;
+  font-size: 35px;
   margin-bottom: 1vw;
 }
 
@@ -21,23 +21,28 @@
   flex-direction: column;
 }
 
-.signIn input {
+.signIn input:not(input[type="checkbox"]) {
   background: none;
   border: none;
   border-bottom: 0.2vw solid #666666;
-  width: 20vw;
+  width: 300px;
   margin-bottom: 1vw;
-  font-size: 1.5vw;
+  font-size: 20px;
+}
+
+.rememberMe {
+  margin-bottom: 10px;
+  font-size: 17px;
 }
 
 .signIn button {
-  height: 3vw;
+  height: 50px;
   background-color: rgb(225, 196, 245);
   border: 0.2vw solid #b375d4;
   border-radius: 1vw;
   cursor: pointer;
   transition: background-color 0.2s;
-  font-size: 2vw;
+  font-size: 30px;
 }
 
 .signIn button:hover {
@@ -55,5 +60,27 @@
 
 .accountText {
   margin-top: 1vw;
-  font-size: 1.2vw;
+  font-size: 16px;
+}
+
+.signInWrapper {
+  width: 400px;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signInImage {
+  width: 1920px;
+  height: 1080px;
+  position: absolute;
+  top: -100px;
+  left: -150px;
+  background-image: url("../../../../public/index/background.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: blur(10px);
+  z-index: -1;
 }
