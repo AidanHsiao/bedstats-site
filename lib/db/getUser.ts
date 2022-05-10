@@ -16,6 +16,7 @@ const config =
     : "https://bedstats-site.vercel.app";
 
 export default async function getUser(username: string): Promise<UserResponse> {
+  console.log(process.env)
   const userData = await fetch(
     `${config}/api/user/${username}?key=${process.env.NEXT_PUBLIC_SITE_API_KEY}`
   )
