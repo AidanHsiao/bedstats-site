@@ -5,10 +5,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.query.key !== process.env.NEXT_PUBLIC_SITE_API_KEY) {
-    res.status(401).json({ condition: "No permission" });
-    return;
-  }
   switch (req.method) {
     default: {
       let error = false;
