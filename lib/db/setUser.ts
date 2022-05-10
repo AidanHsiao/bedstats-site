@@ -36,12 +36,12 @@ export interface User {
   };
 }
 export default async function setUser(user: User) {
-  if (!process.env.SITE_API_KEY) return;
+  if (!process.env.NEXT_PUBLIC_SITE_API_KEY) return;
   fetch(`/api/user/${user.username}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "x-api-key": process.env.SITE_API_KEY,
+      "x-api-key": process.env.NEXT_PUBLIC_SITE_API_KEY,
     },
     body: JSON.stringify(user),
   });

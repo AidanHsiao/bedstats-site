@@ -5,7 +5,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.query.key !== process.env.SITE_API_KEY) {
+  if (req.query.key !== process.env.NEXT_PUBLIC_SITE_API_KEY) {
     res.status(401).json({ condition: "No permission" });
     return;
   }
@@ -51,7 +51,7 @@ export default async function handler(
       break;
     }
     case "POST": {
-      if (req.headers["x-api-key"] !== process.env.SITE_API_KEY) return;
+      if (req.headers["x-api-key"] !== process.env.NEXT_PUBLIC_SITE_API_KEY) return;
       const user = req.body;
       const db = getFirestore();
       await db.collection("users").doc(user.uuid).set(user);

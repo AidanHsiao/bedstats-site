@@ -17,7 +17,7 @@ const config =
 
 export default async function getUser(username: string): Promise<UserResponse> {
   const userData = await fetch(
-    `${config}/api/user/${username}?key=${process.env.SITE_API_KEY}`
+    `${config}/api/user/${username}?key=${process.env.NEXT_PUBLIC_SITE_API_KEY}`
   )
     .then((res) => res.json())
     .catch((e) => {});

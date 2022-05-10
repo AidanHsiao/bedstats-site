@@ -141,7 +141,6 @@ export default function ChartWrapper({
       })
       .catch((e) => {
         setLoadingText("Something went wrong. Try again later.");
-        setUserData(["kms"]);
         console.log(e);
       });
   }, [chartDuration, chartVars]);
