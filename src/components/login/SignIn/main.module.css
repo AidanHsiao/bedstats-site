@@ -12,7 +12,7 @@
 
 .signInTitle {
   font-size: 35px;
-  margin-bottom: 1vw;
+  margin-bottom: 15px;
 }
 
 .signIn {
@@ -24,9 +24,9 @@
 .signIn input:not(input[type="checkbox"]) {
   background: none;
   border: none;
-  border-bottom: 0.2vw solid #666666;
+  border-bottom: 3px solid #666666;
   width: 300px;
-  margin-bottom: 1vw;
+  margin-bottom: 15px;
   font-size: 20px;
 }
 
@@ -38,8 +38,8 @@
 .signIn button {
   height: 50px;
   background-color: rgb(225, 196, 245);
-  border: 0.2vw solid #b375d4;
-  border-radius: 1vw;
+  border: 3px solid #b375d4;
+  border-radius: 15px;
   cursor: pointer;
   transition: background-color 0.2s;
   font-size: 30px;
@@ -59,7 +59,7 @@
 }
 
 .accountText {
-  margin-top: 1vw;
+  margin-top: 15px;
   font-size: 16px;
 }
 

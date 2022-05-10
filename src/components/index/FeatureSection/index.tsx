@@ -11,6 +11,7 @@ export default function FeatureSection(props: FeatureProps) {
   return (
     <div className={styles.featureWrapper}>
       <div className={styles.backgroundImage}></div>
+      <div className={styles.widthLimiter}>
       <div className={styles.content}>
         <div className={styles.title}>{props.title}</div>
         <div className={styles.divider}></div>
@@ -20,6 +21,7 @@ export default function FeatureSection(props: FeatureProps) {
         <div className={styles.logo}>
           <Image src={props.src} layout="fill" />
         </div>
+      </div>
       </div>
     </div>
   );
