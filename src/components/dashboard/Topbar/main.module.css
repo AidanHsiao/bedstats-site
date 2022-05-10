@@ -13,6 +13,21 @@
   font-size: 40px;
 }
 
+.logo {
+  position: fixed;
+  width: 45px;
+  top: 10px;
+  left: 25px;
+  height: 50px;
+  cursor: pointer;
+  filter: invert(1);
+  transition: filter 0.2s;
+}
+
+.logo:hover {
+  filter: invert(0.8);
+}
+
 .title {
   opacity: 1;
   transition: opacity 0.2s;

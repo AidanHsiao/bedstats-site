@@ -14,7 +14,7 @@
 }
 
 .widthLimiter {
-  width: min(100%, 1200px);
+  width: min(100%, 1400px);
   height: 100%;
   position: relative;
   display: flex;
@@ -24,10 +24,9 @@
   z-index: -1;
   width: 100%;
   height: 100%;
-  background-image: url("../../../../public/index/tech.jpeg");
+  background-image: url("../../../../public/index/tech.png");
   background-size: cover;
-  background-position-y: 300px;
-  background-attachment: fixed;
+  background-position-y: 0px;
   position: absolute;
   filter: hue-rotate(60deg);
 }

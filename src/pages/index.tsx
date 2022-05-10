@@ -2,7 +2,6 @@ import classes from "../common/globalclasses.module.css";
 import React, { ReactElement } from "react";
 import Header from "../components/index/Header";
 import Cards from "../components/index/Cards";
-import Footer from "../components/index/Footer";
 import FeatureSection from "../components/index/FeatureSection";
 import ElectronLogo from "../../public/index/electronlogo.png";
 
@@ -18,7 +17,6 @@ export default function Page(): ReactElement {
           "Electron.js has made BedStats intuitive, feature-rich, and safe. If you can navigate a website, you can navigate BedStats."
         }
       />
-      {/* <Footer /> */}
     </div>
   );
 }

@@ -20,9 +20,11 @@ const defaultOptions = {
 
 export default function ChartWrapper({
   setUserData,
+  setError,
   username,
 }: {
   setUserData: any;
+  setError: any;
   username: string;
 }) {
   interface Tick {
@@ -92,6 +94,7 @@ export default function ChartWrapper({
     setLoadingText("Loading chart...");
     getBreakingIndex(chartDuration, username)
       .then((resp) => {
+        console.log(resp)
         if (!resp.stats.length) {
           const time = new Date();
           const displayTime = createDate(time, -1, true);
@@ -141,7 +144,7 @@ export default function ChartWrapper({
       })
       .catch((e) => {
         setLoadingText("Something went wrong. Try again later.");
-        console.log(e);
+        setError(true)
       });
   }, [chartDuration, chartVars]);
   return (
@@ -277,6 +280,7 @@ async function getBreakingIndex(days: number, username: string) {
   const durationText = hour * days * 24;
 
   const user = await getUser(username);
+
   if (!user.stats) {
     throw new Error("something went wrong LMAO");
   }
@@ -285,6 +289,7 @@ async function getBreakingIndex(days: number, username: string) {
   const dists = stats.map((obj: StatsObject) => now - obj.timestamp);
   let breakingIndex = 0;
   let broke = false;
+
   for (let i = dists.length - 1; i >= 0; i--) {
     if (dists[i] >= durationText) {
       breakingIndex = i + 1;

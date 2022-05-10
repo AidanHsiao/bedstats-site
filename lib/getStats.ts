@@ -161,7 +161,7 @@ export default async function getStats(
       beds: stats.beds,
       wins: stats.wins,
       score: score,
-      timestamp: Date.now(),
+      timestamp: Math.floor(Date.now() / 1000),
     },
   };
 }

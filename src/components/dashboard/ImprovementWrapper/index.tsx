@@ -5,8 +5,10 @@ import styles from "./main.module.css";
 
 export default function ImprovementWrapper({
   userData,
+  error,
 }: {
   userData: StatsObject[];
+  error: boolean;
 }) {
   const [percentages, setPercentages] = useState([0, 0, 0]);
   const [opacity, setOpacity] = useState(0);
@@ -15,6 +17,10 @@ export default function ImprovementWrapper({
   const [top, setTop] = useState([50, 50, 50]);
   const [attemptedDB, setAttempted] = useState(false);
   useEffect(() => {
+    if (error) {
+      setLoadingText("Something went wrong. Try again later.")
+      return;
+    }
     try {
       if (userData.length) {
         const scores = userData
@@ -65,7 +71,7 @@ export default function ImprovementWrapper({
     } catch (e) {
       setLoadingText("Something went wrong. Try again later.");
     }
-  }, [userData]);
+  }, [userData, error]);
 
   const ref = useRef<HTMLDivElement>(null);
 
