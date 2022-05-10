@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 const { Chart } = require("react-google-charts");
 import getUser from "../../../../lib/db/getUser";
-import styles from "main.module.css";
+import styles from "./main.module.css";
 import { StatsObject } from "../../../../lib/getStats";
 
 const hour = 3600;
