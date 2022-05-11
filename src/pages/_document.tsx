@@ -1,23 +1,32 @@
-import { Html, Head, Main, NextScript } from "next/document";
+import crypto from "crypto";
+import Document, { Html, Head, Main, NextScript } from "next/document";
 
-import { NextStrictCSP } from "next-strict-csp";
+const cspHashOf = (text: string) => {
+  const hash = crypto.createHash("sha256");
+  hash.update(text);
+  return `'sha256-${hash.digest("base64")}'`;
+};
+export default class MyDocument extends Document {
+  render() {
+    let csp = `default-src 'self'; script-src 'self' ${cspHashOf(
+      NextScript.getInlineScriptSource(this.props)
+    )}`;
+    if (process.env.NODE_ENV !== "production") {
+      csp = `style-src 'self' 'unsafe-inline'; font-src 'self' data:; default-src 'self'; script-src 'unsafe-eval' 'self' ${cspHashOf(
+        NextScript.getInlineScriptSource(this.props)
+      )}`;
+    }
 
-const HeadCSP = process.env.NODE_ENV === "production" ? NextStrictCSP : Head;
-
-export default function Document() {
-  const csp = `default-src: 'self'; script-src: 'self' 'unsafe-eval' ; frame-ancestors: 'self' https://bedstats-site.vercel.app`;
-
-  return (
-    <Html lang="en">
-      <HeadCSP>
-        {process.env.NODE_ENV === "production" && (
+    return (
+      <Html>
+        <Head>
           <meta httpEquiv="Content-Security-Policy" content={csp} />
-        )}
-      </HeadCSP>
-      <body>
-        <Main />
-        <NextScript />
-      </body>
-    </Html>
-  );
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
 }
