@@ -5,7 +5,7 @@ import { NextStrictCSP } from "next-strict-csp";
 const HeadCSP = process.env.NODE_ENV === "production" ? NextStrictCSP : Head;
 
 export default function Document() {
-  const csp = `default-src: 'self'; script-src: 'self' ; frame-ancestors: 'self' https://bedstats-site.vercel.app`;
+  const csp = `default-src: 'self'; script-src: 'self' 'unsafe-eval' ; frame-ancestors: 'self' https://bedstats-site.vercel.app`;
 
   return (
     <Html lang="en">
