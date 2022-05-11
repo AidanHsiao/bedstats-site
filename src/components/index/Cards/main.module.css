@@ -64,3 +64,20 @@
   position: relative;
   filter: invert(1);
 }
+
+@media (max-width: 844px) {
+  .card {
+    height: max-content;
+    overflow-y: visible;
+    padding-bottom: 20px;
+  }
+  .cardImageWrapper {
+    margin-block: 20px;
+  }
+  .cardData {
+    height: max-content;
+  }
+  .cardTitle {
+    font-size: calc(1vw + 22px);
+  }
+}

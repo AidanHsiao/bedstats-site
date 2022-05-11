@@ -4,7 +4,7 @@ import logo from "../../../../public/logo.png";
 import styles from "./main.module.css";
 import Link from "next/link";
 
-export default function NavBar({ fixed }: { fixed: boolean }) {
+export default function NavBar({ headerVisible }: { headerVisible: boolean }) {
   const [opened, setOpened] = useState(false);
   const [showNav, setShowNav] = useState(false);
 
@@ -20,9 +20,11 @@ export default function NavBar({ fixed }: { fixed: boolean }) {
   }, []);
 
   return (
-    <div
+    <nav
       className={styles.navBar}
-      style={{ position: fixed ? "fixed" : "absolute" }}
+      style={{
+        backgroundColor: !headerVisible ? "rgb(30, 30, 30)" : "transparent",
+      }}
     >
       <div className={styles.logoWrapper}>
         <div className={styles.logo}>
@@ -33,24 +35,31 @@ export default function NavBar({ fixed }: { fixed: boolean }) {
       <div className={styles.links}>
         <div className={styles.link}>Home</div>
         <div className={styles.link}>
-          <Link href="/dashboard">Dashboard</Link>
+          <Link href="/dashboard">
+            <a>Dashboard</a>
+          </Link>
         </div>
         <div className={styles.link}>About</div>
         <div className={styles.link}>Contact</div>
         <div className={styles.login}>
           <div className={styles.loginButton}>
-            <Link href="/login">Log In</Link>
+            <Link href="/login">
+              <a>Log In</a>
+            </Link>
           </div>
           <div className={styles.loginButton}>
-            <Link href="/signup">Sign Up</Link>
+            <Link href="/signup">
+              <a>Sign Up</a>
+            </Link>
           </div>
         </div>
       </div>
       <div
         className={styles.expand}
         style={{
-          right: opened ? 0 : -270,
-          backgroundColor: opened ? "rgba(150, 0, 255, 0.5)" : "none",
+          right: opened ? 0 : "max(-270px, calc(-75vw))",
+          backgroundColor:
+            opened && headerVisible ? "rgb(50, 50, 50)" : "transparent",
         }}
       >
         <div className={styles.arrowWrapper}>
@@ -67,9 +76,49 @@ export default function NavBar({ fixed }: { fixed: boolean }) {
           >
             &lt;
           </div>
+          <div
+            className={styles.arrowBackground}
+            style={{
+              backgroundColor: opened ? "rgb(50, 50, 50)" : "transparent",
+            }}
+          ></div>
         </div>
-        <div className={styles.expandableContent}></div>
+        <div className={styles.expandableContent}>
+          <div className={styles.expandableSpacing}></div>
+          <div
+            className={styles.expandableBackground}
+            style={{
+              backgroundColor: opened ? "rgb(50, 50, 50)" : "transparent",
+            }}
+          >
+            <div
+              className={styles.expandableLinks}
+              style={{ marginTop: headerVisible ? 0 : "40px" }}
+            >
+              <div className={styles.expandableLink}>Home</div>
+              <div className={styles.expandableLink}>
+                <Link href="/dashboard">
+                  <a>Dashboard</a>
+                </Link>
+              </div>
+              <div className={styles.expandableLink}>About</div>
+              <div className={styles.expandableLink}>Contact</div>
+            </div>
+            <div className={styles.expandableLogin}>
+              <div className={styles.expandableLoginItem}>
+                <Link href="/login">
+                  <a>Log In</a>
+                </Link>
+              </div>
+              <div className={styles.expandableLoginItem}>
+                <Link href="/signup">
+                  <a>Sign Up</a>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </nav>
   );
 }

@@ -24,7 +24,7 @@
   z-index: -1;
   width: 100%;
   height: 100%;
-  background-image: url("../../../../public/index/tech.png");
+  background-image: url("../../../../public/index/tech.jpg");
   background-size: cover;
   background-position-y: 0px;
   position: absolute;
@@ -34,8 +34,10 @@
 .content {
   width: min(50vw + 100px, 750px);
   height: 100%;
-  padding-top: calc(130px - 2.5vw);
   padding-left: min(20vw, 120px);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .imageWrapper {
@@ -56,13 +58,13 @@
 }
 
 .title {
-  font-size: min(5vw + 5px, 60px);
+  font-size: min(5vw + 10px, 60px);
   white-space: nowrap;
 }
 
 .subtitle {
   margin-top: 20px;
-  font-size: min(2vw + 7px, 30px);
+  font-size: min(2vw + 10px, 30px);
 }
 
 .divider {
@@ -74,7 +76,25 @@
 }
 
 @media (max-width: 650px) {
-  .logo {
+  .logo,
+  .imageWrapper {
     display: none;
   }
+  .content {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    padding-left: 0;
+  }
+  .subtitle {
+    padding-inline: 20%;
+  }
+}
+
+.textGradient {
+  background-image: linear-gradient(90deg, black, purple);
+  background-size: cover;
+  background-position-y: 0px;
+  background-clip: text;
+  color: transparent;
 }

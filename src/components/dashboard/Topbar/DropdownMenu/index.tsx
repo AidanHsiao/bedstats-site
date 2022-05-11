@@ -9,14 +9,14 @@ export default function DropdownMenu() {
         {/* Wrapper present to simplify DX and not to put margin-top 50px*/}
         <div className={styles.dropdownContent}>
           <DropdownSection
-            title={"About You"}
+            title="About You"
             options={["Your Stats Overview", "Your BedWars Habits"]}
-            width={"700px"}
+            width="700px"
           />
           <DropdownSection
-            title={"BedStats Settings"}
+            title="BedStats Settings"
             options={["App Settings", "Website Settings"]}
-            width={"400px"}
+            width="400px"
           />
         </div>
       </div>
