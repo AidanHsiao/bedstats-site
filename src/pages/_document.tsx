@@ -8,11 +8,11 @@ const cspHashOf = (text: string) => {
 };
 export default class MyDocument extends Document {
   render() {
-    let csp = `default-src 'self'; script-src 'self' ${cspHashOf(
+    let csp = `default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' ${cspHashOf(
       NextScript.getInlineScriptSource(this.props)
     )}`;
     if (process.env.NODE_ENV !== "production") {
-      csp = `style-src 'self' 'unsafe-inline'; font-src 'self' data:; default-src 'self'; script-src 'unsafe-eval' 'self' ${cspHashOf(
+      csp = `img-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; default-src 'self'; script-src 'unsafe-eval' 'self' ${cspHashOf(
         NextScript.getInlineScriptSource(this.props)
       )}`;
     }
