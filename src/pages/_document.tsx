@@ -1,32 +1,21 @@
-import crypto from "crypto";
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import { Html, Head, Main, NextScript } from "next/document";
 
-const cspHashOf = (text: string) => {
-  const hash = crypto.createHash("sha256");
-  hash.update(text);
-  return `'sha256-${hash.digest("base64")}'`;
-};
-export default class MyDocument extends Document {
-  render() {
-    let csp = `default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' ${cspHashOf(
-      NextScript.getInlineScriptSource(this.props)
-    )}`;
-    if (process.env.NODE_ENV !== "production") {
-      csp = `img-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; default-src 'self'; script-src 'unsafe-eval' 'self' ${cspHashOf(
-        NextScript.getInlineScriptSource(this.props)
-      )}`;
-    }
+import { NextStrictCSP } from "next-strict-csp";
 
-    return (
-      <Html>
-        <Head>
-          <meta httpEquiv="Content-Security-Policy" content={csp} />
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
-  }
+const HeadCSP = process.env.NODE_ENV === "production" ? NextStrictCSP : Head;
+
+export default function Document() {
+  return (
+    <Html lang="en">
+      <HeadCSP>
+        {process.env.NODE_ENV === "production" && (
+          <meta httpEquiv="Content-Security-Policy" />
+        )}
+      </HeadCSP>
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  );
 }
