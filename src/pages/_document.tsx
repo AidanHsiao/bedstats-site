@@ -10,7 +10,7 @@ function generateCSP() {
 
   const whitelistedUrls = ["https://www.gstatic.com"];
 
-  let csp = `default-src 'none'; base-uri 'self'; style-src 'unsafe-inline' 'self' ${whitelistedUrls.join(
+  let csp = `default-src 'none'; base-uri 'self'; font-src 'self'; img-src 'self'; style-src 'unsafe-inline' 'self' ${whitelistedUrls.join(
     " "
   )};`;
   csp += `script-src ${whitelistedUrls.join(" ")} 'nonce-${nonce}' 'self' ${
