@@ -15,7 +15,7 @@
       ]
     },
     {
-      "source": "*",
+      "source": "/(.*)",
       "headers": [
         {
           "key": "Content-Security-Policy-Report-Only",
