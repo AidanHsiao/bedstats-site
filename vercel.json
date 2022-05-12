@@ -1,12 +1,18 @@
 {
+  "routes": {
+    "src": "/(.*)",
+    "headers": {
+      "content-security-policy-report-only": "default-src 'self'; script-src 'self'; frame-ancestors 'none'",
+      "content-security-policy": "default-src 'self'; script-src 'self'; frame-ancestors 'none'",
+      "x-frame-options": "DENY",
+      "referrer-policy": "strict-origin",
+      "permissions-policy": "geolocation=(self), microphone=()"
+    }
+  },
   "headers": [
     {
       "source": "/api/(.*)",
       "headers": [
-        {
-          "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self'; frame-ancestors 'none'"
-        },
         { "key": "Access-Control-Allow-Credentials", "value": "true" },
         {
           "key": "Access-Control-Allow-Methods",
@@ -15,26 +21,6 @@
         {
           "key": "Access-Control-Allow-Headers",
           "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-api-key"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin"
-        },
-        {
-          "key": "Permissions-Policy",
-          "value": "geolocation=(self), microphone=()"
         }
       ]
     }
