@@ -10,13 +10,12 @@ function generateCSP() {
 
   const whitelistedUrls = ["https://www.gstatic.com"];
 
-  let csp = `default-src 'none'; base-uri 'self'; font-src 'self'; form-action 'self'; prefetch-src 'self'; img-src 'self'; style-src 'unsafe-inline' 'self' ${whitelistedUrls.join(
+  let csp = `default-src 'none'; base-uri 'self'; connect-src 'self'; font-src 'self'; form-action 'self'; prefetch-src 'self'; img-src 'self'; style-src 'unsafe-inline' 'self' ${whitelistedUrls.join(
     " "
   )};`;
   csp += ` script-src ${whitelistedUrls.join(" ")} 'nonce-${nonce}' 'self' ${
     production ? "" : "'unsafe-eval'"
   };`;
-  if (!production) csp += `connect-src 'self';`;
 
   return [csp, nonce];
 }
