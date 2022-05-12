@@ -1,5 +1,4 @@
 {
-  "routes": {},
   "headers": [
     {
       "source": "/api/(.*)",
