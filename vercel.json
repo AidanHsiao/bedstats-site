@@ -1,14 +1,5 @@
 {
-  "routes": {
-    "src": "/(.*)",
-    "headers": {
-      "content-security-policy-report-only": "default-src 'self'; script-src 'self'; frame-ancestors 'none'",
-      "content-security-policy": "default-src 'self'; script-src 'self'; frame-ancestors 'none'",
-      "x-frame-options": "DENY",
-      "referrer-policy": "strict-origin",
-      "permissions-policy": "geolocation=(self), microphone=()"
-    }
-  },
+  "routes": {},
   "headers": [
     {
       "source": "/api/(.*)",
@@ -21,6 +12,31 @@
         {
           "key": "Access-Control-Allow-Headers",
           "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-api-key"
+        }
+      ]
+    },
+    {
+      "source": "*",
+      "headers": [
+        {
+          "key": "Content-Security-Policy-Report-Only",
+          "value": "default-src 'self'; script-src 'self'; frame-ancestors 'none'"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self'; frame-ancestors 'none'"
+        },
+        {
+          "key": "x-frame-options",
+          "value": "DENY"
+        },
+        {
+          "key": "referrer-policy",
+          "value": "strict-origin"
+        },
+        {
+          "key": "permissions-policy",
+          "value": "geolocation=(self), microphone=()"
         }
       ]
     }
