@@ -8,8 +8,12 @@ function generateCSP() {
 
   const nonce = crypto.createHash("sha256").update(v4()).digest("base64");
 
-  let csp = `default-src 'self'; style-src 'unsafe-inline' 'self';`;
-  csp += `script-src 'nonce-${nonce}' 'self' ${
+  const whitelistedUrls = ["https://www.gstatic.com"];
+
+  let csp = `default-src 'none'; base-uri 'self'; style-src 'unsafe-inline' 'self' ${whitelistedUrls.join(
+    " "
+  )};`;
+  csp += `script-src ${whitelistedUrls.join(" ")} 'nonce-${nonce}' 'self' ${
     production ? "" : "'unsafe-eval'"
   };`;
   if (!production) csp += `connect-src 'self';`;
