@@ -22,7 +22,7 @@ export default function Page(): ReactElement {
           title="Built with Electron."
           subtitle="Electron.js has made BedStats intuitive, feature-rich, and safe. If you can navigate a website, you can navigate BedStats."
           src={ElectronLogo}
-          static={false}
+          fixedBackground={false}
         />
         <FeatureSection
           title="Setup isn't a hassle."

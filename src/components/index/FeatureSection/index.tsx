@@ -5,7 +5,7 @@ interface FeatureProps {
   title: string;
   subtitle: string;
   src?: StaticImageData;
-  static?: boolean;
+  fixedBackground?: boolean;
   white?: boolean;
 }
 
@@ -23,7 +23,7 @@ export default function FeatureSection(props: FeatureProps) {
         <div
           className={styles.backgroundImage}
           style={{
-            backgroundAttachment: props.static ? "fixed" : "absolute",
+            backgroundAttachment: props.fixedBackground ? "fixed" : "absolute",
           }}
         ></div>
       ) : (

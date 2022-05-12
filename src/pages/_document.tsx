@@ -9,7 +9,10 @@ export default function Document() {
     <Html lang="en">
       <HeadCSP>
         {process.env.NODE_ENV === "production" && (
-          <meta httpEquiv="Content-Security-Policy" />
+          <meta
+            httpEquiv="Content-Security-Policy"
+            content="script-src 'self'; frame-ancestors 'none'"
+          />
         )}
       </HeadCSP>
       <body>
