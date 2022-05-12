@@ -8,7 +8,7 @@ function generateCSP() {
 
   const nonce = crypto.createHash("sha256").update(v4()).digest("base64");
 
-  let csp = `default-src 'none';base-uri 'self';style-src 'unsafe-inline';`;
+  let csp = `default-src 'self'; style-src 'unsafe-inline';`;
   csp += `script-src 'nonce-${nonce}' 'self' ${
     production ? "" : "'unsafe-eval'"
   };`;
