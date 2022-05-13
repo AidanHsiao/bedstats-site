@@ -1,16 +1,5 @@
 import axios from "axios";
-
-export interface StatsObject {
-  fkdr: number;
-  bblr: number;
-  wlr: number;
-  stars: number;
-  finals: number;
-  beds: number;
-  wins: number;
-  score: number;
-  timestamp: number;
-}
+import { StatsObject } from "./interfaces";
 
 interface StatsResponse {
   code: number;
@@ -26,7 +15,7 @@ export default async function getStats(
 ): Promise<StatsResponse> {
   let playerData;
   if (axiosUsed) {
-    const resp = await axios
+    await axios
       .get(`https://api.hypixel.net/player?key=${apiKey}&uuid=${uuid}`)
       .then((res) => (playerData = res.data))
       .catch((e) => {

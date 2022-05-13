@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import getFirestore from "../../../../lib/db/initializeDB";
+import { StatsObject } from "../../../../lib/interfaces";
 
 export default async function handler(
   req: NextApiRequest,
@@ -35,8 +36,10 @@ export default async function handler(
       }
       const col = await db.collection("users").doc(uuid).collection("stats");
       const docs = await col.get();
-      const stats: any[] = [];
-      docs.forEach((doc: any) => stats.push(doc.data()));
+      const stats: StatsObject[] = [];
+      docs.forEach((doc: FirebaseFirestore.DocumentData) =>
+        stats.push(doc.data())
+      );
       res.status(200).json({
         code: 0,
         username: userData.username,
@@ -47,7 +50,8 @@ export default async function handler(
       break;
     }
     case "POST": {
-      if (req.headers["x-api-key"] !== process.env.NEXT_PUBLIC_SITE_API_KEY) return;
+      if (req.headers["x-api-key"] !== process.env.NEXT_PUBLIC_SITE_API_KEY)
+        return;
       const user = req.body;
       const db = getFirestore();
       await db.collection("users").doc(user.uuid).set(user);

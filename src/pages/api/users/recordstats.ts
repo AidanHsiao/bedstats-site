@@ -1,7 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import getUserList from "../../../../lib/db/getUserList";
 import getFirestore from "../../../../lib/db/initializeDB";
+import { User } from "../../../../lib/interfaces";
 import getStats from "../../../../lib/getStats";
+import { StatsObject } from "../../../../lib/interfaces";
 
 async function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -16,8 +18,8 @@ export default async function handler(
     return;
   }
   const userList = await getUserList();
-  const keys = userList.map((doc: any) => doc.hypixelAPIKey);
-  const uuids = userList.map((doc: any) => doc.uuid);
+  const keys = userList.map((doc: User) => doc.hypixelAPIKey);
+  const uuids = userList.map((doc: User) => doc.uuid);
   if (!uuids) {
     res.status(404).json({ condition: "error" });
     return;
@@ -33,15 +35,17 @@ export default async function handler(
         .doc(uuids[i])
         .collection("stats");
       const existingStatsDocs = await statsCollection.get();
-      const existingStats: any[] = [];
-      existingStatsDocs.forEach((doc: any) => existingStats.push(doc.data()));
+      const existingStats: StatsObject[] = [];
+      existingStatsDocs.forEach((doc: FirebaseFirestore.DocumentData) =>
+        existingStats.push(doc.data())
+      );
       const mostRecentRequest = existingStats.slice(-1)[0];
       if (mostRecentRequest && existingStats.length > 1) {
         let recentRequestEquality = true;
         Object.keys(mostRecentRequest).forEach((key: string) => {
           if (
             data.stats &&
-            mostRecentRequest[key] !==
+            mostRecentRequest[key as keyof StatsObject] !==
               data.stats[key as keyof typeof data.stats] &&
             key !== "timestamp"
           ) {
@@ -55,7 +59,7 @@ export default async function handler(
       await statsCollection
         .doc(`t:${timestamp}`)
         .set(data.stats)
-        .catch((err: any) => {
+        .catch((err: string) => {
           console.log(err);
           error = true;
         });
