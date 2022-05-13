@@ -22,3 +22,26 @@
   margin-bottom: 20px;
   font-size: 25px;
 }
+
+.submitting {
+  font-size: 40px;
+  font-weight: 900;
+  color: red;
+  text-align: center;
+}
+
+.errorMessage {
+  width: max-content;
+  position: fixed;
+  bottom: 30px;
+  width: 250px;
+  text-align: center;
+  display: grid;
+  place-items: center;
+  left: calc(50% - 125px);
+  color: white;
+  background-color: rgba(255, 0, 0, 0.9);
+  height: 50px;
+  padding-inline: 20px;
+  transition: bottom 0.2s, opacity 0.2s;
+}

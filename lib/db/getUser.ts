@@ -1,3 +1,4 @@
+import baseUrl from "../baseUrl";
 import { StatsObject } from "../interfaces";
 import { User } from "../interfaces";
 
@@ -10,13 +11,8 @@ interface UserResponse {
   stats?: StatsObject[];
 }
 
-const config =
-  process.env.NODE_ENV !== "production"
-    ? "http://localhost:3000"
-    : "https://bedstats-site.vercel.app";
-
 export default async function getUser(username: string): Promise<UserResponse> {
-  const userData = await fetch(`${config}/api/user/${username}`)
+  const userData = await fetch(`${baseUrl}/api/user/${username}`)
     .then((res) => res.json())
     .catch((e) => {});
   let msg = "";

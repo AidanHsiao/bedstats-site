@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../components/common/NavBar";
-import ContactForm from "../components/contact/ContactForm";
+import ContactFormWrapper from "../components/contact/ContactForm";
 import ContactHeader from "../components/contact/ContactHeader";
 
 export default function Page() {
@@ -9,7 +9,7 @@ export default function Page() {
       <NavBar headerVisible={false} />
       <main style={{ marginTop: "90px" }}>
         <ContactHeader />
-        <ContactForm />
+        <ContactFormWrapper />
       </main>
     </React.Fragment>
   );
