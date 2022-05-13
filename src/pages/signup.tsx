@@ -1,6 +1,6 @@
 import styles from "../components/signup/FriendsData/main.module.css";
 import classes from "../common/globalclasses.module.css";
-import React, { useState, ReactElement, SetStateAction, Dispatch } from "react";
+import React, { useState, ReactElement } from "react";
 import { createHash } from "crypto";
 import { useRouter } from "next/router";
 
@@ -176,8 +176,7 @@ export default function Page(): ReactElement {
   }
 
   return (
-    <div
-      className={classes.screenContent}
+    <main
       style={{
         display: "flex",
         alignItems: "center",
@@ -220,6 +219,6 @@ export default function Page(): ReactElement {
         />
         <Finished opacity={opacity4} dashboardFunc={goToDash} />
       </div>
-    </div>
+    </main>
   );
 }

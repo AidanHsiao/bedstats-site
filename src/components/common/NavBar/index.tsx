@@ -33,14 +33,26 @@ export default function NavBar({ headerVisible }: { headerVisible: boolean }) {
         <div className={styles.logoText}>BedStats</div>
       </div>
       <div className={styles.links}>
-        <div className={styles.link}>Home</div>
+        <div className={styles.link}>
+          <Link href="/">
+            <a>Home</a>
+          </Link>
+        </div>
         <div className={styles.link}>
           <Link href="/dashboard">
             <a>Dashboard</a>
           </Link>
         </div>
-        <div className={styles.link}>About</div>
-        <div className={styles.link}>Contact</div>
+        <div className={styles.link}>
+          <Link href="/about">
+            <a>About</a>
+          </Link>
+        </div>
+        <div className={styles.link}>
+          <Link href="/contact">
+            <a>Contact</a>
+          </Link>
+        </div>
         <div className={styles.login}>
           <div className={styles.loginButton}>
             <Link href="/login">
@@ -95,14 +107,26 @@ export default function NavBar({ headerVisible }: { headerVisible: boolean }) {
               className={styles.expandableLinks}
               style={{ marginTop: headerVisible ? 0 : "40px" }}
             >
-              <div className={styles.expandableLink}>Home</div>
+              <div className={styles.expandableLink}>
+                <Link href="/">
+                  <a>Home</a>
+                </Link>
+              </div>
               <div className={styles.expandableLink}>
                 <Link href="/dashboard">
                   <a>Dashboard</a>
                 </Link>
               </div>
-              <div className={styles.expandableLink}>About</div>
-              <div className={styles.expandableLink}>Contact</div>
+              <div className={styles.expandableLink}>
+                <Link href="/about">
+                  <a>About</a>
+                </Link>
+              </div>
+              <div className={styles.expandableLink}>
+                <Link href="/contact">
+                  <a>Contact</a>
+                </Link>
+              </div>
             </div>
             <div className={styles.expandableLogin}>
               <div className={styles.expandableLoginItem}>
