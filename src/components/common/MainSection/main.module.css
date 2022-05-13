@@ -8,6 +8,7 @@
     rgba(162, 100, 219, 0.7),
     rgba(107, 32, 98, 0.7)
   );
+  text-align: center;
 }
 
 .headerImage {
@@ -24,7 +25,6 @@
 }
 
 .title {
-  text-align: center;
   font-size: min(15px + 3vw, 60px);
   padding-inline: 30px;
   width: min(100vw, 650px);
@@ -33,7 +33,6 @@
 }
 
 .text {
-  text-align: center;
   padding-top: 30px;
   font-size: min(12px + 1.5vw, 25px);
   width: min(100vw, 800px);
