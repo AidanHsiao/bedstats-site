@@ -1,0 +1,24 @@
+.header {
+  width: 100vw;
+  height: auto;
+  padding-top: 50px;
+}
+
+.title {
+  text-align: center;
+  font-size: min(15px + 3vw, 60px);
+  padding-inline: 30px;
+  width: min(100vw, 650px);
+  font-weight: 800;
+  margin: 0 auto;
+}
+
+.text {
+  text-align: center;
+  padding-top: 30px;
+  font-size: min(12px + 1.5vw, 25px);
+  width: min(100vw, 800px);
+  padding-inline: 50px;
+  margin: 0 auto;
+  color: rgb(60, 60, 60);
+}
