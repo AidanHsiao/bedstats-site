@@ -10,7 +10,7 @@ interface AboutProps {
   follow?: true;
 }
 
-export default function MainSection(props: AboutProps) {
+export default function AboutSection(props: AboutProps) {
   return (
     <div
       className={styles.header}

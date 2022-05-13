@@ -27,16 +27,16 @@ a {
 }
 
 button,
-input {
+input,
+textarea,
+select {
   font-family: "Karla", sans-serif;
   outline: none;
 }
 
 select {
-  font-family: "Karla", sans-serif;
   border: none;
 }
-
 main {
   width: 100%;
   height: auto;
