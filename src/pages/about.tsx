@@ -1,5 +1,5 @@
 import React from "react";
-import MainSection from "../components/common/MainSection";
+import AboutSection from "../components/about/AboutSection";
 import NavBar from "../components/common/NavBar";
 
 export default function Page() {
@@ -7,7 +7,7 @@ export default function Page() {
     <React.Fragment>
       <NavBar headerVisible={false} />
       <main style={{ marginTop: "90px" }}>
-        <MainSection
+        <AboutSection
           title="The all-in-one app for BedWars support."
           text="BedStats was built on a need to track statistics and check players. Back 
           when I used to use discord bots to check player stats, there was no easy
@@ -18,7 +18,7 @@ export default function Page() {
           playing experience. I created BedStats as a BW player, for BW players."
           background
         />
-        <MainSection
+        <AboutSection
           title="Follow the Developer!"
           text="Click on one of the links below."
           follow

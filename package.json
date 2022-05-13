@@ -12,6 +12,7 @@
     "axios": "^0.26.1",
     "cookies-next": "^2.0.4",
     "crypto": "^1.0.1",
+    "discord.js": "^13.7.0",
     "firebase-admin": "^10.0.2",
     "next": "^12.1.6",
     "next-secure-headers": "^2.2.0",
