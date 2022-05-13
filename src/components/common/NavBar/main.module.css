@@ -56,16 +56,33 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-inline: calc(2vw - 5px);
+  margin-inline: calc(2vw - 5px);
   cursor: pointer;
   opacity: 1;
   transition: color 0.2s;
+  position: relative;
 }
 
-.link:hover,
-.loginButton:hover,
-.expand a:hover {
-  color: rgb(255, 190, 190);
+.link::after,
+.expandableLinks .link::after {
+  position: absolute;
+  bottom: -3px;
+  content: "";
+  width: 0%;
+  height: 2px;
+  background-color: white;
+  box-shadow: 2px 2px 10px black;
+  transition: width 0.2s ease;
+}
+
+.link:hover::after,
+.expandableLinks .link:hover::after {
+  width: 90%;
+}
+
+.expandableLoginItem:hover,
+.loginButton:hover {
+  color: rgb(255, 170, 170);
 }
 
 .link:active,
@@ -154,7 +171,7 @@
   margin-bottom: 30px;
 }
 
-.expandableLink,
+.expandableLinks .link,
 .expandableLoginItem {
   margin: 20px calc(2vw + 10px);
   margin-top: 0px;
