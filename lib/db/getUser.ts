@@ -1,5 +1,5 @@
-import { StatsObject } from "../getStats";
-import { User } from "./setUser";
+import { StatsObject } from "../interfaces";
+import { User } from "../interfaces";
 
 interface UserResponse {
   msg: string;
@@ -16,9 +16,7 @@ const config =
     : "https://bedstats-site.vercel.app";
 
 export default async function getUser(username: string): Promise<UserResponse> {
-  const userData = await fetch(
-    `${config}/api/user/${username}`
-  )
+  const userData = await fetch(`${config}/api/user/${username}`)
     .then((res) => res.json())
     .catch((e) => {});
   let msg = "";

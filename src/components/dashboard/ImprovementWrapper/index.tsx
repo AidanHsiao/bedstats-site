@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { StatsObject } from "../../../../lib/getStats";
+import { StatsObject } from "../../../../lib/interfaces";
 import { createDate } from "../ChartWrapper";
 import styles from "./main.module.css";
 
@@ -18,7 +18,7 @@ export default function ImprovementWrapper({
   const [attemptedDB, setAttempted] = useState(false);
   useEffect(() => {
     if (error) {
-      setLoadingText("Something went wrong. Try again later.")
+      setLoadingText("Something went wrong. Try again later.");
       return;
     }
     try {

@@ -1,0 +1,69 @@
+.header {
+  width: 100vw;
+  height: auto;
+  padding-block: 50px;
+  position: relative;
+  background-image: linear-gradient(
+    135deg,
+    rgba(162, 100, 219, 0.7),
+    rgba(107, 32, 98, 0.7)
+  );
+}
+
+.headerImage {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url("../../../../public/about/aboutBG.gif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.title {
+  text-align: center;
+  font-size: min(15px + 3vw, 60px);
+  padding-inline: 30px;
+  width: min(100vw, 650px);
+  font-weight: 800;
+  margin: 0 auto;
+}
+
+.text {
+  text-align: center;
+  padding-top: 30px;
+  font-size: min(12px + 1.5vw, 25px);
+  width: min(100vw, 800px);
+  padding-inline: 50px;
+  margin: 0 auto;
+}
+
+.links {
+  width: calc(2vw + 120px);
+  height: calc(1vw + 40px);
+  margin: 10px auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  --size: calc(1vw + 30px);
+  width: var(--size);
+  height: var(--size);
+  margin: 0 auto;
+  position: relative;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.logo:hover {
+  filter: brightness(1.2);
+}
+
+.githubLogo:hover {
+  filter: invert(0.2);
+}

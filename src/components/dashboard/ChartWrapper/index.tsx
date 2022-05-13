@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { useEffect, useState } from "react";
 const { Chart } = require("react-google-charts");
 import getUser from "../../../../lib/db/getUser";
 import styles from "./main.module.css";
-import { StatsObject } from "../../../../lib/getStats";
+import { StatsObject } from "../../../../lib/interfaces";
 
 const hour = 3600;
 
@@ -23,8 +23,8 @@ export default function ChartWrapper({
   setError,
   username,
 }: {
-  setUserData: any;
-  setError: any;
+  setUserData: Dispatch<SetStateAction<StatsObject[]>>;
+  setError: Dispatch<SetStateAction<boolean>>;
   username: string;
 }) {
   interface Tick {
@@ -32,11 +32,11 @@ export default function ChartWrapper({
     f: string;
   }
 
+  type Data = [string[], [Tick, ...number[]]?];
+
   const [loadingText, setLoadingText] = useState("Loading chart...");
-  const [data, setData]: [
-    [string[], [Tick, ...number[]]?],
-    (arg: any) => void
-  ] = useState([[]]);
+  const [data, setData]: [Data, Dispatch<SetStateAction<Data>>] =
+    useState<Data>([[]]);
   const [opacity, setOpacity] = useState(0);
   const [durationText, setDurationText] = useState("the last day");
   const [chartVarText, setChartVarText] = useState("score");
@@ -94,7 +94,7 @@ export default function ChartWrapper({
     setLoadingText("Loading chart...");
     getBreakingIndex(chartDuration, username)
       .then((resp) => {
-        console.log(resp)
+        console.log(resp);
         if (!resp.stats.length) {
           const time = new Date();
           const displayTime = createDate(time, -1, true);
@@ -115,9 +115,7 @@ export default function ChartWrapper({
         const splicedDists = splicedStats.map((obj: StatsObject) => {
           return obj.timestamp - min;
         });
-        const tempData: [string[], [Tick, ...number[]]?] = [
-          ["LABEL", ...chartVars],
-        ];
+        const tempData: Data = [["LABEL", ...chartVars]];
         const ticks: Tick[] = [];
         splicedStats.forEach((obj: StatsObject, idx: number) => {
           const date = new Date(obj.timestamp * 1000);
@@ -144,7 +142,7 @@ export default function ChartWrapper({
       })
       .catch((e) => {
         setLoadingText("Something went wrong. Try again later.");
-        setError(true)
+        setError(true);
       });
   }, [chartDuration, chartVars]);
   return (
@@ -184,7 +182,7 @@ export default function ChartWrapper({
 
 interface ChartSelectorProps {
   items: string[];
-  selectFunction: (value: any) => void; // Value type should be number | string[] but TypeScript throws error
+  selectFunction: (value: any) => void;
 }
 
 export function ChartSelector(props: ChartSelectorProps) {
