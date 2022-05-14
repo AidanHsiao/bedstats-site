@@ -15,7 +15,7 @@ If you'd like to contribute, simply open a pull request or issue. I'll try to re
 
 - [x] Create dashboard home
 - [x] Homepage navigation
-- [ ] About, contact pages
+- [x] About, contact pages
 - [ ] Create play time calculation
 - [ ] Allow for website and app settings to change, With real-time updates to database
 - [ ] Permanent login system with cookies
