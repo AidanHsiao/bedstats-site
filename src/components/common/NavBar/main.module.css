@@ -81,10 +81,6 @@
   width: 90%;
 }
 
-.expandableLoginItem:hover {
-  color: rgb(255, 170, 170);
-}
-
 .link:active,
 .expand a:active {
   color: rgb(255, 120, 120);
