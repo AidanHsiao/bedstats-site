@@ -38,16 +38,8 @@ export default function NavBar({ headerVisible }: { headerVisible: boolean }) {
         <NavLink route="About" />
         <NavLink route="Contact" />
         <div className={styles.login}>
-          <div className={styles.loginButton}>
-            <Link href="/login">
-              <a>Log In</a>
-            </Link>
-          </div>
-          <div className={styles.loginButton}>
-            <Link href="/signup">
-              <a>Sign Up</a>
-            </Link>
-          </div>
+          <NavLink route="Log In" />
+          <NavLink route="Sign Up" />
         </div>
       </div>
       <div
@@ -97,16 +89,8 @@ export default function NavBar({ headerVisible }: { headerVisible: boolean }) {
               <NavLink route="Contact" />
             </div>
             <div className={styles.expandableLogin}>
-              <div className={styles.expandableLoginItem}>
-                <Link href="/login">
-                  <a>Log In</a>
-                </Link>
-              </div>
-              <div className={styles.expandableLoginItem}>
-                <Link href="/signup">
-                  <a>Sign Up</a>
-                </Link>
-              </div>
+              <NavLink route="Log In" />
+              <NavLink route="Sign Up" />
             </div>
           </div>
         </div>
@@ -116,9 +100,11 @@ export default function NavBar({ headerVisible }: { headerVisible: boolean }) {
 }
 
 export function NavLink({ route }: { route: string }) {
+  const routeName = route.replace(/ /g, "").toLowerCase();
+
   return (
     <div className={styles.link}>
-      <Link href={`/${route !== "Home" ? route.toLowerCase() : ""}`}>
+      <Link href={`/${route !== "Home" ? routeName : ""}`}>
         <a>{route}</a>
       </Link>
     </div>
