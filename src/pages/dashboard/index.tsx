@@ -14,9 +14,9 @@ export default function Page() {
   ] = useState<StatsObject[]>([]);
   const [error, setError] = useState(false);
   const [username, setUsername] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
-    const router = useRouter();
     if (!window) return;
     const pass = sessionStorage.getItem("pass") || localStorage.getItem("pass");
     const username =

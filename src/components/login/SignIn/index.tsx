@@ -53,8 +53,9 @@ export default function SignIn(): ReactElement {
     loginHandler();
   });
 
+  const router = useRouter();
+
   async function loginHandler() {
-    const router = useRouter();
     try {
       const pass =
         sessionStorage.getItem("pass") || localStorage.getItem("pass");
