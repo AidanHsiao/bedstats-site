@@ -2,10 +2,12 @@ import { FormEvent, ReactElement, useEffect, useState } from "react";
 import Link from "next/link";
 import styles from "./main.module.css";
 import getUser from "../../../../lib/db/getUser";
-import { createHash, randomBytes } from "crypto";
+import { createHash } from "crypto";
 import useUpdateEffect from "../../../../lib/hooks/useUpdateEffect";
 import { useRouter } from "next/router";
 import getUserByPass from "../../../../lib/db/getUserByPass";
+import logo from "../../../../public/logo.png";
+import Image from "next/image";
 
 export default function SignIn(): ReactElement {
   const [username, setUsername] = useState("");
@@ -13,12 +15,21 @@ export default function SignIn(): ReactElement {
   const [rememberMe, setRememberMe] = useState(false);
   const [pass, setPass] = useState("");
   const [loginAttempted, setLoginAttempted] = useState(false);
+  const [loggingIn, setLoggingIn] = useState(false);
+  const [errorMessage, setTrueErrorMessage] = useState("");
+
+  function setErrorMessage(msg: string) {
+    setTrueErrorMessage(msg);
+    setTimeout(() => setTrueErrorMessage(""), 3000);
+  }
 
   async function login(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setLoggingIn(true);
     const user = await getUser(username);
     if (!user.user) {
-      console.log("account doesn't exist");
+      setErrorMessage("That account doesn't exist.");
+      setLoggingIn(false);
       return;
     }
     const truePassword = user.user.password;
@@ -26,7 +37,8 @@ export default function SignIn(): ReactElement {
       .update(`${username.toLowerCase()}${password}`)
       .digest("hex");
     if (truePassword !== inputPassword) {
-      console.log("shit password");
+      setErrorMessage("Invalid password.");
+      setLoggingIn(false);
       return;
     }
     setPass(
@@ -41,6 +53,7 @@ export default function SignIn(): ReactElement {
     if (rememberMe === true) {
       localStorage.setItem("username", username);
       localStorage.setItem("pass", pass);
+      loginHandler();
       return;
     }
     sessionStorage.setItem("username", username);
@@ -70,49 +83,80 @@ export default function SignIn(): ReactElement {
 
   return (
     <div
-      className={styles.signInWrapper}
+      className={styles.signInSidebar}
       style={{ display: loginAttempted ? "flex" : "none" }}
     >
       <div className={styles.signInImage}></div>
-      <span className={styles.signInTitle}>Log In to BedStats</span>
-      <form className={styles.signIn} onSubmit={(e) => login(e)}>
-        <input
-          id="username"
-          type="text"
-          placeholder="Username"
-          autoComplete="off"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <input
-          id="password"
-          type="password"
-          placeholder="Password"
-          autoComplete="off"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <div className={styles.rememberMe}>
-          <input
-            id="remember-me"
-            type="checkbox"
-            checked={rememberMe}
-            onChange={(e) => setRememberMe(e.target.checked)}
-          />
-          <span style={{ paddingLeft: "5px" }}>Remember Me</span>
+      <div className={styles.signInCover}>
+        <div className={styles.coverTitle}>
+          The all-in-one app for BedWars support.
         </div>
-        <button id="signin" type="submit">
-          Sign In
-        </button>
-      </form>
-      <span className={styles.accountText}>
-        Don't have an account?{" "}
-        <Link href="/signup">
-          <a className={styles.createAccount}>Create an account</a>
-        </Link>
-      </span>
+        <div className={styles.coverSubtitle}>
+          Track your stats, sync your settings, and so much more with a BedStats
+          account.
+        </div>
+      </div>
+      <div className={styles.signInWrapper}>
+        <div
+          className={styles.errorMessage}
+          style={
+            errorMessage
+              ? { bottom: "-50px", opacity: 1 }
+              : { bottom: "-100px", opacity: 0 }
+          }
+        >
+          {errorMessage}
+        </div>
+        <div className={styles.logo} onClick={() => router.push("/")}>
+          <Image src={logo} layout="fill" />
+        </div>
+        <span className={styles.signInTitle}>Log In to BedStats</span>
+        <form className={styles.signIn} onSubmit={(e) => login(e)}>
+          <input
+            id="username"
+            type="text"
+            placeholder="Username"
+            autoComplete="off"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <input
+            id="password"
+            type="password"
+            placeholder="Password"
+            autoComplete="off"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <div className={styles.rememberMe}>
+            <input
+              id="remember-me"
+              type="checkbox"
+              checked={rememberMe}
+              onChange={(e) => setRememberMe(e.target.checked)}
+            />
+            <span style={{ paddingLeft: "5px" }}>Remember Me</span>
+          </div>
+          <button
+            id="signin"
+            type="submit"
+            style={{
+              opacity: loggingIn ? 0.7 : 1,
+              cursor: loggingIn ? "not-allowed" : "pointer",
+            }}
+          >
+            Sign{loggingIn ? "ing" : ""} In{loggingIn ? "..." : ""}
+          </button>
+        </form>
+        <span className={styles.accountText}>
+          Don't have an account?{" "}
+          <Link href="/signup">
+            <a className={styles.createAccount}>Create an account</a>
+          </Link>
+        </span>
+      </div>
     </div>
   );
 }

@@ -46,7 +46,7 @@
   border-color: rgb(255, 107, 255);
   cursor: default;
 }
-@media (max-width: 1056px) {
+@media (width <= 1056px) {
   .navbar {
     width: 0px;
     overflow-x: hidden;

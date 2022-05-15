@@ -65,7 +65,7 @@
   align-items: flex-end;
 }
 
-@media (max-width: 750px) {
+@media (width <= 750px) {
   .headerBorder {
     opacity: 0;
   }

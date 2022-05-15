@@ -75,7 +75,7 @@
   box-shadow: 2px 2px 10px black;
 }
 
-@media (max-width: 650px) {
+@media (width <= 650px) {
   .logo,
   .imageWrapper {
     display: none;

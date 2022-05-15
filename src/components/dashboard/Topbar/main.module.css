@@ -33,7 +33,7 @@
   transition: opacity 0.2s;
 }
 
-@media (max-width: 440px) {
+@media (width <= 440px) {
   .title {
     opacity: 0;
   }
