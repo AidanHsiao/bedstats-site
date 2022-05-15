@@ -88,12 +88,9 @@ export default function SignIn(): ReactElement {
     >
       <div className={styles.signInImage}></div>
       <div className={styles.signInCover}>
-        <div className={styles.coverTitle}>
-          The all-in-one app for BedWars support.
-        </div>
+        <div className={styles.coverTitle}>Welcome back!</div>
         <div className={styles.coverSubtitle}>
-          Track your stats, sync your settings, and so much more with a BedStats
-          account.
+          Log in to your account, or create an account through the sign up page.
         </div>
       </div>
       <div className={styles.signInWrapper}>
@@ -110,7 +107,7 @@ export default function SignIn(): ReactElement {
         <div className={styles.logo} onClick={() => router.push("/")}>
           <Image src={logo} layout="fill" />
         </div>
-        <span className={styles.signInTitle}>Log In to BedStats</span>
+        <span className={styles.signInTitle}>Log in to BedStats</span>
         <form className={styles.signIn} onSubmit={(e) => login(e)}>
           <input
             id="username"
