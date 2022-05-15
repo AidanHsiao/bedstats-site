@@ -64,8 +64,7 @@
   position: relative;
 }
 
-.link::after,
-.expandableLinks .link::after {
+.link::after {
   position: absolute;
   bottom: -3px;
   content: "";
@@ -73,17 +72,20 @@
   height: 2px;
   background-color: white;
   box-shadow: 2px 2px 10px black;
-  transition: width 0.2s ease;
+  transition: width 0.2s ease, background-color 0.2s;
 }
 
-.link:hover::after,
-.expandableLinks .link:hover::after {
+.link:hover::after {
   width: 90%;
 }
 
-.link:active,
-.expand a:active {
-  color: rgb(255, 120, 120);
+.link:active {
+  --color: rgb(255, 120, 120);
+  color: var(--color);
+}
+
+.link:active::after {
+  background-color: var(--color);
 }
 
 .expand {
@@ -161,10 +163,6 @@
   margin: 20px calc(2vw + 10px);
   margin-top: 0px;
   width: max-content;
-}
-
-.expand a {
-  transition: color 0.2s;
 }
 
 .expandableLogin {
