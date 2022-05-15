@@ -1,6 +1,6 @@
 import styles from "../components/signup/FriendsData/main.module.css";
 import classes from "../common/globalclasses.module.css";
-import React, { useState, ReactElement } from "react";
+import React, { useState, ReactElement, useEffect } from "react";
 import { createHash } from "crypto";
 import { useRouter } from "next/router";
 
@@ -32,6 +32,8 @@ interface friendsItem {
 }
 
 export default function Page(): ReactElement {
+  const router = useRouter();
+
   let [opacity1, setOpacity1] = useState(1);
   let [opacity2, setOpacity2] = useState(0);
   let [opacity3, setOpacity3] = useState(0);
@@ -162,8 +164,6 @@ export default function Page(): ReactElement {
     setOpacity4(1);
   }
 
-  const router = useRouter();
-
   async function goToDash(): Promise<void> {
     if (opacity4 === 0) return;
     setOpacity4(0);
@@ -172,6 +172,11 @@ export default function Page(): ReactElement {
     await sleep(200);
     router.push("/dashboard");
   }
+
+  useEffect(() => {
+    const pass = sessionStorage.getItem("pass") || localStorage.getItem("pass");
+    if (!pass) router.push("/login");
+  }, []);
 
   return (
     <main

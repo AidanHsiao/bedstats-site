@@ -4,7 +4,7 @@ import styles from "./main.module.css";
 import getUser from "../../../../lib/db/getUser";
 import { createHash, randomBytes } from "crypto";
 import useUpdateEffect from "../../../../lib/hooks/useUpdateEffect";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import getUserByPass from "../../../../lib/db/getUserByPass";
 
 export default function SignIn(): ReactElement {
@@ -54,13 +54,14 @@ export default function SignIn(): ReactElement {
   });
 
   async function loginHandler() {
+    const router = useRouter();
     try {
       const pass =
         sessionStorage.getItem("pass") || localStorage.getItem("pass");
       if (!pass) throw new Error("no pass");
       const user = await getUserByPass(pass);
       if (!user.password) throw new Error("invalid pass");
-      Router.push("/dashboard");
+      router.push("/dashboard");
     } catch (e) {
       setLoginAttempted(true);
     }

@@ -5,7 +5,7 @@ import Navbar from "../../components/dashboard/Navbar";
 import Topbar from "../../components/dashboard/Topbar";
 import ImprovementWrapper from "../../components/dashboard/ImprovementWrapper";
 import { StatsObject } from "../../../lib/interfaces";
-import Router from "next/router";
+import { useRouter } from "next/router";
 
 export default function Page() {
   const [userData, setUserData]: [
@@ -16,16 +16,17 @@ export default function Page() {
   const [username, setUsername] = useState("");
 
   useEffect(() => {
+    const router = useRouter();
     if (!window) return;
     const pass = sessionStorage.getItem("pass") || localStorage.getItem("pass");
     const username =
       sessionStorage.getItem("username") ||
       localStorage.getItem("username") ||
       "";
-    if (!pass) Router.push("/login");
+    if (!pass) router.push("/login");
     setUsername(username);
   }, []);
-
+  if (!username) return <div></div>;
   return (
     <div className={classes.dashboardContent}>
       <Navbar />
