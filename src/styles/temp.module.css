@@ -1,7 +1,0 @@
-.main {
-  width: calc(100vw - 288px);
-  position: absolute;
-  left: 288px;
-  height: 100vh;
-  overflow-x: hidden;
-}

@@ -62,14 +62,12 @@ export default function Page(): ReactElement {
       setTimeout(() => setErrorVisibility(false), 5000);
       return;
     }
-    if (resp.user) {
-      setUuid(resp.uuid);
-      setOpacity1(0);
-      setProgress(progress2);
-      await sleep(200);
-      setUsername(resp.username);
-      setOpacity2(1);
-    }
+    setUuid(resp.uuid);
+    setOpacity1(0);
+    setProgress(progress2);
+    await sleep(200);
+    setUsername(resp.username);
+    setOpacity2(1);
   }
 
   async function notName(): Promise<void> {

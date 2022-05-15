@@ -4,8 +4,8 @@ import ChartWrapper from "../../components/dashboard/ChartWrapper";
 import Navbar from "../../components/dashboard/Navbar";
 import Topbar from "../../components/dashboard/Topbar";
 import ImprovementWrapper from "../../components/dashboard/ImprovementWrapper";
-import { setCookies, getCookies, removeCookies } from "cookies-next";
 import { StatsObject } from "../../../lib/interfaces";
+import Router from "next/router";
 
 export default function Page() {
   const [userData, setUserData]: [
@@ -13,10 +13,17 @@ export default function Page() {
     Dispatch<SetStateAction<StatsObject[]>>
   ] = useState<StatsObject[]>([]);
   const [error, setError] = useState(false);
+  const [username, setUsername] = useState("");
+
   useEffect(() => {
-    setCookies("bruh", "cringe", {
-      expires: new Date(Date.now() + 1000 * 3600 * 24 * 7),
-    });
+    if (!window) return;
+    const pass = sessionStorage.getItem("pass") || localStorage.getItem("pass");
+    const username =
+      sessionStorage.getItem("username") ||
+      localStorage.getItem("username") ||
+      "";
+    if (!pass) Router.push("/login");
+    setUsername(username);
   }, []);
 
   return (
@@ -24,7 +31,7 @@ export default function Page() {
       <Navbar />
       <Topbar />
       <ChartWrapper
-        username="Girly_Mike"
+        username={username}
         setError={setError}
         setUserData={setUserData}
       />

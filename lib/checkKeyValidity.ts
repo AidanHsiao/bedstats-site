@@ -2,14 +2,13 @@ interface Validity {
   code: number;
   msg: string;
 }
-
 export default async function checkKeyValidity(
   apiKey: string,
   uuid: string
 ): Promise<Validity> {
   const keyData = await fetch(`https://api.hypixel.net/key?key=${apiKey}`)
     .then((res) => res.json())
-    .catch((e) => {
+    .catch(() => {
       return {
         code: 3,
         msg: "Connection lost. Make sure you are connected to the internet.",

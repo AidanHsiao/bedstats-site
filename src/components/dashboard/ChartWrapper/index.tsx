@@ -92,15 +92,16 @@ export default function ChartWrapper({
   useEffect(() => {
     setOpacity(0);
     setLoadingText("Loading chart...");
+    if (!username) return;
     getBreakingIndex(chartDuration, username)
       .then((resp) => {
-        console.log(resp);
         if (!resp.stats.length) {
           const time = new Date();
           const displayTime = createDate(time, -1, true);
           setLoadingText(
             `You have no stats entries. One should appear around ${displayTime}.`
           );
+          setUserData([]);
           return;
         }
         const index = resp.breakingIndex;
@@ -144,7 +145,7 @@ export default function ChartWrapper({
         setLoadingText("Something went wrong. Try again later.");
         setError(true);
       });
-  }, [chartDuration, chartVars]);
+  }, [chartDuration, chartVars, username]);
   return (
     <React.Fragment>
       <div className={styles.chartTitle}>
