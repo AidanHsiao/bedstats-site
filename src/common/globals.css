@@ -42,3 +42,12 @@ main {
   height: 100%;
   position: absolute;
 }
+
+img,
+a {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}

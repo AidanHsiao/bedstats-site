@@ -29,7 +29,7 @@
   width: 700px;
   margin-left: min(20vw - 50px, 12vw + 10px);
   display: flex;
-  padding-top: max(260px - 10vw, 170px);
+  padding-top: max(250px - 10vw, 160px);
 }
 
 .headerContent {
