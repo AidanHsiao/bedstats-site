@@ -4,9 +4,8 @@ import {
   SetStateAction,
   useEffect,
   useRef,
-  useState,
 } from "react";
-import styles from "./main.module.css";
+import styles from "./main.module.scss";
 import DownloadButton from "../DownloadButton";
 
 interface HeaderProps {

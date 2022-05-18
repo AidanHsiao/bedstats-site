@@ -1,4 +1,3 @@
-import classes from "../../common/globalclasses.module.css";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import ChartWrapper from "../../components/dashboard/ChartWrapper";
 import Navbar from "../../components/dashboard/Navbar";
@@ -28,7 +27,7 @@ export default function Page() {
   }, []);
   if (!username) return <div></div>;
   return (
-    <div className={classes.dashboardContent}>
+    <div className="dashboardContent">
       <Navbar />
       <Topbar />
       <ChartWrapper

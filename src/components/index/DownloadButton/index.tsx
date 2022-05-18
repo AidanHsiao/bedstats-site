@@ -1,6 +1,6 @@
 import { ReactElement, useState } from "react";
 import Image from "next/image";
-import styles from "./main.module.css";
+import styles from "./main.module.scss";
 import downloadIcon from "../../../../public/index/downloadicon.png";
 
 export default function DownloadButton(): ReactElement {

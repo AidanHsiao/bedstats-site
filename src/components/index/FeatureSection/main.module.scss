@@ -1,16 +1,14 @@
+@use "../../../common/base";
+
 .featureWrapper {
   width: 100%;
   height: 400px;
-  background-image: linear-gradient(
-    135deg,
-    rgba(162, 100, 219, 0.55),
-    rgba(107, 32, 98, 0.55)
-  );
+  background-image: base.$purple-background;
   color: white;
   display: flex;
   justify-content: center;
   position: relative;
-  text-shadow: 2px 2px 20px black;
+  text-shadow: base.$default-shadow;
 }
 
 .widthLimiter {
@@ -75,7 +73,7 @@
   box-shadow: 2px 2px 20px black;
 }
 
-@media (width <= 650px) {
+@media (width <650px) {
   .logo,
   .imageWrapper {
     display: none;

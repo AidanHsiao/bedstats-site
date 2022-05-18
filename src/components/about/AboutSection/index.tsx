@@ -1,4 +1,4 @@
-import styles from "./main.module.css";
+import styles from "./main.module.scss";
 import Image from "next/image";
 import githubLogo from "../../../../public/about/githubLogo.png";
 import linkedinLogo from "../../../../public/about/linkedinLogo.png";

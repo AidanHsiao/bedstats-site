@@ -1,3 +1,5 @@
+@use "../../../common/base";
+
 .signInSidebar {
   width: min(100vw, 500px);
   height: 100vh;
@@ -106,11 +108,7 @@
   width: calc(100vw - 500px);
   height: 100vh;
   position: absolute;
-  background-image: linear-gradient(
-    135deg,
-    rgba(162, 100, 219, 0.55),
-    rgba(107, 32, 98, 0.55)
-  );
+  background-image: base.$purple-background;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -120,7 +118,7 @@
   padding-inline: calc(4vw + 20px);
   text-align: center;
   color: white;
-  text-shadow: 2px 2px 20px black;
+  text-shadow: base.$default-shadow;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -139,13 +137,13 @@
   filter: invert(0.3);
 }
 
-@media (height < 600px), (width <= 600px) {
+@media (height < 600px), (width < 600px) {
   .signInWrapper {
     transform: scale(0.8);
   }
 }
 
-@media (height < 400px), (width <= 400px) {
+@media (height < 400px), (width < 400px) {
   .signInWrapper {
     transform: scale(0.55);
   }
@@ -159,14 +157,14 @@
   font-size: min(3vw - 12px, 35px);
 }
 
-@media (width <= 750px) {
+@media (width < 750px) {
   .coverTitle,
   .coverSubtitle {
     display: none;
   }
 }
 
-@media (width <= 550px) {
+@media (width < 550px) {
   .signInCover {
     padding-inline: 0px;
   }

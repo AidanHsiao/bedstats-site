@@ -80,14 +80,14 @@
   min-width: 10px;
 }
 
-@media (width <= 1056px) {
+@media (width <1056px) {
   .chartSelectorWrapper {
     margin-top: 20px;
     flex-direction: column;
   }
 }
 
-@media (width <= 375px) {
+@media (width <375px) {
   .chartSelector {
     flex-direction: column;
     margin-top: 10px;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import logo from "../../../../public/logo.png";
-import styles from "./main.module.css";
+import styles from "./main.module.scss";
 import Link from "next/link";
 
 export default function NavBar({ headerVisible }: { headerVisible: boolean }) {

@@ -1,6 +1,6 @@
 import React, { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import baseUrl from "../../../../lib/baseUrl";
-import styles from "./main.module.css";
+import styles from "./main.module.scss";
 
 interface ContactData {
   email: string;

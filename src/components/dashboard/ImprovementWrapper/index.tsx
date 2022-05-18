@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { StatsObject } from "../../../../lib/interfaces";
 import { createDate } from "../ChartWrapper";
-import styles from "./main.module.css";
+import styles from "./main.module.scss";
 
 export default function ImprovementWrapper({
   userData,

@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from "next/image";
-import styles from "./main.module.css";
+import styles from "./main.module.scss";
 
 interface FeatureProps {
   title: string;

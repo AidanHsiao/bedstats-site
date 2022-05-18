@@ -58,7 +58,7 @@
   pointer-events: all;
 }
 
-@media (width >= 1056px) {
+@media (width > 1056px) {
   .dropdown {
     opacity: 0;
     pointer-events: none;
@@ -93,7 +93,7 @@
   cursor: pointer;
 }
 
-@media (width <= 730px) {
+@media (width <730px) {
   .dropdownList {
     flex-direction: column;
     align-items: center;

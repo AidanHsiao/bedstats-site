@@ -1,5 +1,4 @@
-import styles from "../components/signup/FriendsData/main.module.css";
-import classes from "../common/globalclasses.module.css";
+import styles from "../components/signup/FriendsData/main.module.scss";
 import React, { useState, ReactElement, useEffect } from "react";
 import { createHash } from "crypto";
 import { useRouter } from "next/router";
@@ -194,10 +193,7 @@ export default function Page(): ReactElement {
         errorVisible={errorVisible}
         errorMessage={errorMessage}
       />
-      <div
-        className={classes.signUpWrapper}
-        style={{ transform: `scale(${scale})` }}
-      >
+      <div className="signUpWrapper" style={{ transform: `scale(${scale})` }}>
         <ProgressBar value={progress} />
         <SignUp
           submitFunction={checkSignUpValidity}
@@ -224,6 +220,94 @@ export default function Page(): ReactElement {
         />
         <Finished opacity={opacity4} dashboardFunc={goToDash} />
       </div>
+      <style jsx global>{`
+        .screenContent {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+
+        .dashboardContent {
+          width: calc(95vw - 200px);
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: calc(5vw + 200px);
+        }
+
+        @media (width < 1056px) {
+          .dashboardContent {
+            width: 100vw;
+            left: 0;
+          }
+        }
+
+        .form {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin-top: 0.5vw;
+        }
+
+        .form input {
+          width: 70%;
+          height: 4vw;
+          margin-top: 1vw;
+          border: none;
+          border-bottom: 0.2vw solid rgb(186, 107, 178);
+          border-radius: 1vw;
+          font-size: 2vw;
+          padding-left: 1vw;
+        }
+
+        .form button {
+          width: 70%;
+          height: 4vw;
+          margin-top: 3vw;
+          border: none;
+          border-radius: 1vw;
+          font-size: 2vw;
+          cursor: not-allowed;
+          color: rgb(255, 197, 252);
+          background-color: rgba(186, 107, 178, 0.4);
+          transition: color 0.2s, background-color 0.2s;
+        }
+
+        .form button:not(.signUpNotReady) {
+          color: white;
+          background-color: rgb(186, 107, 178);
+          cursor: pointer;
+        }
+
+        .form button:not(.signUpNotReady):active {
+          background-color: rgb(147, 59, 139);
+        }
+
+        .formWrapper {
+          transition: opacity 0.2s;
+          position: absolute;
+          width: 70vw;
+        }
+
+        .centralTitle {
+          font-size: 4vw;
+          text-align: center;
+          margin-top: 2vw;
+        }
+
+        .signUpWrapper {
+          width: 70%;
+          height: 39.375vw;
+          margin: auto;
+          border: 0.2vw solid rgb(186, 107, 178);
+          background-color: rgba(188, 153, 184, 0.5);
+          border-radius: 5vw;
+        }
+      `}</style>
     </main>
   );
 }

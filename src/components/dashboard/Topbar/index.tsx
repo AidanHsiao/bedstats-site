@@ -1,4 +1,4 @@
-import styles from "./main.module.css";
+import styles from "./main.module.scss";
 import DropdownMenu from "./DropdownMenu";
 import logo from "../../../../public/logo.png";
 import Image from "next/image";

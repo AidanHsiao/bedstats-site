@@ -1,6 +1,6 @@
 import { FormEvent, ReactElement, useEffect, useState } from "react";
 import Link from "next/link";
-import styles from "./main.module.css";
+import styles from "./main.module.scss";
 import getUser from "../../../../lib/db/getUser";
 import { createHash } from "crypto";
 import useUpdateEffect from "../../../../lib/hooks/useUpdateEffect";
