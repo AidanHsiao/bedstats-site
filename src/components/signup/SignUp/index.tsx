@@ -54,7 +54,7 @@ export default function SignUp(props: SignUpProps): ReactElement {
             if (v.target.value === tempPassword && tempPassword && props.name) {
               setButtonClass("");
             } else {
-              setButtonClass(classes.signUpNotReady);
+              setButtonClass("signUpNotReady");
             }
           }}
           placeholder="Password"
