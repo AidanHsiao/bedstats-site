@@ -69,10 +69,9 @@
   text-align: center;
   transition: background-color 0.3s ease-in-out;
   cursor: pointer;
-}
-
-.selectorItem:hover {
-  background-color: rgb(206, 206, 206);
+  &:hover {
+    background-color: rgb(206, 206, 206);
+  }
 }
 
 .chartSelectorSpacing {

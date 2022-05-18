@@ -55,10 +55,9 @@
   position: relative;
   cursor: pointer;
   transition: filter 0.2s;
-}
-
-.logo:hover {
-  filter: brightness(1.2);
+  &:hover {
+    filter: brightness(1.2);
+  }
 }
 
 .githubLogo:hover {

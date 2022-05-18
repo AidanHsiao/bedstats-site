@@ -37,9 +37,9 @@
   border-left: 5px solid rgba(0, 0, 0, 0);
   transition: border-color 0.2s;
   cursor: pointer;
-}
-.link:hover:not(.selectedLink) {
-  border-color: rgb(145, 63, 145);
+  &:hover:not(.selectedLink) {
+    border-color: rgb(145, 63, 145);
+  }
 }
 
 .selectedLink {

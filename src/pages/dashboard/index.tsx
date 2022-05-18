@@ -28,6 +28,22 @@ export default function Page() {
   if (!username) return <div></div>;
   return (
     <div className="dashboardContent">
+      <style jsx global>{`
+        .dashboardContent {
+          width: calc(95vw - 200px);
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: calc(5vw + 200px);
+        }
+
+        @media (width < 1056px) {
+          .dashboardContent {
+            width: 100vw;
+            left: 0;
+          }
+        }
+      `}</style>
       <Navbar />
       <Topbar />
       <ChartWrapper

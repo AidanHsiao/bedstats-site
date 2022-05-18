@@ -30,6 +30,31 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  input:not(input[type="checkbox"]) {
+    background: none;
+    border: none;
+    border-bottom: 2px solid #666666;
+    width: 350px;
+    font-size: 20px;
+  }
+  input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+  button {
+    height: 50px;
+    background-color: #8a7994;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    font-size: 30px;
+    border: none;
+    &:hover:not(.loggingIn) {
+      background-color: #8d5caa;
+    }
+  }
 }
 
 .username {
@@ -40,20 +65,6 @@
   margin-bottom: 15px;
 }
 
-.signIn input:not(input[type="checkbox"]) {
-  background: none;
-  border: none;
-  border-bottom: 2px solid #666666;
-  width: 350px;
-  font-size: 20px;
-}
-
-.signIn input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-}
-
 .rememberMe {
   margin-bottom: 15px;
   font-size: 20px;
@@ -62,27 +73,12 @@
   cursor: pointer;
 }
 
-.signIn button {
-  height: 50px;
-  background-color: #8a7994;
-  color: white;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
-  font-size: 30px;
-  border: none;
-}
-
-.signIn button:hover:not(.loggingIn) {
-  background-color: #8d5caa;
-}
-
 .createAccount {
   color: blue;
-}
-
-.createAccount:active {
-  color: purple;
+  transition: color 0.2s;
+  &:active {
+    color: purple;
+  }
 }
 
 .accountText {

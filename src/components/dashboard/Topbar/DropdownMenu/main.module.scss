@@ -5,6 +5,11 @@
   width: 40px;
   height: 30px;
   transition: opacity 0.1s;
+  &:hover .dropdownContentWrapper {
+    opacity: 1;
+    top: 0px;
+    pointer-events: all;
+  }
 }
 
 .dropdownIcon {
@@ -50,12 +55,6 @@
 .dropdownSection {
   width: 100vw;
   flex: 1;
-}
-
-.dropdown:hover .dropdownContentWrapper {
-  opacity: 1;
-  top: 0px;
-  pointer-events: all;
 }
 
 @media (width > 1056px) {

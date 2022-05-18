@@ -32,12 +32,10 @@
   align-items: center;
   font-size: 2vw;
   transition: background-color 0.2s;
-}
-
-.finishedButton:hover {
-  background-color: rgba(255, 0, 221, 0.9);
-}
-
-.finishedButton:active {
-  background-color: rgba(140, 0, 255, 0.9);
+  &:hover {
+    background-color: rgba(255, 0, 221, 0.9);
+  }
+  &:active {
+    background-color: rgba(140, 0, 255, 0.9);
+  }
 }

@@ -229,21 +229,6 @@ export default function Page(): ReactElement {
           left: 0;
         }
 
-        .dashboardContent {
-          width: calc(95vw - 200px);
-          height: 100%;
-          position: absolute;
-          top: 0;
-          left: calc(5vw + 200px);
-        }
-
-        @media (width < 1056px) {
-          .dashboardContent {
-            width: 100vw;
-            left: 0;
-          }
-        }
-
         .form {
           width: 100%;
           display: flex;

@@ -22,10 +22,9 @@
   cursor: pointer;
   filter: invert(1);
   transition: filter 0.2s;
-}
-
-.logo:hover {
-  filter: invert(0.8);
+  &:hover {
+    filter: invert(0.8);
+  }
 }
 
 .title {
