@@ -116,6 +116,7 @@ export default function SignIn(): ReactElement {
             autoComplete="off"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            className={styles.username}
             required
           />
           <input
@@ -125,6 +126,7 @@ export default function SignIn(): ReactElement {
             autoComplete="off"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            className={styles.password}
             required
           />
           <div className={styles.rememberMe}>
@@ -134,7 +136,14 @@ export default function SignIn(): ReactElement {
               checked={rememberMe}
               onChange={(e) => setRememberMe(e.target.checked)}
             />
-            <span style={{ paddingLeft: "5px" }}>Remember Me</span>
+            <span
+              style={{ paddingLeft: "5px" }}
+              onClick={() => {
+                setRememberMe(!rememberMe);
+              }}
+            >
+              Remember Me
+            </span>
           </div>
           <button
             id="signin"
@@ -143,6 +152,7 @@ export default function SignIn(): ReactElement {
               opacity: loggingIn ? 0.7 : 1,
               cursor: loggingIn ? "not-allowed" : "pointer",
             }}
+            className={loggingIn ? styles.loggingIn : ""}
           >
             Sign{loggingIn ? "ing" : ""} In{loggingIn ? "..." : ""}
           </button>

@@ -175,7 +175,9 @@ export default function Page(): ReactElement {
 
   useEffect(() => {
     const pass = sessionStorage.getItem("pass") || localStorage.getItem("pass");
-    if (pass) router.push("/login");
+    if (pass) {
+      router.push("/login");
+    }
   }, []);
 
   return (

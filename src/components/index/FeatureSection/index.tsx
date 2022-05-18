@@ -16,7 +16,7 @@ export default function FeatureSection(props: FeatureProps) {
       style={{
         backgroundImage: props.white
           ? "none"
-          : "linear-gradient(135deg, rgba(162, 100, 219, 0.7), rgba(107, 32, 98, 0.7))",
+          : "linear-gradient(135deg, rgba(162, 100, 219, 0.55), rgba(107, 32, 98, 0.55))",
       }}
     >
       {!props.white ? (
@@ -34,7 +34,7 @@ export default function FeatureSection(props: FeatureProps) {
         style={
           props.white
             ? { color: "black", textShadow: "none" }
-            : { color: "white", textShadow: "2px 2px 10px black" }
+            : { color: "white", textShadow: "2px 2px 20px black" }
         }
       >
         <div
@@ -65,7 +65,7 @@ export default function FeatureSection(props: FeatureProps) {
                     backgroundImage: "linear-gradient(to right, black, purple)",
                     boxShadow: "none",
                   }
-                : { backgroundColor: "white", boxShadow: "2px 2px 10px black" }
+                : { backgroundColor: "white", boxShadow: "2px 2px 20px black" }
             }
           ></div>
           <div
