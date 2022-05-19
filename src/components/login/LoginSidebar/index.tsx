@@ -9,7 +9,7 @@ import getUserByPass from "../../../../lib/db/getUserByPass";
 import logo from "../../../../public/logo.png";
 import Image from "next/image";
 
-export default function SignIn(): ReactElement {
+export default function LoginSidebar(): ReactElement {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
@@ -83,17 +83,10 @@ export default function SignIn(): ReactElement {
 
   return (
     <div
-      className={styles.signInSidebar}
+      className={styles.loginSidebar}
       style={{ display: loginAttempted ? "flex" : "none" }}
     >
-      <div className={styles.signInImage}></div>
-      <div className={styles.signInCover}>
-        <div className={styles.coverTitle}>Welcome back!</div>
-        <div className={styles.coverSubtitle}>
-          Log in to your account, or create an account through the sign up page.
-        </div>
-      </div>
-      <div className={styles.signInWrapper}>
+      <div className={styles.loginWrapper}>
         <div
           className={styles.errorMessage}
           style={
@@ -107,8 +100,8 @@ export default function SignIn(): ReactElement {
         <div className={styles.logo} onClick={() => router.push("/")}>
           <Image src={logo} layout="fill" />
         </div>
-        <span className={styles.signInTitle}>Log in to BedStats</span>
-        <form className={styles.signIn} onSubmit={(e) => login(e)}>
+        <span className={styles.loginTitle}>Log in to BedStats</span>
+        <form className={styles.login} onSubmit={(e) => login(e)}>
           <input
             id="username"
             type="text"
@@ -146,7 +139,7 @@ export default function SignIn(): ReactElement {
             </span>
           </div>
           <button
-            id="signin"
+            id="login"
             type="submit"
             style={{
               opacity: loggingIn ? 0.7 : 1,

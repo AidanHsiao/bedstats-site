@@ -57,12 +57,6 @@
   text-shadow: base.$default-shadow;
 }
 
-.headerSignIn {
-  flex: 1;
-  display: flex;
-  align-items: flex-end;
-}
-
 @media (width < 750px) {
   .headerBorder {
     opacity: 0;

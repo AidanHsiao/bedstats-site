@@ -1,0 +1,38 @@
+@use "../../../common/base";
+
+.loginImage {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-image: url("../../../../public/index/background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: blur(5px);
+  z-index: -1;
+  left: 0;
+  top: 0;
+}
+
+.loginCover {
+  @extend .loginImage;
+  width: calc(100vw - 500px);
+  background-image: base.$purple-background;
+  left: min(100vw, 500px);
+  padding-inline: calc(4vw + 20px);
+  text-align: center;
+  color: white;
+  text-shadow: base.$default-shadow;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  filter: none;
+}
+
+.coverTitle {
+  font-size: min(6vw - 20px, 60px);
+}
+
+.coverSubtitle {
+  font-size: min(3vw - 12px, 35px);
+}

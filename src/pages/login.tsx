@@ -1,9 +1,11 @@
-import SignIn from "../components/login/SignIn";
+import Background from "../components/login/Background";
+import LoginSidebar from "../components/login/LoginSidebar";
 
 export default function Page() {
   return (
     <main>
-      <SignIn />
+      <Background />
+      <LoginSidebar />
     </main>
   );
 }

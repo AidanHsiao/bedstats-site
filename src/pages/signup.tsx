@@ -13,6 +13,7 @@ import APIKey from "../components/signup/APIKey";
 import FriendsData from "../components/signup/FriendsData";
 import Finished from "../components/signup/Finished";
 import Utility from "../components/signup/Utility";
+import getPass from "../../lib/getPass";
 
 const scale = 1;
 
@@ -173,9 +174,10 @@ export default function Page(): ReactElement {
   }
 
   useEffect(() => {
-    const pass = sessionStorage.getItem("pass") || localStorage.getItem("pass");
+    const pass = getPass();
     if (pass) {
       router.push("/login");
+      return;
     }
   }, []);
 

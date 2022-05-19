@@ -1,6 +1,6 @@
 @use "../../../common/base";
 
-.signInSidebar {
+.loginSidebar {
   width: min(100vw, 500px);
   height: 100vh;
   display: flex;
@@ -10,7 +10,7 @@
   background-color: #e8e8e8;
 }
 
-.signInWrapper {
+.loginWrapper {
   width: 500px;
   height: 500px;
   display: flex;
@@ -21,12 +21,12 @@
   transform: scale(1);
 }
 
-.signInTitle {
+.loginTitle {
   font-size: 45px;
   margin-bottom: 25px;
 }
 
-.signIn {
+.login {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -87,40 +87,6 @@
   font-size: 20px;
 }
 
-.signInImage {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  background-image: url("../../../../public/index/background.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  filter: blur(5px);
-  z-index: -1;
-  left: 0;
-  top: 0;
-}
-
-.signInCover {
-  width: calc(100vw - 500px);
-  height: 100vh;
-  position: absolute;
-  background-image: base.$purple-background;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: -1;
-  left: min(100vw, 500px);
-  top: 0;
-  padding-inline: calc(4vw + 20px);
-  text-align: center;
-  color: white;
-  text-shadow: base.$default-shadow;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
 .logo {
   min-width: 90px;
   min-height: 100px;
@@ -135,23 +101,15 @@
 }
 
 @media (height < 600px), (width < 600px) {
-  .signInWrapper {
+  .loginWrapper {
     transform: scale(0.8);
   }
 }
 
 @media (height < 400px), (width < 400px) {
-  .signInWrapper {
+  .loginWrapper {
     transform: scale(0.55);
   }
-}
-
-.coverTitle {
-  font-size: min(6vw - 20px, 60px);
-}
-
-.coverSubtitle {
-  font-size: min(3vw - 12px, 35px);
 }
 
 @media (width < 750px) {
@@ -162,7 +120,7 @@
 }
 
 @media (width < 550px) {
-  .signInCover {
+  .loginCover {
     padding-inline: 0px;
   }
 }

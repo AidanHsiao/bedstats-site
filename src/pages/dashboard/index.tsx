@@ -5,6 +5,7 @@ import Topbar from "../../components/dashboard/Topbar";
 import ImprovementWrapper from "../../components/dashboard/ImprovementWrapper";
 import { StatsObject } from "../../../lib/interfaces";
 import { useRouter } from "next/router";
+import getPass from "../../../lib/getPass";
 
 export default function Page() {
   const [userData, setUserData]: [
@@ -17,7 +18,7 @@ export default function Page() {
 
   useEffect(() => {
     if (!window) return;
-    const pass = sessionStorage.getItem("pass") || localStorage.getItem("pass");
+    const pass = getPass();
     const username =
       sessionStorage.getItem("username") ||
       localStorage.getItem("username") ||

@@ -166,12 +166,10 @@
 }
 
 .expandableLogin {
-  position: absolute;
+  @extend .login;
   top: max(66vh, 300px);
-  right: 0;
   width: 50%;
   height: 100px;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
