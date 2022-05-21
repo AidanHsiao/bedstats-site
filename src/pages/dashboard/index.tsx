@@ -47,6 +47,7 @@ export default function Page() {
           position: absolute;
           top: 0;
           left: calc(5vw + 200px);
+          transition: width 0.2s;
         }
 
         .fullDashboard {
