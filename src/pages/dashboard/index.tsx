@@ -6,6 +6,7 @@ import ImprovementWrapper from "../../components/dashboard/ImprovementWrapper";
 import { StatsObject } from "../../../lib/interfaces";
 import { useRouter } from "next/router";
 import getPass from "../../../lib/getPass";
+import getUserByPass from "../../../lib/db/getUserByPass";
 
 export default function Page() {
   const [userData, setUserData]: [
@@ -20,15 +21,7 @@ export default function Page() {
 
   useEffect(() => {
     if (!window) return;
-    const pass = getPass();
-    const username =
-      sessionStorage.getItem("username") ||
-      localStorage.getItem("username") ||
-      "";
-    if (!pass || !username) {
-      router.push("/login");
-      return;
-    }
+    attemptLogin();
     setShowDashboard(true);
     setUsername(username);
     setWidth(window.innerWidth);
@@ -36,6 +29,15 @@ export default function Page() {
       setWidth(window.innerWidth);
     });
   }, []);
+
+  async function attemptLogin() {
+    const pass = getPass();
+    const user = await getUserByPass(pass);
+    if (!user.password) {
+      router.push("/login");
+      return;
+    }
+  }
 
   if (!username || !showDashboard) return <div></div>;
   return (

@@ -13,5 +13,5 @@ export default async function handler(
       message: "User not found",
     });
   }
-  res.status(200).json(user.docs[0].data());
+  res.status(200).json(user?.docs[0]?.data());
 }

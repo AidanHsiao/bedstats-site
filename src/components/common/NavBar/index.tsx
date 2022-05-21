@@ -5,6 +5,8 @@ import styles from "./main.module.scss";
 import Link from "next/link";
 import getPass from "../../../../lib/getPass";
 import React from "react";
+import getUserByPass from "../../../../lib/db/getUserByPass";
+import { useRouter } from "next/router";
 
 export default function NavBar({ headerVisible }: { headerVisible: boolean }) {
   const [opened, setOpened] = useState(false);
@@ -117,16 +119,36 @@ export default function NavBar({ headerVisible }: { headerVisible: boolean }) {
   );
 }
 
-export function NavLink({ route }: { route: string }) {
-  const routeName = route.replace(/ /g, "").toLowerCase();
+interface NavLinkProps {
+  route: string;
+}
 
-  const href = `/${route !== "Home" ? routeName : ""}`;
+export function NavLink(props: NavLinkProps) {
+  const routeName = props.route.replace(/ /g, "").toLowerCase();
+
+  const href = `/${props.route !== "Home" ? routeName : ""}`;
+
+  const router = useRouter();
+
+  async function attemptLogin() {
+    const pass = getPass();
+    const user = await getUserByPass(pass);
+    if (!user.password) {
+      router.push("/login");
+      return;
+    }
+    router.push("/dashboard");
+  }
 
   return (
     <div className={styles.link}>
-      <Link href={href}>
-        <a>{route}</a>
-      </Link>
+      {props.route === "Dashboard" ? (
+        <div onClick={attemptLogin}>{props.route}</div>
+      ) : (
+        <Link href={href}>
+          <a>{props.route}</a>
+        </Link>
+      )}
     </div>
   );
 }
