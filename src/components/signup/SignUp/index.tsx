@@ -1,9 +1,8 @@
 import { ReactElement, useState } from "react";
-import classes from "../../../common/globalclasses.module.css";
 
 export default function SignUp(props: SignUpProps): ReactElement {
   let [tempPassword, setTempPassword] = useState("");
-  let [buttonClass, setButtonClass] = useState(classes.signUpNotReady);
+  let [buttonClass, setButtonClass] = useState("signUpNotReady");
 
   function checkIfValidButton(): void {
     if (!buttonClass) {
@@ -20,11 +19,11 @@ export default function SignUp(props: SignUpProps): ReactElement {
   return (
     <div
       style={{ opacity: props.opacity, zIndex: props.opacity }}
-      className={classes.formWrapper}
+      className="formWrapper"
       onKeyDown={keyPress}
     >
-      <div className={classes.centralTitle}>Sign Up to BedStats</div>
-      <div className={classes.form}>
+      <div className="centralTitle">Sign Up to BedStats</div>
+      <div className="form">
         <input
           id="username"
           type="text"
@@ -39,7 +38,7 @@ export default function SignUp(props: SignUpProps): ReactElement {
             ) {
               setButtonClass("");
             } else {
-              setButtonClass(classes.signUpNotReady);
+              setButtonClass("signUpNotReady");
             }
           }}
           placeholder="Minecraft Username"
@@ -55,7 +54,7 @@ export default function SignUp(props: SignUpProps): ReactElement {
             if (v.target.value === tempPassword && tempPassword && props.name) {
               setButtonClass("");
             } else {
-              setButtonClass(classes.signUpNotReady);
+              setButtonClass("signUpNotReady");
             }
           }}
           placeholder="Password"
@@ -75,7 +74,7 @@ export default function SignUp(props: SignUpProps): ReactElement {
             ) {
               setButtonClass("");
             } else {
-              setButtonClass(classes.signUpNotReady);
+              setButtonClass("signUpNotReady");
             }
           }}
           placeholder="Confirm Password"

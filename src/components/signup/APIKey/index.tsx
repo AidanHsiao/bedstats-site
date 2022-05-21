@@ -1,6 +1,5 @@
 import { ReactElement, useState } from "react";
-import styles from "./main.module.css";
-import classes from "../../../common/globalclasses.module.css";
+import styles from "./main.module.scss";
 
 interface APIKeyProps {
   submitFunction: () => void;
@@ -12,7 +11,7 @@ interface APIKeyProps {
 }
 
 export default function APIKey(props: APIKeyProps): ReactElement {
-  let [buttonClass, setButtonClass] = useState(classes.signUpNotReady);
+  let [buttonClass, setButtonClass] = useState("signUpNotReady");
 
   function submitAPIKey(buttonClass: string): void {
     if (!buttonClass) {
@@ -34,24 +33,24 @@ export default function APIKey(props: APIKeyProps): ReactElement {
     ) {
       setButtonClass("");
     } else {
-      setButtonClass(classes.signUpNotReady);
+      setButtonClass("signUpNotReady");
     }
   }
 
   return (
     <div
       style={{ opacity: props.opacity, zIndex: props.opacity }}
-      className={classes.formWrapper}
+      className="formWrapper"
     >
-      <div className={classes.centralTitle}>Verify your identity</div>
-      <div className={styles.centralSubtitle}>
+      <div className="centralTitle">Verify your identity</div>
+      <div className="centralSubtitle">
         We can only verify your Minecraft username through Hypixel. Log on to
         Hypixel with your given Minecraft account, and run{" "}
         <span className={styles.apiBold}>/api new</span>. Since this step is
         required regardless, it can be used as an intermediary for
         authenticaion.
       </div>
-      <div className={classes.form}>
+      <div className="form">
         <input
           id="apikey"
           type="text"

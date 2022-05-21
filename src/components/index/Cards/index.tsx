@@ -5,7 +5,7 @@ import stats from "../../../../public/index/stats.jpeg";
 import settings from "../../../../public/index/settings.png";
 import safety from "../../../../public/index/safety.png";
 import free from "../../../../public/index/free.png";
-import styles from "./main.module.css";
+import styles from "./main.module.scss";
 import Image, { StaticImageData } from "next/image";
 
 export default function Cards(): ReactElement {

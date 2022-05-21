@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import styles from "./main.module.css";
+import styles from "./main.module.scss";
 
 interface FriendsProps {
   opacity: number;

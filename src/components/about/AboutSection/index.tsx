@@ -1,4 +1,4 @@
-import styles from "./main.module.css";
+import styles from "./main.module.scss";
 import Image from "next/image";
 import githubLogo from "../../../../public/about/githubLogo.png";
 import linkedinLogo from "../../../../public/about/linkedinLogo.png";
@@ -18,9 +18,9 @@ export default function AboutSection(props: AboutProps) {
         props.background
           ? {
               backgroundImage:
-                "linear-gradient(135deg, rgba(162, 100, 219, 0.7), rgba(107, 32, 98, 0.7))",
+                "linear-gradient(135deg, rgba(162, 100, 219, 0.55), rgba(107, 32, 98, 0.55))",
               color: "white",
-              textShadow: "2px 2px 10px black",
+              textShadow: "2px 2px 20px black",
             }
           : {
               background: "none",

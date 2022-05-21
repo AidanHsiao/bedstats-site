@@ -22,10 +22,9 @@
   cursor: pointer;
   filter: invert(1);
   transition: filter 0.2s;
-}
-
-.logo:hover {
-  filter: invert(0.8);
+  &:hover {
+    filter: invert(0.8);
+  }
 }
 
 .title {
@@ -33,7 +32,7 @@
   transition: opacity 0.2s;
 }
 
-@media (max-width: 440px) {
+@media (width <440px) {
   .title {
     opacity: 0;
   }

@@ -39,10 +39,9 @@
   transition: background-color 0.2s;
   color: white;
   cursor: pointer;
-}
-
-.friendsImport:not(.friendsImportOff):active {
-  background-color: rgb(147, 59, 139);
+  &:not(.friendsImportOff):active {
+    background-color: rgb(147, 59, 139);
+  }
 }
 
 .friendsImportOff {
@@ -64,8 +63,7 @@
   background-color: #e8e8e8;
   transition: background-color 0.2s;
   cursor: pointer;
-}
-
-.friendsDeny:active {
-  background-color: #ccc;
+  &:active {
+    background-color: #ccc;
+  }
 }

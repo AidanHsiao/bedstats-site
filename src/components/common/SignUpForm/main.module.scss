@@ -1,0 +1,141 @@
+@use "../../../common/base";
+
+.signInWrapper {
+  width: 80vw;
+  min-width: 300px;
+  box-shadow: base.$shadow;
+  height: 80vh;
+  margin: 10vh auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #e8e8e8;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.imageWrapper {
+  width: 500px;
+  height: 100%;
+  background-image: base.$background;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  color: white;
+  text-shadow: base.$shadow;
+  transition: width 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: color 0.2s, text-shadow 0.2s, width 0.2s;
+}
+
+.image {
+  @extend .imageWrapper;
+  background-image: url("../../../../public/index/background.png");
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-attachment: fixed;
+  background-size: 100%;
+}
+
+.imageTitle {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 200px;
+  padding-inline: 5%;
+}
+
+.imageSubtitle {
+  @extend .imageTitle;
+  margin-top: 0;
+  font-size: 25px;
+}
+
+.form {
+  width: calc(80vw - 450px);
+  min-width: 450px;
+  overflow: hidden;
+  position: relative;
+}
+
+.formTitle {
+  font-size: 45px;
+  margin-bottom: 3%;
+  font-weight: bold;
+  text-align: center;
+  color: rgb(98, 1, 150);
+}
+
+.errorMessage {
+  position: absolute;
+  left: calc(50% - 175px);
+  bottom: 0px;
+  width: 350px;
+  height: 50px;
+  text-align: center;
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  padding-inline: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: bottom 0.2s, opacity 0.2s;
+  z-index: 2;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(121, 86, 145, 0.5);
+}
+
+.backArrow {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  cursor: pointer;
+  transition: opacity 0.2s, filter 0.2s;
+}
+
+.wrapperText {
+  opacity: 1;
+  transition: opacity 0.2s;
+  color: white;
+  text-shadow: base.$shadow;
+  position: absolute;
+  font-size: 50px;
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+}
+
+@media (width < 1200px) {
+  .imageWrapper {
+    width: 0;
+    opacity: 0;
+  }
+  .signInWrapper {
+    justify-content: center;
+  }
+  .wrapperText {
+    color: black;
+    text-shadow: none;
+  }
+}

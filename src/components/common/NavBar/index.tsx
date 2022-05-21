@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import logo from "../../../../public/logo.png";
-import styles from "./main.module.css";
+import styles from "./main.module.scss";
 import Link from "next/link";
+import getPass from "../../../../lib/getPass";
+import React from "react";
 
 export default function NavBar({ headerVisible }: { headerVisible: boolean }) {
   const [opened, setOpened] = useState(false);
   const [showNav, setShowNav] = useState(false);
+  const [showLogin, setShowLogin] = useState(true);
 
   useEffect(() => {
+    if (!window) return;
+    const pass = getPass();
+    if (pass) setShowLogin(false);
     window.addEventListener("scroll", () => {
       if (window.scrollY >= 650 && !showNav) {
         setShowNav(true);
@@ -38,8 +44,14 @@ export default function NavBar({ headerVisible }: { headerVisible: boolean }) {
         <NavLink route="About" />
         <NavLink route="Contact" />
         <div className={styles.login}>
-          <NavLink route="Log In" />
-          <NavLink route="Sign Up" />
+          {showLogin ? (
+            <React.Fragment>
+              <NavLink route="Log In" />
+              <NavLink route="Sign Up" />
+            </React.Fragment>
+          ) : (
+            <NavLink route="Log Out" />
+          )}
         </div>
       </div>
       <div
@@ -102,9 +114,11 @@ export default function NavBar({ headerVisible }: { headerVisible: boolean }) {
 export function NavLink({ route }: { route: string }) {
   const routeName = route.replace(/ /g, "").toLowerCase();
 
+  const href = `/${route !== "Home" ? routeName : ""}`;
+
   return (
     <div className={styles.link}>
-      <Link href={`/${route !== "Home" ? routeName : ""}`}>
+      <Link href={href}>
         <a>{route}</a>
       </Link>
     </div>

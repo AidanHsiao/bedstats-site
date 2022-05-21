@@ -35,3 +35,7 @@ export default function Page(): ReactElement {
     </React.Fragment>
   );
 }
+
+export function getStaticProps() {
+  return { props: {} };
+}

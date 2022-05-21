@@ -10,11 +10,12 @@
   color: black;
   position: relative;
   margin-top: 50px;
+  &:hover {
+    background-color: rgb(121, 61, 199);
+    color: white;
+  }
 }
-.downloadButton:hover {
-  background-color: rgb(121, 61, 199);
-  color: white;
-}
+
 .downloadButtonText {
   width: 75%;
   display: flex;

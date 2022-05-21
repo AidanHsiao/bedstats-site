@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { StatsObject } from "../../../../lib/interfaces";
+import sleep from "../../../../lib/sleep";
 import { createDate } from "../ChartWrapper";
-import styles from "./main.module.css";
+import styles from "./main.module.scss";
 
 export default function ImprovementWrapper({
   userData,
@@ -152,5 +153,3 @@ export function Percentage({ duration, percentage, top }: PercentageProps) {
     </div>
   );
 }
-
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));

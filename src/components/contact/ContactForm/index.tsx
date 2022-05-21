@@ -1,6 +1,6 @@
 import React, { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import baseUrl from "../../../../lib/baseUrl";
-import styles from "./main.module.css";
+import styles from "./main.module.scss";
 
 interface ContactData {
   email: string;
@@ -101,10 +101,8 @@ export default function ContactFormWrapper() {
           value={contactData.email}
           onChange={(e) =>
             setContactData({
+              ...contactData,
               email: e.target.value,
-              name: contactData.name,
-              subject: contactData.subject,
-              discord: contactData.discord,
             })
           }
         ></input>
@@ -116,9 +114,7 @@ export default function ContactFormWrapper() {
           value={contactData.discord}
           onChange={(e) =>
             setContactData({
-              email: contactData.email,
-              name: contactData.name,
-              subject: contactData.subject,
+              ...contactData,
               discord: e.target.value,
             })
           }
@@ -131,10 +127,8 @@ export default function ContactFormWrapper() {
           value={contactData.name}
           onChange={(e) =>
             setContactData({
-              email: contactData.email,
+              ...contactData,
               name: e.target.value,
-              subject: contactData.subject,
-              discord: contactData.discord,
             })
           }
         ></input>
@@ -147,10 +141,8 @@ export default function ContactFormWrapper() {
           value={contactData.subject}
           onChange={(e) =>
             setContactData({
-              email: contactData.email,
-              name: contactData.name,
+              ...contactData,
               subject: e.target.value,
-              discord: contactData.discord,
             })
           }
         ></textarea>

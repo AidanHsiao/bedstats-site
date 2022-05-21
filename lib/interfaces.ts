@@ -10,7 +10,7 @@ export interface StatsObject {
   timestamp: number;
 }
 
-interface Friend {
+export interface Friend {
   username: string;
   uuid: string;
 }

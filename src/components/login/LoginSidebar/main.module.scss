@@ -1,0 +1,145 @@
+@use "../../../common/base";
+
+.loginSidebar {
+  width: min(100vw, 500px);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e8e8e8;
+}
+
+.loginWrapper {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #e8e8e8;
+  transform: scale(1);
+}
+
+.loginTitle {
+  font-size: 45px;
+  margin-bottom: 25px;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  input:not(input[type="checkbox"]) {
+    background: none;
+    border: none;
+    border-bottom: 2px solid #666666;
+    width: 350px;
+    font-size: 20px;
+  }
+  input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+  button {
+    height: 50px;
+    background-color: #8a7994;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    font-size: 30px;
+    border: none;
+    &:hover:not(.loggingIn) {
+      background-color: #8d5caa;
+    }
+  }
+}
+
+.username {
+  margin-bottom: 20px;
+}
+
+.password {
+  margin-bottom: 15px;
+}
+
+.rememberMe {
+  margin-bottom: 15px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.createAccount {
+  color: blue;
+  transition: color 0.2s;
+  &:active {
+    color: purple;
+  }
+}
+
+.accountText {
+  margin-block: 15px 40px;
+  font-size: 20px;
+}
+
+.logo {
+  min-width: 90px;
+  min-height: 100px;
+  margin-bottom: 15px;
+  position: relative;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.logo:hover {
+  filter: invert(0.3);
+}
+
+@media (height < 600px), (width < 600px) {
+  .loginWrapper {
+    transform: scale(0.8);
+  }
+}
+
+@media (height < 400px), (width < 400px) {
+  .loginWrapper {
+    transform: scale(0.55);
+  }
+}
+
+@media (width < 750px) {
+  .coverTitle,
+  .coverSubtitle {
+    display: none;
+  }
+}
+
+@media (width < 550px) {
+  .loginCover {
+    padding-inline: 0px;
+  }
+}
+
+.errorMessage {
+  width: min(70vw, 300px);
+  position: absolute;
+  height: 60px;
+  background-color: red;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 25px;
+  bottom: -50px;
+  left: min(100px, 15vw);
+  z-index: 1;
+  transition: bottom 0.2s, opacity 0.2s;
+  padding-inline: 25px;
+}

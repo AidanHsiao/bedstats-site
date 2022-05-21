@@ -4,24 +4,21 @@ import getFirestore from "../../../../lib/db/initializeDB";
 import { User } from "../../../../lib/interfaces";
 import getStats from "../../../../lib/getStats";
 import { StatsObject } from "../../../../lib/interfaces";
-
-async function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
+import sleep from "../../../../lib/sleep";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> {
   if (req.query.key !== process.env.NEXT_PUBLIC_SITE_API_KEY) {
-    res.status(401).json({ condition: "No permission" });
+    res.status(401).json({ success: false });
     return;
   }
   const userList = await getUserList();
   const keys = userList.map((doc: User) => doc.hypixelAPIKey);
   const uuids = userList.map((doc: User) => doc.uuid);
   if (!uuids) {
-    res.status(404).json({ condition: "error" });
+    res.status(404).json({ success: false });
     return;
   }
   let error = false;
@@ -71,7 +68,7 @@ export default async function handler(
     await sleep(1000);
   }
   if (!error) {
-    res.status(200).json({ condition: "success" });
+    res.status(200).json({ success: true });
   }
   return;
 }

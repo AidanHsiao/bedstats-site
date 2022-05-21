@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction } from "react";
 import { useEffect, useState } from "react";
 const { Chart } = require("react-google-charts");
 import getUser from "../../../../lib/db/getUser";
-import styles from "./main.module.css";
+import styles from "./main.module.scss";
 import { StatsObject } from "../../../../lib/interfaces";
 
 const hour = 3600;
@@ -92,15 +92,16 @@ export default function ChartWrapper({
   useEffect(() => {
     setOpacity(0);
     setLoadingText("Loading chart...");
+    if (!username) return;
     getBreakingIndex(chartDuration, username)
       .then((resp) => {
-        console.log(resp);
         if (!resp.stats.length) {
           const time = new Date();
           const displayTime = createDate(time, -1, true);
           setLoadingText(
             `You have no stats entries. One should appear around ${displayTime}.`
           );
+          setUserData([]);
           return;
         }
         const index = resp.breakingIndex;
@@ -144,7 +145,7 @@ export default function ChartWrapper({
         setLoadingText("Something went wrong. Try again later.");
         setError(true);
       });
-  }, [chartDuration, chartVars]);
+  }, [chartDuration, chartVars, username]);
   return (
     <React.Fragment>
       <div className={styles.chartTitle}>
@@ -270,7 +271,7 @@ export function createDate(
   const minute = round ? 30 : date.getMinutes();
   const hours =
     (date.getHours() + (round && date.getMinutes() >= 30 ? 1 : 0)) % 12 || 12;
-  const type = date.getHours() < 12 ? "am" : "pm";
+  const type = date.getHours() < 12 || date.getHours() === 23 ? "am" : "pm";
   return `${hours}:${minute < 10 ? `0${minute}` : minute}${type}`;
 }
 

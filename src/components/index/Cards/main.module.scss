@@ -65,7 +65,7 @@
   filter: invert(1);
 }
 
-@media (max-width: 844px) {
+@media (width <844px) {
   .card {
     height: max-content;
     overflow-y: visible;
