@@ -4,10 +4,7 @@ import getFirestore from "../../../../lib/db/initializeDB";
 import { User } from "../../../../lib/interfaces";
 import getStats from "../../../../lib/getStats";
 import { StatsObject } from "../../../../lib/interfaces";
-
-async function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
+import sleep from "../../../../lib/sleep";
 
 export default async function handler(
   req: NextApiRequest,

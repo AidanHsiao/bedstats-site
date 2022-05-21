@@ -1,0 +1,24 @@
+.formInput {
+  height: 45px;
+  margin-top: 5px;
+  width: 382.5px;
+  border: none;
+  background-color: #cdcdcd;
+  font-size: 18px;
+  padding-left: 20px;
+}
+
+.inputWrapper {
+  width: 85%;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.inputTitle {
+  font-size: 20px;
+  align-self: flex-start;
+  margin-left: calc(50% - 191.25px);
+}

@@ -1,0 +1,38 @@
+@use "../../../common/base";
+
+.button {
+  width: 350px;
+  margin: auto;
+  height: 50px;
+  border: none;
+  background-color: rgb(165, 102, 202);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 25px;
+  margin-top: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  user-select: none;
+  &:hover:not(.disabled):not(.cancel) {
+    background-color: rgb(155, 25, 230);
+  }
+}
+
+.disabled {
+  background-color: rgb(205, 170, 226);
+  color: rgb(182, 84, 239);
+  cursor: not-allowed;
+}
+
+.cancel {
+  background-color: rgb(186, 172, 194);
+  color: rgb(49, 39, 56);
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(209, 170, 232);
+  }
+  margin-top: 10px;
+}

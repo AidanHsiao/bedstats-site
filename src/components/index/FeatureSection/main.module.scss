@@ -3,12 +3,12 @@
 .featureWrapper {
   width: 100%;
   height: 400px;
-  background-image: base.$purple-background;
+  background-image: base.$background;
   color: white;
   display: flex;
   justify-content: center;
   position: relative;
-  text-shadow: base.$default-shadow;
+  text-shadow: base.$shadow;
 }
 
 .widthLimiter {

@@ -17,12 +17,12 @@
 .loginCover {
   @extend .loginImage;
   width: calc(100vw - 500px);
-  background-image: base.$purple-background;
+  background-image: base.$background;
   left: min(100vw, 500px);
   padding-inline: calc(4vw + 20px);
   text-align: center;
   color: white;
-  text-shadow: base.$default-shadow;
+  text-shadow: base.$shadow;
   display: flex;
   justify-content: center;
   flex-direction: column;

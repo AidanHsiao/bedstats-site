@@ -114,9 +114,11 @@ export default function NavBar({ headerVisible }: { headerVisible: boolean }) {
 export function NavLink({ route }: { route: string }) {
   const routeName = route.replace(/ /g, "").toLowerCase();
 
+  const href = `/${route !== "Home" ? routeName : ""}`;
+
   return (
     <div className={styles.link}>
-      <Link href={`/${route !== "Home" ? routeName : ""}`}>
+      <Link href={href}>
         <a>{route}</a>
       </Link>
     </div>

@@ -14,6 +14,7 @@ export default function Page() {
   ] = useState<StatsObject[]>([]);
   const [error, setError] = useState(false);
   const [username, setUsername] = useState("");
+  const [showDashboard, setShowDashboard] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -23,10 +24,14 @@ export default function Page() {
       sessionStorage.getItem("username") ||
       localStorage.getItem("username") ||
       "";
-    if (!pass) router.push("/login");
+    if (!pass || !username) {
+      router.push("/login");
+      return;
+    }
+    setShowDashboard(true);
     setUsername(username);
   }, []);
-  if (!username) return <div></div>;
+  if (!username || !showDashboard) return <div></div>;
   return (
     <div className="dashboardContent">
       <style jsx global>{`

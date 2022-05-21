@@ -3,7 +3,7 @@
 .headerWrapper {
   width: 100vw;
   height: 650px;
-  background-image: base.$purple-background;
+  background-image: base.$background;
   position: relative;
   overflow: hidden;
 }
@@ -47,14 +47,14 @@
 .mainTitle {
   font-size: min(3vw + 7px, 30px);
   color: white;
-  text-shadow: base.$default-shadow;
+  text-shadow: base.$shadow;
   margin-bottom: min(calc((8vw - 5px) / 3), 20px);
   font-weight: 100;
 }
 .subtitle {
   font-size: min(7vw + 5px, 60px);
   color: white;
-  text-shadow: base.$default-shadow;
+  text-shadow: base.$shadow;
 }
 
 @media (width < 750px) {

@@ -6,8 +6,8 @@ export default function Page() {
 
   useEffect(() => {
     if (!window) return;
-    sessionStorage.removeItem("pass");
-    localStorage.removeItem("pass");
+    sessionStorage.clear();
+    localStorage.clear();
     router.push("/");
   });
 
