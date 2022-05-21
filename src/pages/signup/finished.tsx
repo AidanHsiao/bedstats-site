@@ -9,7 +9,7 @@ export default function Page() {
   const [imageTransition, setImageTransition] = useState("full");
 
   useEffect(() => {
-    if (!sessionStorage.getItem("key")) {
+    if (!sessionStorage.getItem("temp-key")) {
       router.push("/signup");
       return;
     }
