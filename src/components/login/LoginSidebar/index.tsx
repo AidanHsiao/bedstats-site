@@ -51,14 +51,12 @@ export default function LoginSidebar(): ReactElement {
   useUpdateEffect(async () => {
     if (!window || !pass) return;
     if (rememberMe === true) {
-      localStorage.setItem("username", username);
       localStorage.setItem("pass", pass);
-      loginHandler();
+      loginHandler("local");
       return;
     }
-    sessionStorage.setItem("username", username);
     sessionStorage.setItem("pass", pass);
-    loginHandler();
+    loginHandler("session");
   }, [pass]);
 
   useEffect(() => {
@@ -68,13 +66,22 @@ export default function LoginSidebar(): ReactElement {
 
   const router = useRouter();
 
-  async function loginHandler() {
+  async function loginHandler(type?: "session" | "local") {
     try {
       const pass =
         sessionStorage.getItem("pass") || localStorage.getItem("pass");
       if (!pass) throw new Error("no pass");
       const user = await getUserByPass(pass);
       if (!user.password) throw new Error("invalid pass");
+      switch (type) {
+        case "session": {
+          sessionStorage.setItem("username", user.username);
+          break;
+        }
+        case "local": {
+          localStorage.setItem("username", user.username);
+        }
+      }
       router.push("/dashboard");
     } catch (e) {
       setLoginAttempted(true);

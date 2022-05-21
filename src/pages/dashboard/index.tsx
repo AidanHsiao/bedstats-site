@@ -23,7 +23,6 @@ export default function Page() {
     if (!window) return;
     attemptLogin();
     setShowDashboard(true);
-    setUsername(username);
     setWidth(window.innerWidth);
     window.addEventListener("resize", () => {
       setWidth(window.innerWidth);
@@ -37,6 +36,8 @@ export default function Page() {
       router.push("/login");
       return;
     }
+    console.log(user);
+    setUsername(user.username);
   }
 
   if (!username || !showDashboard) return <div></div>;
