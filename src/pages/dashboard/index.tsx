@@ -15,6 +15,7 @@ export default function Page() {
   const [error, setError] = useState(false);
   const [username, setUsername] = useState("");
   const [showDashboard, setShowDashboard] = useState(false);
+  const [width, setWidth] = useState(0);
   const router = useRouter();
 
   useEffect(() => {
@@ -30,10 +31,15 @@ export default function Page() {
     }
     setShowDashboard(true);
     setUsername(username);
+    setWidth(window.innerWidth);
+    window.addEventListener("resize", () => {
+      setWidth(window.innerWidth);
+    });
   }, []);
+
   if (!username || !showDashboard) return <div></div>;
   return (
-    <div className="dashboardContent">
+    <div className={width >= 1056 ? "dashboardContent" : "fullDashboard"}>
       <style jsx global>{`
         .dashboardContent {
           width: calc(95vw - 200px);
@@ -41,13 +47,12 @@ export default function Page() {
           position: absolute;
           top: 0;
           left: calc(5vw + 200px);
+          transition: width 0.2s;
         }
 
-        @media (width < 1056px) {
-          .dashboardContent {
-            width: 100vw;
-            left: 0;
-          }
+        .fullDashboard {
+          width: 100vw;
+          left: 0;
         }
       `}</style>
       <Navbar />
