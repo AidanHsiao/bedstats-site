@@ -10,7 +10,7 @@ function generateCSP() {
 
   const whitelistedUrls = ["https://www.gstatic.com"];
 
-  let csp = `default-src 'none'; base-uri 'self'; connect-src 'self' https://api.hypixel.net https://api.ashcon.app; font-src 'self'; form-action 'self'; prefetch-src 'self'; img-src 'self' data:; style-src 'unsafe-inline' 'self' ${whitelistedUrls.join(
+  let csp = `default-src 'none'; base-uri 'self'; connect-src 'self' https://api.hypixel.net https://api.ashcon.app https://bedstats-site.vercel.app; font-src 'self'; form-action 'self'; prefetch-src 'self'; img-src 'self' data:; style-src 'unsafe-inline' 'self' ${whitelistedUrls.join(
     " "
   )};`;
   csp += ` script-src ${whitelistedUrls.join(" ")} 'nonce-${nonce}' 'self' ${
