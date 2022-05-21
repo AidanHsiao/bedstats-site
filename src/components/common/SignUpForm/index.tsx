@@ -30,6 +30,7 @@ export default function SignUpForm(props: FormProps) {
   }, [width]);
 
   useEffect(() => {
+    setWidth(window.innerWidth);
     window.addEventListener("resize", () => {
       setWidth(window.innerWidth);
     });
