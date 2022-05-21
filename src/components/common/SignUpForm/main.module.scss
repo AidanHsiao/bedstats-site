@@ -32,6 +32,10 @@
   white-space: nowrap;
   overflow: hidden;
   transition: color 0.2s, text-shadow 0.2s, width 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .image {
@@ -51,14 +55,14 @@
   font-size: 40px;
   font-weight: bold;
   text-align: center;
-  margin-top: 200px;
   padding-inline: 5%;
+  transition: opacity 0.2s;
 }
 
 .imageSubtitle {
   @extend .imageTitle;
-  margin-top: 0;
   font-size: 25px;
+  margin-bottom: 2%;
 }
 
 .form {
@@ -137,5 +141,12 @@
   .wrapperText {
     color: black;
     text-shadow: none;
+  }
+}
+
+@media (height < 250px) {
+  .imageTitle,
+  .imageSubtitle {
+    opacity: 0;
   }
 }

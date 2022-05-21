@@ -36,7 +36,6 @@ export default function Page() {
       router.push("/login");
       return;
     }
-    console.log(user);
     setUsername(user.username);
   }
 

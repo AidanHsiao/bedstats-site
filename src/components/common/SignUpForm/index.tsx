@@ -19,6 +19,7 @@ interface FormProps {
 export default function SignUpForm(props: FormProps) {
   const [scale, setScale] = useState(1);
   const [width, setWidth] = useState(2000);
+  const [height, setHeight] = useState(2000);
   const [imageBias, setImageBias] = useState(props.imageBias);
 
   useEffect(() => {
@@ -26,13 +27,15 @@ export default function SignUpForm(props: FormProps) {
   }, [props.imageBias]);
 
   useEffect(() => {
-    setScale(Math.min(1, width / 600));
-  }, [width]);
+    setScale(Math.min(height / 600, width / 600));
+  }, [width, height]);
 
   useEffect(() => {
     setWidth(window.innerWidth);
+    setHeight(window.innerHeight);
     window.addEventListener("resize", () => {
       setWidth(window.innerWidth);
+      setHeight(window.innerHeight);
     });
   }, []);
   const router = useRouter();
