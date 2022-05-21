@@ -47,7 +47,7 @@ export default function Page() {
       setButtonDisabled(false);
       return;
     }
-    sessionStorage.setItem("username", username);
+    sessionStorage.setItem("username", resp.username);
     sessionStorage.setItem("uuid", resp.uuid);
     sessionStorage.setItem(
       "password",
