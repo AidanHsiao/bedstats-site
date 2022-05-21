@@ -101,8 +101,14 @@ export default function NavBar({ headerVisible }: { headerVisible: boolean }) {
               <NavLink route="Contact" />
             </div>
             <div className={styles.expandableLogin}>
-              <NavLink route="Log In" />
-              <NavLink route="Sign Up" />
+              {showLogin ? (
+                <React.Fragment>
+                  <NavLink route="Log In" />
+                  <NavLink route="Sign Up" />
+                </React.Fragment>
+              ) : (
+                <NavLink route="Log Out" />
+              )}
             </div>
           </div>
         </div>

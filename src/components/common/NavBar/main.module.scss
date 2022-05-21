@@ -167,6 +167,7 @@
 
 .expandableLogin {
   @extend .login;
+  display: flex !important;
   top: max(66vh, 300px);
   width: 50%;
   height: 100px;
