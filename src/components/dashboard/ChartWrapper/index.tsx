@@ -271,7 +271,7 @@ export function createDate(
   const minute = round ? 30 : date.getMinutes();
   const hours =
     (date.getHours() + (round && date.getMinutes() >= 30 ? 1 : 0)) % 12 || 12;
-  const type = date.getHours() < 12 ? "am" : "pm";
+  const type = date.getHours() < 12 || date.getHours() === 23 ? "am" : "pm";
   return `${hours}:${minute < 10 ? `0${minute}` : minute}${type}`;
 }
 

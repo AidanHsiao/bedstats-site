@@ -47,10 +47,10 @@ export default function Page() {
       setButtonDisabled(false);
       return;
     }
-    sessionStorage.setItem("username", resp.username);
-    sessionStorage.setItem("uuid", resp.uuid);
+    sessionStorage.setItem("temp-username", resp.username);
+    sessionStorage.setItem("temp-uuid", resp.uuid);
     sessionStorage.setItem(
-      "password",
+      "temp-password",
       createHash("sha256")
         .update(`${username.toLowerCase()}${password}`)
         .digest("hex")

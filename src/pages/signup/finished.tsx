@@ -13,8 +13,8 @@ export default function Page() {
       router.push("/signup");
       return;
     }
-    const username = sessionStorage.getItem("username") || "";
-    const password = sessionStorage.getItem("password") || "";
+    const username = sessionStorage.getItem("temp-username") || "";
+    const password = sessionStorage.getItem("temp-password") || "";
     sessionStorage.clear();
     sessionStorage.setItem("username", username);
     sessionStorage.setItem("pass", password);

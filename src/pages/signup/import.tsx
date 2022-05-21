@@ -14,7 +14,7 @@ export default function Page() {
   const [friendsArr, setFriendsArr] = useState<string[]>([]);
 
   useEffect(() => {
-    if (!sessionStorage.getItem("key")) {
+    if (!sessionStorage.getItem("temp-key")) {
       router.push("/signup");
       return;
     }
@@ -24,8 +24,8 @@ export default function Page() {
 
   async function openPanel() {
     const friendsData = await getFriends(
-      sessionStorage.getItem("key") || "",
-      sessionStorage.getItem("uuid") || ""
+      sessionStorage.getItem("temp-key") || "",
+      sessionStorage.getItem("temp-uuid") || ""
     );
     setFriendsLength(friendsData.length);
     setImageTransition("left");
@@ -58,16 +58,16 @@ export default function Page() {
     setImageTransition("full");
     setImportText(`Uploading to database...`);
     await setUser({
-      username: sessionStorage.getItem("username") || "",
-      uuid: sessionStorage.getItem("uuid") || "",
-      password: sessionStorage.getItem("password") || "",
-      hypixelAPIKey: sessionStorage.getItem("key") || "",
+      username: sessionStorage.getItem("temp-username") || "",
+      uuid: sessionStorage.getItem("temp-uuid") || "",
+      password: sessionStorage.getItem("temp-password") || "",
+      hypixelAPIKey: sessionStorage.getItem("temp-key") || "",
       friends: friendsList || [],
       settings: {
         theme: "Midnight",
         animationEnabled: true,
         animationRate: "40 FPS",
-        hypixelAPIKey: sessionStorage.getItem("key") || "",
+        hypixelAPIKey: sessionStorage.getItem("temp-key") || "",
         pollingRate: "1s",
         loggingConfig: "Vanilla",
         scoreCutoff: 1500,

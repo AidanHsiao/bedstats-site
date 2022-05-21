@@ -15,7 +15,7 @@ export default function Page() {
   const [handlingSubmission, setHandlingSubmission] = useState(false);
 
   useEffect(() => {
-    if (!sessionStorage.getItem("password")) {
+    if (!sessionStorage.getItem("temp-password")) {
       router.push("/signup");
       return;
     }
@@ -47,7 +47,7 @@ export default function Page() {
     setButtonText("Verifying Key...");
     const validity = await checkKeyValidity(
       apiKey,
-      sessionStorage.getItem("uuid") || ""
+      sessionStorage.getItem("temp-uuid") || ""
     );
     if (validity.code) {
       setErrorMessage(validity.msg);
@@ -57,7 +57,7 @@ export default function Page() {
       setButtonText("Validate Key");
       return;
     }
-    sessionStorage.setItem("key", apiKey);
+    sessionStorage.setItem("temp-key", apiKey);
     setImageTransition("fullRight");
     await sleep(200);
     router.push("/signup/import");
