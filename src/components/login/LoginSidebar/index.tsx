@@ -76,10 +76,12 @@ export default function LoginSidebar(): ReactElement {
       switch (type) {
         case "session": {
           sessionStorage.setItem("username", user.username);
+          sessionStorage.setItem("uuid", user.uuid);
           break;
         }
         case "local": {
           localStorage.setItem("username", user.username);
+          localStorage.setItem("uuid", user.uuid);
         }
       }
       router.push("/dashboard");

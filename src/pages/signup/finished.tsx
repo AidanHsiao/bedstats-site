@@ -15,9 +15,11 @@ export default function Page() {
     }
     const username = sessionStorage.getItem("temp-username") || "";
     const password = sessionStorage.getItem("temp-password") || "";
+    const uuid = sessionStorage.getItem("temp-uuid") || "";
     sessionStorage.clear();
     sessionStorage.setItem("username", username);
     sessionStorage.setItem("pass", password);
+    sessionStorage.setItem("uuid", uuid);
     openPanel();
   }, []);
 

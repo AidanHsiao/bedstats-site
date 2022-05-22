@@ -1,0 +1,61 @@
+.playtimeWrapper {
+  width: 100%;
+  height: 250px;
+  margin-top: 20px;
+  border-top: 2px dotted rgb(121, 95, 126);
+  position: relative;
+  * {
+    transition: opacity 0.2s;
+  }
+}
+
+.playtimeTitle {
+  width: max-content;
+  margin: 0 auto;
+  height: 50px;
+  font-size: min(3.5vw + 10px, 38px);
+  text-align: center;
+  margin-block: 20px 15px;
+  background-image: linear-gradient(135deg, #000000 20%, #8e4ea5 100%);
+  background-clip: text;
+  color: transparent;
+}
+
+.hoursTitle,
+.hoursSubtitle {
+  width: max-content;
+  margin: 0 auto;
+  font-size: 20px;
+  text-align: center;
+}
+
+.hoursText {
+  width: max-content;
+  margin: 0 auto;
+  font-size: 50px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  color: gray;
+}
+
+.hourCount {
+  background-image: linear-gradient(135deg, #000000 20%, #8e4ea5 100%);
+  background-clip: text;
+  color: transparent;
+  padding-inline: 12px;
+  font-size: 60px;
+}
+
+.loadingText {
+  width: 80%;
+  height: 60%;
+  position: absolute;
+  left: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 45px;
+  top: 60px;
+}

@@ -7,6 +7,7 @@ import { StatsObject } from "../../../lib/interfaces";
 import { useRouter } from "next/router";
 import getPass from "../../../lib/getPass";
 import getUserByPass from "../../../lib/db/getUserByPass";
+import PlaytimeWrapper from "../../components/dashboard/PlaytimeWrapper";
 
 export default function Page() {
   const [userData, setUserData]: [
@@ -17,6 +18,7 @@ export default function Page() {
   const [username, setUsername] = useState("");
   const [showDashboard, setShowDashboard] = useState(false);
   const [width, setWidth] = useState(0);
+  const [hypixelAPIKey, setHypixelAPIKey] = useState("");
   const router = useRouter();
 
   useEffect(() => {
@@ -63,8 +65,10 @@ export default function Page() {
         username={username}
         setError={setError}
         setUserData={setUserData}
+        setHypixelAPIKey={setHypixelAPIKey}
       />
       <ImprovementWrapper userData={userData} error={error} />
+      <PlaytimeWrapper hypixelAPIKey={hypixelAPIKey} />
     </div>
   );
 }
