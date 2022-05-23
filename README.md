@@ -4,7 +4,7 @@
 
 This repository holds the BedStats site, made with [Next.JS](https://nextjs.org), hosted on [Vercel](https://vercel.com). BedStats is an application that helps you track your in-game progress, and the website is simply a wrapper to make the download process more streamlined. However, it has some extra features:
 
-- Encrypted login system to unify settings between clients and computers, hosted by [`Firebase`](https://firebase.google.com/).
+- Encrypted login system to unify settings between clients, hosted by [`Firebase`](https://firebase.google.com/).
 - Chart displaying your stats of all types, over any duration, courtesy of [`react-google-charts`](https://www.react-google-charts.com/).
 
 ## Contributing
