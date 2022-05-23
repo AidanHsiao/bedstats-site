@@ -302,5 +302,8 @@ async function getBreakingIndex(
       break;
     }
   }
+
+  if (breakingIndex === dists.length) breakingIndex = dists.length - 1; // Edge case if actions stops working
+
   return { breakingIndex, stats, durationText, broke };
 }
