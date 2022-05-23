@@ -4,13 +4,12 @@ on:
   schedule:
     - cron: "42 * * * *"
 
-env:
-  KEY: ${{secrets.SITE_API_KEY}}
-
 jobs:
   build:
     name: Trigger Stats Obtaination
     runs-on: ubuntu-latest
     steps:
       - name: cURL request
+        env:
+          KEY: ${{secrets.SITE_API_KEY}}
         run: curl -X GET https://bedstats-site.vercel.app/api/users/recordstats?key=$KEY
