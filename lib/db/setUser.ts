@@ -7,7 +7,7 @@ export default async function setUser(user: User) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "x-api-key": process.env.NEXT_PUBLIC_SITE_API_KEY,
+      "X-Api-Key": process.env.NEXT_PUBLIC_SITE_API_KEY,
     },
     body: JSON.stringify(user),
   });
