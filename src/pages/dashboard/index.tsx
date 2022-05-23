@@ -34,7 +34,6 @@ export default function Page() {
   async function attemptLogin() {
     const pass = getPass();
     const user = await getUserByPass(pass);
-    console.log(user);
     if (!user.password) {
       router.push("/login");
       return;
@@ -69,7 +68,7 @@ export default function Page() {
         setHypixelAPIKey={setHypixelAPIKey}
       />
       <ImprovementWrapper userData={userData} error={error} />
-      <PlaytimeWrapper hypixelAPIKey={hypixelAPIKey} />
+      <PlaytimeWrapper hypixelAPIKey={hypixelAPIKey} error={error} />
     </div>
   );
 }

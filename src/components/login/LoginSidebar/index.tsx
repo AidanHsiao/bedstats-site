@@ -17,6 +17,19 @@ export default function LoginSidebar(): ReactElement {
   const [loginAttempted, setLoginAttempted] = useState(false);
   const [loggingIn, setLoggingIn] = useState(false);
   const [errorMessage, setTrueErrorMessage] = useState("");
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    if (!window) return;
+    resizeSidebar(window.innerWidth, window.innerHeight);
+    window.addEventListener("resize", () => {
+      resizeSidebar(window.innerWidth, window.innerHeight);
+    });
+  }, []);
+
+  function resizeSidebar(w: number, h: number) {
+    setScale(Math.min(Math.min(w, h) / 500, 1));
+  }
 
   function setErrorMessage(msg: string) {
     setTrueErrorMessage(msg);
@@ -95,7 +108,10 @@ export default function LoginSidebar(): ReactElement {
       className={styles.loginSidebar}
       style={{ display: loginAttempted ? "flex" : "none" }}
     >
-      <div className={styles.loginWrapper}>
+      <div
+        className={styles.loginWrapper}
+        style={{ transform: `scale(${scale})` }}
+      >
         <div
           className={styles.errorMessage}
           style={

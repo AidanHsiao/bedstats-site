@@ -36,3 +36,22 @@
 .coverSubtitle {
   font-size: min(3vw - 12px, 35px);
 }
+
+@media (height < 400px), (width < 400px) {
+  .loginWrapper {
+    transform: scale(0.55);
+  }
+}
+
+@media (width < 750px) {
+  .coverTitle,
+  .coverSubtitle {
+    display: none;
+  }
+}
+
+@media (width < 550px) {
+  .loginCover {
+    padding-inline: 0px;
+  }
+}

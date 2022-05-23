@@ -4,19 +4,31 @@ import styles from "./main.module.scss";
 
 interface PlaytimeProps {
   hypixelAPIKey: string;
+  error: boolean;
 }
 
 interface QuestData {
   [key: string]: number;
 }
 
-export default function PlaytimeWrapper({ hypixelAPIKey }: PlaytimeProps) {
+export default function PlaytimeWrapper({
+  hypixelAPIKey,
+  error,
+}: PlaytimeProps) {
   const [hours, setHours] = useState({ min: 0, max: 0 });
+  const [loadingText, setLoadingText] = useState("Loading data...");
 
   useEffect(() => {
     if (!hypixelAPIKey) return;
     obtainStats();
   }, [hypixelAPIKey]);
+
+  useEffect(() => {
+    if (error) {
+      setLoadingText("Something went wrong. Try again later.");
+      return;
+    }
+  }, [error]);
 
   const xpExceptions = {
     bedwars_daily_one_more: 250,
@@ -85,7 +97,7 @@ export default function PlaytimeWrapper({ hypixelAPIKey }: PlaytimeProps) {
         className={styles.loadingText}
         style={{ opacity: hours.max ? 0 : 1 }}
       >
-        Loading data...
+        {loadingText}
       </div>
     </div>
   );

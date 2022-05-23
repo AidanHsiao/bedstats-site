@@ -15,7 +15,6 @@ export default async function handler(
       )
         .then((res) => res.json())
         .catch((e) => {
-          console.log(e);
           res.status(400).json({ code: 3 });
           error = true;
         });

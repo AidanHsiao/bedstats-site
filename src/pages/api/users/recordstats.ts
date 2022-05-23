@@ -57,13 +57,12 @@ export default async function handler(
         .doc(`t:${timestamp}`)
         .set(data.stats)
         .catch((err: string) => {
-          console.log(err);
           error = true;
         });
     } else {
-      console.log(data);
       res.status(404).json({ code: data.code });
       error = true;
+      return;
     }
     await sleep(1000);
   }
