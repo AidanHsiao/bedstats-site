@@ -1,10 +1,11 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import checkKeyValidity from "../../../lib/checkKeyValidity";
 import sleep from "../../../lib/sleep";
 import FormButton from "../../components/common/FormButton";
 import FormInput from "../../components/common/FormInput";
 import SignUpForm from "../../components/common/SignUpForm";
+import Head from "next/head";
 
 export default function Page() {
   const [errorMessage, setErrorMessage] = useState("");
@@ -64,26 +65,33 @@ export default function Page() {
   }
 
   return (
-    <SignUpForm
-      title="Validate yourself."
-      subtitle={"Create an api key on Hypixel with\n/api key, and put it here."}
-      formTitle="Validate Identity"
-      errorMessage={errorMessage}
-      imageBias={imageTransition}
-      backPath="/signup"
-    >
-      <FormInput
-        title="Hypixel API Key"
-        value={apiKey}
-        setValue={setApiKey}
-        enterText
-        enterKey={handleSubmit}
-      />
-      <FormButton
-        text={buttonText}
-        disabled={buttonDisabled}
-        handler={handleSubmit}
-      />
-    </SignUpForm>
+    <React.Fragment>
+      <Head>
+        <meta name="robots" content="noindex nofollow" />
+      </Head>
+      <SignUpForm
+        title="Validate yourself."
+        subtitle={
+          "Create an api key on Hypixel with\n/api key, and put it here."
+        }
+        formTitle="Validate Identity"
+        errorMessage={errorMessage}
+        imageBias={imageTransition}
+        backPath="/signup"
+      >
+        <FormInput
+          title="Hypixel API Key"
+          value={apiKey}
+          setValue={setApiKey}
+          enterText
+          enterKey={handleSubmit}
+        />
+        <FormButton
+          text={buttonText}
+          disabled={buttonDisabled}
+          handler={handleSubmit}
+        />
+      </SignUpForm>
+    </React.Fragment>
   );
 }

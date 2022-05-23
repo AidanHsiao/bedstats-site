@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import Head from "next/head";
 
 export default function Page() {
   const router = useRouter();
@@ -11,5 +12,9 @@ export default function Page() {
     router.push("/");
   });
 
-  return <div></div>;
+  return (
+    <Head>
+      <meta name="robots" content="noindex nofollow" />
+    </Head>
+  );
 }

@@ -12,10 +12,11 @@ export default function Page(): ReactElement {
   return (
     <React.Fragment>
       <Head>
-        <meta charSet="UTF-8" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>BedStats - The all-in-one app for BedWars support.</title>
+        <meta
+          name="description"
+          content="BedStats is designed to help BedWars players study their habits, track their progress, and improve over time. Create an account today and get started!"
+        />
       </Head>
       <main>
         <NavBar headerVisible={headerVisible} />

@@ -1,11 +1,12 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Friend } from "../../../lib/interfaces";
 import setUser from "../../../lib/db/setUser";
 import getFriends from "../../../lib/getFriends";
 import sleep from "../../../lib/sleep";
 import FormButton from "../../components/common/FormButton";
 import SignUpForm from "../../components/common/SignUpForm";
+import Head from "next/head";
 
 export default function Page() {
   const [imageTransition, setImageTransition] = useState("fullRight");
@@ -93,26 +94,31 @@ export default function Page() {
   }
 
   return (
-    <SignUpForm
-      title="You have friends."
-      subtitle={"Would you like to import them?"}
-      formTitle={`Import ${friendsLength} Friends?`}
-      errorMessage=""
-      imageBias={imageTransition}
-      backPath="/signup/validate"
-      wrapperText={importText}
-    >
-      <FormButton
-        text="Yes, import my friends."
-        disabled={false}
-        handler={handleImport}
-      />
-      <FormButton
-        text="No, I'll add them myself."
-        disabled={false}
-        handler={() => handleSubmit([])}
-        cancel
-      />
-    </SignUpForm>
+    <React.Fragment>
+      <Head>
+        <meta name="robots" content="noindex nofollow" />
+      </Head>
+      <SignUpForm
+        title="You have friends."
+        subtitle={"Would you like to import them?"}
+        formTitle={`Import ${friendsLength} Friends?`}
+        errorMessage=""
+        imageBias={imageTransition}
+        backPath="/signup/validate"
+        wrapperText={importText}
+      >
+        <FormButton
+          text="Yes, import my friends."
+          disabled={false}
+          handler={handleImport}
+        />
+        <FormButton
+          text="No, I'll add them myself."
+          disabled={false}
+          handler={() => handleSubmit([])}
+          cancel
+        />
+      </SignUpForm>
+    </React.Fragment>
   );
 }

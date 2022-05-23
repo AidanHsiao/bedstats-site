@@ -28,6 +28,9 @@ export default function Document() {
       <Head nonce={nonce}>
         <meta property="csp-nonce" content={nonce} />
         <meta httpEquiv="Content-Security-Policy" content={csp} />
+        <meta charSet="UTF-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <body>
         <Main />

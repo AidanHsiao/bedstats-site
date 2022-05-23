@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import sleep from "../../../lib/sleep";
 import FormButton from "../../components/common/FormButton";
-import FormInput from "../../components/common/FormInput";
 import SignUpForm from "../../components/common/SignUpForm";
+import Head from "next/head";
 
 export default function Page() {
   const [imageTransition, setImageTransition] = useState("full");
@@ -35,19 +35,24 @@ export default function Page() {
   }
 
   return (
-    <SignUpForm
-      title="You're finished!"
-      subtitle="You've signed up with BedStats."
-      formTitle="Congrats! You're done."
-      errorMessage=""
-      imageBias={imageTransition}
-      backPath="/"
-    >
-      <FormButton
-        text="Go to Dashboard"
-        disabled={false}
-        handler={handleSubmit}
-      />
-    </SignUpForm>
+    <React.Fragment>
+      <Head>
+        <meta name="robots" content="noindex nofollow" />
+      </Head>
+      <SignUpForm
+        title="You're finished!"
+        subtitle="You've signed up with BedStats."
+        formTitle="Congrats! You're done."
+        errorMessage=""
+        imageBias={imageTransition}
+        backPath="/"
+      >
+        <FormButton
+          text="Go to Dashboard"
+          disabled={false}
+          handler={handleSubmit}
+        />
+      </SignUpForm>
+    </React.Fragment>
   );
 }

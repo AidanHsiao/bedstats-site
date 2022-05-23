@@ -6,6 +6,7 @@ import sleep from "../../../lib/sleep";
 import FormButton from "../../components/common/FormButton";
 import FormInput from "../../components/common/FormInput";
 import SignUpForm from "../../components/common/SignUpForm";
+import Head from "next/head";
 
 export default function Page() {
   const [username, setUsername] = useState("");
@@ -70,39 +71,44 @@ export default function Page() {
   }
 
   return (
-    <SignUpForm
-      title="Welcome to BedStats!"
-      subtitle="Create an account at the right."
-      formTitle="Create Account"
-      errorMessage={errorMessage}
-      imageBias={imageTransition}
-      backPath="/"
-    >
-      <FormInput
-        title="Minecraft Username"
-        value={username}
-        setValue={handleUsernameChange}
-        enterText
-      />
-      <FormInput
-        title="Password"
-        value={password}
-        setValue={setPassword}
-        enterText
-        password
-      />
-      <FormInput
-        title="Confirm Password"
-        value={confirmPass}
-        setValue={setConfirmPass}
-        enterKey={handleSubmit}
-        password
-      />
-      <FormButton
-        text={buttonText}
-        disabled={buttonDisabled}
-        handler={handleSubmit}
-      />
-    </SignUpForm>
+    <React.Fragment>
+      <Head>
+        <meta name="robots" content="noindex nofollow" />
+      </Head>
+      <SignUpForm
+        title="Welcome to BedStats!"
+        subtitle="Create an account at the right."
+        formTitle="Create Account"
+        errorMessage={errorMessage}
+        imageBias={imageTransition}
+        backPath="/"
+      >
+        <FormInput
+          title="Minecraft Username"
+          value={username}
+          setValue={handleUsernameChange}
+          enterText
+        />
+        <FormInput
+          title="Password"
+          value={password}
+          setValue={setPassword}
+          enterText
+          password
+        />
+        <FormInput
+          title="Confirm Password"
+          value={confirmPass}
+          setValue={setConfirmPass}
+          enterKey={handleSubmit}
+          password
+        />
+        <FormButton
+          text={buttonText}
+          disabled={buttonDisabled}
+          handler={handleSubmit}
+        />
+      </SignUpForm>
+    </React.Fragment>
   );
 }

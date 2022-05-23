@@ -33,7 +33,7 @@ export default function Header(props: HeaderProps): ReactElement {
       <div className={styles.headerMain}>
         <div className={styles.headerBorder}></div>
         <div className={styles.headerContent}>
-          <div className={styles.mainTitle}>BedStats v1.0.1</div>
+          <h1 className={styles.mainTitle}>BedStats v1.0.1</h1>
           <div className={styles.subtitle}>
             The all-in-one app for <br />
             BedWars support.
