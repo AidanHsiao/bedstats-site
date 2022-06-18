@@ -1,9 +1,9 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { useEffect, useState } from "react";
 const { Chart } = require("react-google-charts");
-import getUser from "../../../../lib/db/getUser";
+import getUser from "../../../../../lib/db/getUser";
 import styles from "./main.module.scss";
-import { StatsObject } from "../../../../lib/interfaces";
+import { StatsObject } from "../../../../../lib/interfaces";
 
 const hour = 3600;
 

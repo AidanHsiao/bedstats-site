@@ -1,0 +1,13 @@
+.dashboardContent {
+  width: calc(95vw - 200px);
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: calc(5vw + 200px);
+  transition: width 0.2s;
+}
+
+.fullDashboard {
+  width: 100vw;
+  left: 0;
+}

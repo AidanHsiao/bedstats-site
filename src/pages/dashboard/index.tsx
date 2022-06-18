@@ -1,13 +1,15 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
-import ChartWrapper from "../../components/dashboard/ChartWrapper";
-import Navbar from "../../components/dashboard/Navbar";
-import Topbar from "../../components/dashboard/Topbar";
-import ImprovementWrapper from "../../components/dashboard/ImprovementWrapper";
+import ChartWrapper from "../../components/dashboard/index/ChartWrapper";
+import NavBar from "../../components/dashboard/common/NavBar";
+import TopBar from "../../components/dashboard/common/TopBar";
+import ImprovementWrapper from "../../components/dashboard/index/ImprovementWrapper";
 import { StatsObject } from "../../../lib/interfaces";
 import { useRouter } from "next/router";
 import getPass from "../../../lib/getPass";
 import getUserByPass from "../../../lib/db/getUserByPass";
-import PlaytimeWrapper from "../../components/dashboard/PlaytimeWrapper";
+import PlaytimeWrapper from "../../components/dashboard/index/PlaytimeWrapper";
+import getDashboardStats from "../../../lib/getDashboardStats";
+import DashboardWrapper from "../../components/dashboard/common/DashboardWrapper";
 
 export default function Page() {
   const [userData, setUserData]: [
@@ -19,17 +21,26 @@ export default function Page() {
   const [showDashboard, setShowDashboard] = useState(false);
   const [width, setWidth] = useState(0);
   const [hypixelAPIKey, setHypixelAPIKey] = useState("");
+  const [hours, setHours] = useState({ min: 0, max: 0 });
   const router = useRouter();
 
   useEffect(() => {
     if (!window) return;
     attemptLogin();
     setShowDashboard(true);
-    setWidth(window.innerWidth);
-    window.addEventListener("resize", () => {
-      setWidth(window.innerWidth);
-    });
   }, []);
+
+  useEffect(() => {
+    if (!hypixelAPIKey) return;
+    obtainStats();
+  }, [hypixelAPIKey]);
+
+  async function obtainStats() {
+    const uuid =
+      sessionStorage.getItem("uuid") || localStorage.getItem("uuid") || "";
+    const dashboardStats = await getDashboardStats(hypixelAPIKey, uuid);
+    setHours(dashboardStats.hours);
+  }
 
   async function attemptLogin() {
     const pass = getPass();
@@ -43,24 +54,9 @@ export default function Page() {
 
   if (!username || !showDashboard) return <div></div>;
   return (
-    <div className={width >= 1056 ? "dashboardContent" : "fullDashboard"}>
-      <style jsx global>{`
-        .dashboardContent {
-          width: calc(95vw - 200px);
-          height: 100%;
-          position: absolute;
-          top: 0;
-          left: calc(5vw + 200px);
-          transition: width 0.2s;
-        }
-
-        .fullDashboard {
-          width: 100vw;
-          left: 0;
-        }
-      `}</style>
-      <Navbar />
-      <Topbar />
+    <DashboardWrapper>
+      <NavBar selected="overview" />
+      <TopBar title="Stats Overview" />
       <ChartWrapper
         username={username}
         setError={setError}
@@ -68,7 +64,7 @@ export default function Page() {
         setHypixelAPIKey={setHypixelAPIKey}
       />
       <ImprovementWrapper userData={userData} error={error} />
-      <PlaytimeWrapper hypixelAPIKey={hypixelAPIKey} error={error} />
-    </div>
+      <PlaytimeWrapper error={error} hours={hours} />
+    </DashboardWrapper>
   );
 }

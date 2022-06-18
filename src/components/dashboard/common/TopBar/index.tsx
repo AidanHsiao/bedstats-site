@@ -1,10 +1,10 @@
 import styles from "./main.module.scss";
 import DropdownMenu from "./DropdownMenu";
-import logo from "../../../../public/logo.png";
+import logo from "../../../../../public/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Topbar() {
+export default function TopBar(props: { title: string }) {
   return (
     <div className={styles.topbar}>
       <Link href="/">
@@ -12,7 +12,7 @@ export default function Topbar() {
           <Image src={logo} layout="fill" />
         </a>
       </Link>
-      <div className={styles.title}>Stats Overview</div>
+      <div className={styles.title}>{props.title}</div>
       <DropdownMenu />
     </div>
   );

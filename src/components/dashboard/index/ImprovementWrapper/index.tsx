@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { StatsObject } from "../../../../lib/interfaces";
-import sleep from "../../../../lib/sleep";
+import { StatsObject } from "../../../../../lib/interfaces";
+import sleep from "../../../../../lib/sleep";
 import { createDate } from "../ChartWrapper";
 import styles from "./main.module.scss";
 
