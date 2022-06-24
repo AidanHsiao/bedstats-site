@@ -36,7 +36,7 @@ export default function Cards(): ReactElement {
       <Card
         src={safety}
         title="100% Safe"
-        content="BedStats stores and transfers your data through secure HTTPS protocols, and the BedStats database has your sensitive data encrypted, so you don't need to worry about your Minecraft account getting compromised."
+        content="BedStats stores and transfers your data through secure HTTPS protocols, and the BedStats database has your sensitive data encrypted, so you don't need to worry about your sensitive info getting compromised."
       />
       <Card
         src={free}
