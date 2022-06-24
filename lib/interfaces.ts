@@ -47,3 +47,9 @@ export interface User {
     };
   };
 }
+
+export interface ResourceRatio {
+  forge: number;
+  diamond: number;
+  emerald: number;
+}

@@ -1,0 +1,21 @@
+.habitsWrapper {
+  width: 90%;
+  margin-inline: auto;
+  margin-top: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 50px;
+  margin-bottom: 30px;
+}
+
+.data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}

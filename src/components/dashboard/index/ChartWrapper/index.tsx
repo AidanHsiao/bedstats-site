@@ -22,11 +22,9 @@ export default function ChartWrapper({
   setUserData,
   setError,
   username,
-  setHypixelAPIKey,
 }: {
   setUserData: Dispatch<SetStateAction<StatsObject[]>>;
   setError: Dispatch<SetStateAction<boolean>>;
-  setHypixelAPIKey: Dispatch<SetStateAction<string>>;
   username: string;
 }) {
   interface Tick {
@@ -95,7 +93,7 @@ export default function ChartWrapper({
     setOpacity(0);
     setLoadingText("Loading chart...");
     if (!username) return;
-    getBreakingIndex(chartDuration, username, setHypixelAPIKey)
+    getBreakingIndex(chartDuration, username)
       .then((resp) => {
         if (!resp.stats.length) {
           const time = new Date();
@@ -277,18 +275,13 @@ export function createDate(
   return `${hours}:${minute < 10 ? `0${minute}` : minute}${type}`;
 }
 
-async function getBreakingIndex(
-  days: number,
-  username: string,
-  setKey: Dispatch<SetStateAction<string>>
-) {
+async function getBreakingIndex(days: number, username: string) {
   const durationText = hour * days * 24;
 
   const user = await getUser(username);
   if (!user.stats || !user.user) {
     throw new Error("something went wrong LMAO");
   }
-  setKey(user.user.hypixelAPIKey);
   const stats = user.stats;
   const now = Math.floor(Date.now() / 1000);
   const dists = stats.map((obj: StatsObject) => now - obj.timestamp);

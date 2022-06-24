@@ -1,0 +1,30 @@
+.resourceWrapper {
+  $size: 200px;
+  width: $size;
+  height: $size * 3 / 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-inline: 50px;
+}
+
+.resourceValues {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  border: 2px solid #ccc;
+  background-color: #ddd;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.resourceItem {
+  width: 45px;
+  transition: height 0.5s ease-in-out;
+}
+
+.title {
+  font-size: 20px;
+}

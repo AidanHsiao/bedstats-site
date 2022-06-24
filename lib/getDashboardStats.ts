@@ -1,3 +1,6 @@
+import getUser from "./db/getUser";
+import { ResourceRatio } from "./interfaces";
+
 interface DashboardStats {
   hours: { min: number; max: number };
   resourceRatios: ResourceRatio[];
@@ -5,9 +8,11 @@ interface DashboardStats {
 }
 
 export default async function getDashboardStats(
-  apiKey: string,
-  uuid: string
+  username: string
 ): Promise<DashboardStats> {
+  const user = await getUser(username);
+  const apiKey = user.user?.hypixelAPIKey;
+  const uuid = user.user?.uuid;
   const existingStats = sessionStorage.getItem("dashboardStats")
     ? JSON.parse(sessionStorage.getItem("dashboardStats") || "")
     : "";
@@ -106,12 +111,6 @@ function getResourceRatios(resp: any) {
 
     return ratioObject;
   });
-}
-
-interface ResourceRatio {
-  forge: number;
-  diamond: number;
-  emerald: number;
 }
 
 function getDeathRatios(resp: any) {

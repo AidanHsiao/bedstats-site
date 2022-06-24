@@ -19,26 +19,21 @@ export default function Page() {
   const [error, setError] = useState(false);
   const [username, setUsername] = useState("");
   const [showDashboard, setShowDashboard] = useState(false);
-  const [width, setWidth] = useState(0);
-  const [hypixelAPIKey, setHypixelAPIKey] = useState("");
   const [hours, setHours] = useState({ min: 0, max: 0 });
   const router = useRouter();
 
   useEffect(() => {
-    if (!window) return;
     attemptLogin();
     setShowDashboard(true);
   }, []);
 
   useEffect(() => {
-    if (!hypixelAPIKey) return;
+    if (!username) return;
     obtainStats();
-  }, [hypixelAPIKey]);
+  }, [username]);
 
   async function obtainStats() {
-    const uuid =
-      sessionStorage.getItem("uuid") || localStorage.getItem("uuid") || "";
-    const dashboardStats = await getDashboardStats(hypixelAPIKey, uuid);
+    const dashboardStats = await getDashboardStats(username);
     setHours(dashboardStats.hours);
   }
 
@@ -61,7 +56,6 @@ export default function Page() {
         username={username}
         setError={setError}
         setUserData={setUserData}
-        setHypixelAPIKey={setHypixelAPIKey}
       />
       <ImprovementWrapper userData={userData} error={error} />
       <PlaytimeWrapper error={error} hours={hours} />
