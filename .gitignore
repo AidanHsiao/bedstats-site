@@ -85,7 +85,6 @@ web_modules/
 
 # Next.js build output
 .next
-next.config.js
 out
 
 # Nuxt.js build / generate output
@@ -126,3 +125,7 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Other nextjs items
+next.config.js
+next-env.d.ts
