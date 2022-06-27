@@ -1,9 +1,10 @@
 import getUser from "./db/getUser";
-import { ResourceRatio } from "./interfaces";
+import { KDRatioObject, KillDeathRatios, ResourceRatio } from "./interfaces";
 
 interface DashboardStats {
   hours: { min: number; max: number };
   resourceRatios: ResourceRatio[];
+  killDeathRatios: KillDeathRatios;
   minuteStamp: number;
 }
 
@@ -17,6 +18,7 @@ export default async function getDashboardStats(
     ? JSON.parse(sessionStorage.getItem("dashboardStats") || "")
     : "";
   const currentMinute = Math.floor(Date.now() / 1000 / 60);
+  await sleep(5000);
   if (existingStats && existingStats.minuteStamp === currentMinute)
     return existingStats;
   const resp = await fetch(
@@ -24,10 +26,11 @@ export default async function getDashboardStats(
   ).then((resp) => resp.json());
   const hours = getHoursPlayed(resp);
   const resourceRatios = getResourceRatios(resp);
-  const deathRatios = getDeathRatios(resp);
+  const killDeathRatios = getKillDeathRatios(resp);
   const dashboardStats = {
     hours: hours,
     resourceRatios: resourceRatios,
+    killDeathRatios: killDeathRatios,
     minuteStamp: currentMinute,
   };
   sessionStorage.setItem("dashboardStats", JSON.stringify(dashboardStats));
@@ -102,18 +105,25 @@ function getResourceRatios(resp: any) {
       return obj;
     }, {}) as ResourceRatio;
   });
-  return resourceRatios.map((ratioObject: ResourceRatio) => {
-    const originalObject = { ...ratioObject };
-    Object.keys(ratioObject).forEach((key) => {
-      ratioObject[key as keyof ResourceRatio] /=
-        Math.max(...(Object.values(originalObject) as number[])) || 1;
-    });
-
-    return ratioObject;
-  });
+  return resourceRatios;
 }
 
-function getDeathRatios(resp: any) {
+function getKillDeathRatios(resp: any) {
   const bedwars = resp.player.stats.Bedwars;
-  return 0; // temp
+  return {
+    damage: {
+      kills: bedwars.entity_attack_kills_bedwars || 0,
+      deaths: bedwars.entity_attack_deaths_bedwars || 0,
+      finalKills: bedwars.entity_attack_final_kills_bedwars || 0,
+      finalDeaths: bedwars.entity_attack_final_deaths_bedwars || 0,
+    },
+    void: {
+      kills: bedwars.void_kills_bedwars || 0,
+      deaths: bedwars.void_deaths_bedwars || 0,
+      finalKills: bedwars.void_final_kills_bedwars || 0,
+      finalDeaths: bedwars.void_final_deaths_bedwars || 0,
+    },
+  };
 }
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));

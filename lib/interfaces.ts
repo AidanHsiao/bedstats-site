@@ -53,3 +53,15 @@ export interface ResourceRatio {
   diamond: number;
   emerald: number;
 }
+
+export interface KillDeathRatios {
+  damage: KDRatioObject;
+  void: KDRatioObject;
+}
+
+export interface KDRatioObject {
+  kills: number;
+  deaths: number;
+  finalKills: number;
+  finalDeaths: number;
+}

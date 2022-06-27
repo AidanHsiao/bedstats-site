@@ -1,5 +1,5 @@
-.resourceWrapper {
-  $size: 200px;
+.chartWrapper {
+  $size: 215px;
   width: $size;
   height: $size * 3 / 4;
   display: flex;
@@ -9,7 +9,7 @@
   margin-inline: 50px;
 }
 
-.resourceValues {
+.chartValues {
   width: 100%;
   height: 100%;
   display: flex;
@@ -20,9 +20,20 @@
   margin-bottom: 10px;
 }
 
-.resourceItem {
+.chartItemWrapper {
   width: 45px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: center;
+  font-size: 16px;
+}
+
+.chartItem {
   transition: height 0.5s ease-in-out;
+  display: grid;
+  place-items: center;
 }
 
 .title {

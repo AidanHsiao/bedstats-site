@@ -21,7 +21,6 @@
   height: 50px;
   cursor: pointer;
   filter: invert(1);
-  transition: filter 0.2s;
   &:hover {
     filter: invert(0.8);
   }
@@ -32,8 +31,9 @@
   transition: opacity 0.2s;
 }
 
-@media (width <440px) {
+@media (width < 440px) {
   .title {
     opacity: 0;
+    pointer-events: none;
   }
 }
