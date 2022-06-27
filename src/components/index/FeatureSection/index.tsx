@@ -1,11 +1,11 @@
 import Image, { StaticImageData } from "next/image";
 import styles from "./main.module.scss";
+import TechBG from "../../../../public/index/tech.jpg";
 
 interface FeatureProps {
   title: string;
   subtitle: string;
   src?: StaticImageData;
-  fixedBackground?: boolean;
   white?: boolean;
 }
 
@@ -20,12 +20,9 @@ export default function FeatureSection(props: FeatureProps) {
       }}
     >
       {!props.white ? (
-        <div
-          className={styles.backgroundImage}
-          style={{
-            backgroundAttachment: props.fixedBackground ? "fixed" : "absolute",
-          }}
-        ></div>
+        <div className={styles.backgroundImage}>
+          <Image src={TechBG} layout="fill" />
+        </div>
       ) : (
         ""
       )}

@@ -6,7 +6,6 @@ import sleep from "../../../lib/sleep";
 import FormButton from "../../components/common/FormButton";
 import FormInput from "../../components/common/FormInput";
 import SignUpForm from "../../components/common/SignUpForm";
-import Head from "next/head";
 
 export default function Page() {
   const [username, setUsername] = useState("");
@@ -72,9 +71,6 @@ export default function Page() {
 
   return (
     <React.Fragment>
-      <Head>
-        <meta name="robots" content="noindex nofollow" />
-      </Head>
       <SignUpForm
         title="Welcome to BedStats!"
         subtitle="Create an account at the right."
