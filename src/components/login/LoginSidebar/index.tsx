@@ -116,8 +116,8 @@ export default function LoginSidebar(): ReactElement {
           className={styles.errorMessage}
           style={
             errorMessage
-              ? { bottom: "-50px", opacity: 1 }
-              : { bottom: "-100px", opacity: 0 }
+              ? { bottom: -50, opacity: 1 }
+              : { bottom: -100, opacity: 0 }
           }
         >
           {errorMessage}

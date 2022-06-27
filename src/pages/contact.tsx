@@ -15,7 +15,7 @@ export default function Page() {
         />
       </Head>
       <NavBar headerVisible={false} />
-      <main style={{ marginTop: "90px" }}>
+      <main style={{ marginTop: 90 }}>
         <ContactHeader />
         <ContactFormWrapper />
       </main>

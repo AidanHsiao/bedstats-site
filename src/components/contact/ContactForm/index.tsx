@@ -85,9 +85,7 @@ export default function ContactFormWrapper() {
       <div
         className={styles.errorMessage}
         style={
-          errorText
-            ? { bottom: "30px", opacity: 1 }
-            : { bottom: "-100px", opacity: 0 }
+          errorText ? { bottom: 30, opacity: 1 } : { bottom: -100, opacity: 0 }
         }
       >
         {errorText}

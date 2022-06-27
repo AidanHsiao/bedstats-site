@@ -34,12 +34,12 @@ export default function DropdownMenu() {
           <DropdownSection
             title="About You"
             options={sections[0]}
-            width="700px"
+            width={700}
           />
           <DropdownSection
             title="BedStats Settings"
             options={sections[1]}
-            width="400px"
+            width={400}
           />
         </div>
       </div>
@@ -55,7 +55,7 @@ interface SectionProps {
 interface DropdownProps {
   title: string;
   options: SectionProps[];
-  width?: string;
+  width?: number;
 }
 
 export function DropdownSection(props: DropdownProps) {

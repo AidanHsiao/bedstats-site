@@ -18,7 +18,6 @@ export default async function getDashboardStats(
     ? JSON.parse(sessionStorage.getItem("dashboardStats") || "")
     : "";
   const currentMinute = Math.floor(Date.now() / 1000 / 60);
-  await sleep(5000);
   if (existingStats && existingStats.minuteStamp === currentMinute)
     return existingStats;
   const resp = await fetch(

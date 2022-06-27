@@ -128,7 +128,7 @@ export function Percentage({ duration, percentage, top }: PercentageProps) {
     <div
       className={styles.percentageItem}
       style={{
-        top: `${top}px`,
+        top: top,
         opacity: +!(top / 50),
       }}
     >

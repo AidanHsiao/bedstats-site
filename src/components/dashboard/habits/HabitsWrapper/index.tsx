@@ -12,10 +12,10 @@ export default function HabitsWrapper(props: HabitsProps) {
   return (
     <div
       className={styles.habitsWrapper}
-      style={{ marginTop: props.topElement ? 90 : 40 }}
+      style={{ marginTop: 40 + 50 * +(props.topElement || false) }}
     >
       <div className={styles.title}>{props.title}</div>
-      <section className={styles.data}>{props.children}</section>
+      <data className={styles.data}>{props.children}</data>
     </div>
   );
 }

@@ -95,7 +95,7 @@ export default function NavBar({ headerVisible }: { headerVisible: boolean }) {
           >
             <div
               className={styles.expandableLinks}
-              style={{ marginTop: headerVisible ? 0 : "40px" }}
+              style={{ marginTop: +!headerVisible * 40 }}
             >
               <NavLink route="Home" />
               <NavLink route="Dashboard" />

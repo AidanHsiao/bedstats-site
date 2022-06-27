@@ -114,7 +114,7 @@ export default function SignUpForm(props: FormProps) {
         </div>
         <div
           className={styles.errorMessage}
-          style={props.errorMessage ? { bottom: "20px", opacity: 1 } : {}}
+          style={props.errorMessage ? { bottom: 20, opacity: 1 } : {}}
         >
           {props.errorMessage}
         </div>

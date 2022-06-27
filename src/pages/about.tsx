@@ -6,7 +6,7 @@ export default function Page() {
   return (
     <React.Fragment>
       <NavBar headerVisible={false} />
-      <main style={{ marginTop: "90px" }}>
+      <main style={{ marginTop: 90 }}>
         <AboutSection
           title="The all-in-one app for BedWars support."
           text="BedStats was built on a need to track statistics and check players. Back 
