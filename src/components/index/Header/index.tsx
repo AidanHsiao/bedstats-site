@@ -7,6 +7,8 @@ import {
 } from "react";
 import styles from "./main.module.scss";
 import DownloadButton from "../DownloadButton";
+import Background from "../../../../public/index/background.png";
+import Image from "next/image";
 
 interface HeaderProps {
   setHeaderVisible: Dispatch<SetStateAction<boolean>>;
@@ -29,7 +31,9 @@ export default function Header(props: HeaderProps): ReactElement {
 
   return (
     <div className={styles.headerWrapper} ref={headerRef}>
-      <div className={styles.headerImage}></div>
+      <div className={styles.headerImage}>
+        <Image src={Background} layout="fill" objectFit="cover" />
+      </div>
       <div className={styles.headerMain}>
         <div className={styles.headerBorder}></div>
         <div className={styles.headerContent}>

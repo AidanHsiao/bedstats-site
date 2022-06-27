@@ -11,15 +11,11 @@
 .headerImage {
   width: max(1500px, 100vw);
   height: 650px;
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-self: center;
-  background-image: url("../../../../public/index/background.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  z-index: -1;
+  z-index: -100;
+  background-color: #e8e8e8;
 }
 
 .headerMain {

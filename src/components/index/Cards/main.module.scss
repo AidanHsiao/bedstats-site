@@ -1,9 +1,10 @@
 .cardWrapper {
-  width: min(90%, 1200px);
+  width: 100%;
+  padding-inline: max(5%, 50vw - 660px);
   height: auto;
-  margin: 50px auto;
-  background-image: linear-gradient(to bottom, #e8e8e800, #e8e8e8 7.5%);
-  padding-bottom: 20px;
+  margin: auto;
+  background-color: #e8e8e8;
+  padding-block: 50px 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(90vw, 380px), 1fr));
   row-gap: 50px;

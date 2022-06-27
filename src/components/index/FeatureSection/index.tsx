@@ -13,11 +13,16 @@ export default function FeatureSection(props: FeatureProps) {
   return (
     <div
       className={styles.featureWrapper}
-      style={{
-        backgroundImage: props.white
-          ? "none"
-          : "linear-gradient(135deg, rgba(162, 100, 219, 0.55), rgba(107, 32, 98, 0.55))",
-      }}
+      style={
+        props.white
+          ? {
+              backgroundColor: "#e8e8e8",
+            }
+          : {
+              backgroundImage:
+                "linear-gradient(135deg, rgba(162, 100, 219, 0.55), rgba(107, 32, 98, 0.55))",
+            }
+      }
     >
       {!props.white ? (
         <div className={styles.backgroundImage}>
