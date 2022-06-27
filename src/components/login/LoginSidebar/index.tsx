@@ -123,7 +123,7 @@ export default function LoginSidebar(): ReactElement {
           {errorMessage}
         </div>
         <div className={styles.logo} onClick={() => router.push("/")}>
-          <Image src={logo} layout="fill" />
+          <Image src={logo} layout="fill" alt="BedStats Logo" />
         </div>
         <span className={styles.loginTitle}>Log in to BedStats</span>
         <form className={styles.login} onSubmit={(e) => login(e)}>
@@ -176,7 +176,7 @@ export default function LoginSidebar(): ReactElement {
           </button>
         </form>
         <span className={styles.accountText}>
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <Link href="/signup">
             <a className={styles.createAccount}>Create an account</a>
           </Link>

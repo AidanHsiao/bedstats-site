@@ -26,7 +26,7 @@ export default function FeatureSection(props: FeatureProps) {
     >
       {!props.white ? (
         <div className={styles.backgroundImage}>
-          <Image src={TechBG} layout="fill" objectFit="cover" />
+          <Image src={TechBG} layout="fill" objectFit="cover" alt="Tech BG" />
         </div>
       ) : (
         ""
@@ -82,7 +82,7 @@ export default function FeatureSection(props: FeatureProps) {
         {!props.white && props.src ? (
           <div className={styles.imageWrapper}>
             <div className={styles.logo}>
-              <Image src={props.src} layout="fill" />
+              <Image src={props.src} layout="fill" alt="Electron Logo" />
             </div>
           </div>
         ) : (

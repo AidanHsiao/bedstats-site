@@ -36,7 +36,7 @@ export default function NavBar({ headerVisible }: { headerVisible: boolean }) {
     >
       <div className={styles.logoWrapper}>
         <div className={styles.logo}>
-          <Image src={logo} layout="fill" />
+          <Image src={logo} layout="fill" alt="BedStats Logo" />
         </div>
         <div className={styles.logoText}>BedStats</div>
       </div>

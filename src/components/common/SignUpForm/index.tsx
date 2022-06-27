@@ -95,7 +95,7 @@ export default function SignUpForm(props: FormProps) {
           }
           onClick={goBack}
         >
-          <Image src={backArrow} layout="fill" />
+          <Image src={backArrow} layout="fill" alt="Back Arrow" />
         </div>
 
         <div

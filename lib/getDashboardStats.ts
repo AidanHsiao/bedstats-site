@@ -1,5 +1,5 @@
 import getUser from "./db/getUser";
-import { KDRatioObject, KillDeathRatios, ResourceRatio } from "./interfaces";
+import { KillDeathRatios, ResourceRatio } from "./interfaces";
 
 interface DashboardStats {
   hours: { min: number; max: number };

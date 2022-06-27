@@ -32,7 +32,12 @@ export default function Header(props: HeaderProps): ReactElement {
   return (
     <div className={styles.headerWrapper} ref={headerRef}>
       <div className={styles.headerImage}>
-        <Image src={Background} layout="fill" objectFit="cover" />
+        <Image
+          src={Background}
+          layout="fill"
+          objectFit="cover"
+          alt="Header Image"
+        />
       </div>
       <div className={styles.headerMain}>
         <div className={styles.headerBorder}></div>

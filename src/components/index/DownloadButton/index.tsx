@@ -18,7 +18,7 @@ export default function DownloadButton(): ReactElement {
           className={styles.downloadButtonIcon}
           style={{ filter: `invert(${iconFilter})` }}
         >
-          <Image src={downloadIcon} layout="fill" />
+          <Image src={downloadIcon} layout="fill" alt="Download Button" />
         </div>
       </div>
     </div>

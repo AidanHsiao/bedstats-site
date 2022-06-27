@@ -10,7 +10,7 @@ export default function TopBar(props: { title: string }) {
   return (
     <div className={styles.topbar}>
       <div className={styles.logo} onClick={() => router.push("/")}>
-        <Image src={logo} layout="fill" />
+        <Image src={logo} layout="fill" alt="BedStats Logo" />
       </div>
       <div className={styles.title}>{props.title}</div>
       <DropdownMenu />

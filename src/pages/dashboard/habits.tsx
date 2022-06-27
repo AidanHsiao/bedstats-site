@@ -20,32 +20,31 @@ export default function Page() {
   const [dataReady, setDataReady] = useState(false);
 
   useEffect(() => {
+    async function attemptLogin() {
+      const pass = getPass();
+      const user = await getUserByPass(pass);
+      if (!user.password) {
+        router.push("/login");
+        return;
+      }
+      setUsername(user.username);
+    }
+
     attemptLogin();
   }, []);
 
   useEffect(() => {
+    async function obtainStats() {
+      const dashboardStats = await getDashboardStats(username);
+      setResourceRatios(dashboardStats.resourceRatios);
+      setKDRatios(dashboardStats.killDeathRatios);
+      setDataReady(true);
+    }
     if (!username) return;
     obtainStats();
   }, [username]);
 
-  async function obtainStats() {
-    const dashboardStats = await getDashboardStats(username);
-    setResourceRatios(dashboardStats.resourceRatios);
-    setKDRatios(dashboardStats.killDeathRatios);
-    setDataReady(true);
-  }
-
   const router = useRouter();
-
-  async function attemptLogin() {
-    const pass = getPass();
-    const user = await getUserByPass(pass);
-    if (!user.password) {
-      router.push("/login");
-      return;
-    }
-    setUsername(user.username);
-  }
 
   return (
     <DashboardWrapper>

@@ -47,7 +47,7 @@ export function Links() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Image src={githubLogo} layout="fill"></Image>
+        <Image src={githubLogo} layout="fill" alt="Github Icon" />
       </a>
       <a
         className={styles.logo}
@@ -55,7 +55,7 @@ export function Links() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Image src={linkedinLogo} layout="fill"></Image>
+        <Image src={linkedinLogo} layout="fill" alt="Linkedin Icon" />
       </a>
     </div>
   );

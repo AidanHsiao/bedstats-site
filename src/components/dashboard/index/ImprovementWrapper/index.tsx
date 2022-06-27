@@ -100,7 +100,7 @@ export default function ImprovementWrapper({
 
   return (
     <div className={styles.improvementWrapper}>
-      <div className={styles.improvementTitle}>How you've improved</div>
+      <div className={styles.improvementTitle}>How you&apos;ve improved</div>
       <div className={styles.improvementLoading} style={{ opacity: +!opacity }}>
         {loadingText}
       </div>
