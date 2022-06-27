@@ -21,7 +21,7 @@ export default function FeatureSection(props: FeatureProps) {
     >
       {!props.white ? (
         <div className={styles.backgroundImage}>
-          <Image src={TechBG} layout="fill" />
+          <Image src={TechBG} layout="fill" objectFit="cover" />
         </div>
       ) : (
         ""
