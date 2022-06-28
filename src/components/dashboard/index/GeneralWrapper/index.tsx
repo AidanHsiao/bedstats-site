@@ -5,16 +5,8 @@ export default function GeneralWrapper({ stats }: { stats: StatsObject }) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>General Stats</div>
-      <div className={styles.row}>
-        {["finals", "score", "fkdr/"].map((item) => {
-          let itemName = `${item.charAt(0).toUpperCase()}${item.slice(1)}`;
-          if (itemName.includes("/")) itemName = itemName.toUpperCase();
-          itemName = itemName.replace("/", "");
-          return <Item itemName={itemName} stats={stats} key={Math.random()} />;
-        })}
-      </div>
-      <div className={styles.row}>
-        {["kills", "beds", "wins"].map((item) => {
+      <div className={styles.data}>
+        {["finals", "score", "fkdr/", "kills", "beds", "wins"].map((item) => {
           let itemName = `${item.charAt(0).toUpperCase()}${item.slice(1)}`;
           if (itemName.includes("/")) itemName = itemName.toUpperCase();
           itemName = itemName.replace("/", "");

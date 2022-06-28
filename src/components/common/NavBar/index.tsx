@@ -134,7 +134,9 @@ export function NavLink(props: NavLinkProps) {
   return (
     <div className={styles.link}>
       {props.route === "Dashboard" ? (
-        <div onClick={attemptLogin}>{props.route}</div>
+        <div onClick={attemptLogin} className={styles.beta}>
+          {props.route}
+        </div>
       ) : (
         <Link href={href}>
           <a>{props.route}</a>
