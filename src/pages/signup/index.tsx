@@ -3,9 +3,9 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import getUser from "../../../lib/db/getUser";
 import sleep from "../../../lib/sleep";
-import FormButton from "../../components/common/FormButton";
-import FormInput from "../../components/common/FormInput";
-import SignUpForm from "../../components/common/SignUpForm";
+import FormButton from "../../components/signup/FormButton";
+import FormInput from "../../components/signup/FormInput";
+import SignUpForm from "../../components/signup/SignUpForm";
 
 export default function Page() {
   const [username, setUsername] = useState("");

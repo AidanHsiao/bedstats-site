@@ -4,8 +4,8 @@ import { Friend } from "../../../lib/interfaces";
 import setUser from "../../../lib/db/setUser";
 import getFriends from "../../../lib/getFriends";
 import sleep from "../../../lib/sleep";
-import FormButton from "../../components/common/FormButton";
-import SignUpForm from "../../components/common/SignUpForm";
+import FormButton from "../../components/signup/FormButton";
+import SignUpForm from "../../components/signup/SignUpForm";
 import Head from "next/head";
 
 export default function Page() {
