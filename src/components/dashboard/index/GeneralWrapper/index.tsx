@@ -10,7 +10,7 @@ export default function GeneralWrapper({ stats }: { stats: StatsObject }) {
           let itemName = `${item.charAt(0).toUpperCase()}${item.slice(1)}`;
           if (itemName.includes("/")) itemName = itemName.toUpperCase();
           itemName = itemName.replace("/", "");
-          return <Item itemName={itemName} stats={stats} />;
+          return <Item itemName={itemName} stats={stats} key={Math.random()} />;
         })}
       </div>
       <div className={styles.row}>
@@ -18,7 +18,7 @@ export default function GeneralWrapper({ stats }: { stats: StatsObject }) {
           let itemName = `${item.charAt(0).toUpperCase()}${item.slice(1)}`;
           if (itemName.includes("/")) itemName = itemName.toUpperCase();
           itemName = itemName.replace("/", "");
-          return <Item itemName={itemName} stats={stats} />;
+          return <Item itemName={itemName} stats={stats} key={Math.random()} />;
         })}
       </div>
     </div>
@@ -38,7 +38,7 @@ export function Item(props: ItemProps) {
   );
 
   return (
-    <div className={styles.item} key={Math.random()}>
+    <div className={styles.item}>
       <div className={styles.itemTitle}>{props.itemName}</div>
       <div className={styles.itemNum}>
         {value || value === 0 ? value : "Loading..."}
