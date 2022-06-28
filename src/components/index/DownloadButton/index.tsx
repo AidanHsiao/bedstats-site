@@ -7,7 +7,10 @@ export default function DownloadButton(): ReactElement {
   let [iconFilter, setIconFilter] = useState(1);
 
   return (
-    <div
+    <a
+      href="https://github.com/AidanHsiao/bedstats/releases/download/v1.0.1/BedStats.Setup.1.0.1.exe"
+      target="_blank"
+      rel="noopener noreferrer"
       className={styles.downloadButton}
       onMouseOver={() => setIconFilter(0)}
       onMouseLeave={() => setIconFilter(1)}
@@ -21,6 +24,6 @@ export default function DownloadButton(): ReactElement {
           <Image src={downloadIcon} layout="fill" alt="Download Button" />
         </div>
       </div>
-    </div>
+    </a>
   );
 }
