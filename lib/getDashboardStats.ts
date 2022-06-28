@@ -1,7 +1,14 @@
 import getUser from "./db/getUser";
-import { KillDeathRatios, ResourceRatio } from "./interfaces";
+import getStats from "./getStats";
+import {
+  KDRatioObject,
+  KillDeathRatios,
+  ResourceRatio,
+  StatsObject,
+} from "./interfaces";
 
 interface DashboardStats {
+  generalStats: StatsObject;
   hours: { min: number; max: number };
   resourceRatios: ResourceRatio[];
   killDeathRatios: KillDeathRatios;
@@ -23,10 +30,17 @@ export default async function getDashboardStats(
   const resp = await fetch(
     `https://api.hypixel.net/player?key=${apiKey}&uuid=${uuid}`
   ).then((resp) => resp.json());
+  const generalStats = await getStats(apiKey as string, uuid as string, {
+    resp: resp,
+  });
   const hours = getHoursPlayed(resp);
   const resourceRatios = getResourceRatios(resp);
   const killDeathRatios = getKillDeathRatios(resp);
   const dashboardStats = {
+    generalStats: {
+      ...generalStats.stats,
+      kills: resp.player.stats.Bedwars.kills_bedwars,
+    } as StatsObject,
     hours: hours,
     resourceRatios: resourceRatios,
     killDeathRatios: killDeathRatios,
@@ -107,15 +121,29 @@ function getResourceRatios(resp: any) {
   return resourceRatios;
 }
 
-function getKillDeathRatios(resp: any) {
+function getKillDeathRatios(resp: any): KillDeathRatios {
   const bedwars = resp.player.stats.Bedwars;
+  const damageTypes = ["entity_attack", "fall", "magic"];
+  const damageKeys = ["kills", "deaths", "finalKills", "finalDeaths"];
+  const damageObject: Partial<KDRatioObject> = {};
+  damageKeys.forEach((key) => {
+    damageTypes.forEach((type) => {
+      if (!damageObject[key as keyof KDRatioObject])
+        damageObject[key as keyof KDRatioObject] = 0;
+      damageObject[key as keyof KDRatioObject] +=
+        bedwars[
+          `${type}_${(
+            `${key.charAt(0).toUpperCase()}${key.slice(1)}`.match(
+              /[A-Z][a-z]+/g
+            ) as string[]
+          )
+            .map((item) => item.toLowerCase())
+            .join("_")}_bedwars` // Converts finalKills to final_kills
+        ];
+    });
+  });
   return {
-    damage: {
-      kills: bedwars.entity_attack_kills_bedwars || 0,
-      deaths: bedwars.entity_attack_deaths_bedwars || 0,
-      finalKills: bedwars.entity_attack_final_kills_bedwars || 0,
-      finalDeaths: bedwars.entity_attack_final_deaths_bedwars || 0,
-    },
+    damage: damageObject as KDRatioObject,
     void: {
       kills: bedwars.void_kills_bedwars || 0,
       deaths: bedwars.void_deaths_bedwars || 0,
