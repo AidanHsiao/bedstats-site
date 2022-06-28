@@ -23,7 +23,7 @@ export default async function handler(
   }
   let error = false;
   for (let i = 0; i < uuids.length; i++) {
-    const data = await getStats(keys[i], uuids[i], true);
+    const data = await getStats(keys[i], uuids[i], { axiosUsed: true });
     if (data.stats) {
       const timestamp = data.stats.timestamp;
       const db = getFirestore();

@@ -13,9 +13,7 @@ export default function ImprovementWrapper({
 }) {
   const [percentages, setPercentages] = useState([0, 0, 0]);
   const [opacity, setOpacity] = useState(0);
-  const [calculationFinished, setCalcFinished] = useState(false);
   const [loadingText, setLoadingText] = useState("Loading data...");
-  const [top, setTop] = useState([50, 50, 50]);
   const [attemptedDB, setAttempted] = useState(false);
   useEffect(() => {
     if (error) {
@@ -41,13 +39,11 @@ export default function ImprovementWrapper({
           return differenceMade;
         });
         const currentDatapoint = userData.slice(-1)[0];
-        const splicedData: StatsObject[] = [];
-        limits.forEach((timestamp: number) => {
-          // Using forEach to bypass TypeScript quirks
+        const splicedData: StatsObject[] = limits.map((timestamp: number) => {
           const data = userData.find(
             (datapoint: StatsObject) => datapoint.timestamp === timestamp
           );
-          if (data) splicedData.push(data);
+          return data as StatsObject;
         });
         const percentageChanges: number[] = [0, 0, 0];
         splicedData.forEach((datapoint: StatsObject, idx: number) => {
@@ -57,7 +53,6 @@ export default function ImprovementWrapper({
           percentageChanges[idx] = +percentChange.toFixed(1);
         });
         setPercentages(percentageChanges);
-        setCalcFinished(true);
         setOpacity(1);
       } else {
         if (attemptedDB) {
@@ -74,44 +69,16 @@ export default function ImprovementWrapper({
     }
   }, [userData, error]);
 
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const percentageWrapper = ref.current;
-    if (!percentageWrapper) return;
-    const observer = new IntersectionObserver(
-      async (e) => {
-        if (e[0].isIntersecting && calculationFinished) {
-          observer.unobserve(percentageWrapper);
-          await sleep(100);
-          setTop([0, 50, 50]);
-          await sleep(100);
-          setTop([0, 0, 50]);
-          await sleep(100);
-          setTop([0, 0, 0]);
-        }
-      },
-      {
-        threshold: 0.2,
-      }
-    );
-    observer.observe(percentageWrapper);
-  }, [calculationFinished]);
-
   return (
     <div className={styles.improvementWrapper}>
       <div className={styles.improvementTitle}>How you&apos;ve improved</div>
       <div className={styles.improvementLoading} style={{ opacity: +!opacity }}>
         {loadingText}
       </div>
-      <div
-        className={styles.percentageWrapper}
-        style={{ opacity: opacity }}
-        ref={ref}
-      >
-        <Percentage duration={1} percentage={percentages[0]} top={top[0]} />
-        <Percentage duration={7} percentage={percentages[1]} top={top[1]} />
-        <Percentage duration={31} percentage={percentages[2]} top={top[2]} />
+      <div className={styles.percentageWrapper} style={{ opacity: opacity }}>
+        <Percentage duration={1} percentage={percentages[0]} />
+        <Percentage duration={7} percentage={percentages[1]} />
+        <Percentage duration={31} percentage={percentages[2]} />
       </div>
     </div>
   );
@@ -120,18 +87,11 @@ export default function ImprovementWrapper({
 interface PercentageProps {
   duration: number;
   percentage: number;
-  top: number;
 }
 
-export function Percentage({ duration, percentage, top }: PercentageProps) {
+export function Percentage({ duration, percentage }: PercentageProps) {
   return (
-    <div
-      className={styles.percentageItem}
-      style={{
-        top: top,
-        opacity: +!(top / 50),
-      }}
-    >
+    <div className={styles.percentageItem}>
       <div className={styles.percentageTitle}>
         Over the last {duration > 1 ? duration : ""} day
         {duration > 1 ? "s" : ""}, <br /> your score has gone{" "}

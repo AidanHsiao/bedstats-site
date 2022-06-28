@@ -6,21 +6,29 @@ interface StatsResponse {
   stats?: StatsObject;
 }
 
+interface GetStatsOptions {
+  axiosUsed?: boolean;
+  resp?: any;
+}
+
 const xpPerPrestige = 487000;
 
 export default async function getStats(
   apiKey: string,
   uuid: string,
-  axiosUsed?: boolean
+  options?: GetStatsOptions
 ): Promise<StatsResponse> {
   let playerData;
-  if (axiosUsed) {
+  if (options?.axiosUsed) {
     await axios
       .get(`https://api.hypixel.net/player?key=${apiKey}&uuid=${uuid}`)
       .then((res) => (playerData = res.data))
       .catch((e) => {
         return { code: 2 };
       });
+  }
+  if (options?.resp) {
+    playerData = options.resp;
   } else {
     let error = false;
     const resp = await fetch(
@@ -33,7 +41,7 @@ export default async function getStats(
     if (error) {
       return { code: 2 };
     }
-    playerData = resp.data;
+    playerData = resp;
   }
   try {
     const dataArrayNone = [
@@ -81,12 +89,12 @@ export default async function getStats(
       "four_four_beds_lost_bedwars",
     ];
     for (let item of dataArrayNone) {
-      if (!playerData.player.stats.Bedwars[item]) {
+      if (!playerData?.player?.stats?.Bedwars[item]) {
         playerData.player.stats.Bedwars[item] = 0;
       }
     }
     for (let item of dataArrayOne) {
-      if (!playerData.player.stats.Bedwars[item]) {
+      if (!playerData?.player?.stats?.Bedwars[item]) {
         playerData.player.stats.Bedwars[item] = 1;
       }
     }

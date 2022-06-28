@@ -128,7 +128,9 @@ export default function ChartWrapper({
             if (axis.toLowerCase() === "score") {
               dataPoint.push(+obj.score.toFixed(1));
             } else {
-              dataPoint.push(obj[axis.toLowerCase() as keyof StatsObject]);
+              dataPoint.push(
+                obj[axis.toLowerCase() as keyof StatsObject] as number
+              );
             }
           });
           tempData.push(dataPoint);

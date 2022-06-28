@@ -1,0 +1,53 @@
+@use "../ChartWrapper/main.module.scss";
+
+.wrapper {
+  width: 100%;
+  border-bottom: 2px dotted rgb(121, 95, 126);
+}
+
+.row {
+  width: 90%;
+  margin-inline: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.title {
+  @extend .chartTitle;
+  padding-top: 80px;
+}
+
+.item {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.itemTitle {
+  @extend .chartTitle;
+  font-size: 30px;
+}
+
+.itemNum {
+  font-size: 45px;
+}
+
+@media (width < 600px) {
+  .row {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+  .wrapper {
+    padding-bottom: 30px;
+  }
+  .title {
+    font-size: 10vw;
+  }
+}

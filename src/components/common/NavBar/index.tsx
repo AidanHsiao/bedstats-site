@@ -10,21 +10,12 @@ import { useRouter } from "next/router";
 
 export default function NavBar({ headerVisible }: { headerVisible: boolean }) {
   const [opened, setOpened] = useState(false);
-  const [showNav, setShowNav] = useState(false);
   const [showLogin, setShowLogin] = useState(true);
 
   useEffect(() => {
     if (!window) return;
     const pass = getPass();
     if (pass) setShowLogin(false);
-    window.addEventListener("scroll", () => {
-      if (window.scrollY >= 650 && !showNav) {
-        setShowNav(true);
-      }
-      if (window.scrollY < 650 && showNav) {
-        setShowNav(false);
-      }
-    });
   }, []);
 
   return (

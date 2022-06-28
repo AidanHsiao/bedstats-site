@@ -1,4 +1,5 @@
 export interface StatsObject {
+  kills?: number;
   fkdr: number;
   bblr: number;
   wlr: number;

@@ -10,6 +10,7 @@ import getUserByPass from "../../../lib/db/getUserByPass";
 import PlaytimeWrapper from "../../components/dashboard/index/PlaytimeWrapper";
 import getDashboardStats from "../../../lib/getDashboardStats";
 import DashboardWrapper from "../../components/dashboard/common/DashboardWrapper";
+import GeneralWrapper from "../../components/dashboard/index/GeneralWrapper";
 
 export default function Page() {
   const [userData, setUserData]: [
@@ -20,6 +21,7 @@ export default function Page() {
   const [username, setUsername] = useState("");
   const [showDashboard, setShowDashboard] = useState(false);
   const [hours, setHours] = useState({ min: 0, max: 0 });
+  const [stats, setStats] = useState<Partial<StatsObject>>({});
   const router = useRouter();
 
   useEffect(() => {
@@ -35,6 +37,7 @@ export default function Page() {
   async function obtainStats() {
     const dashboardStats = await getDashboardStats(username);
     setHours(dashboardStats.hours);
+    setStats(dashboardStats.generalStats);
   }
 
   async function attemptLogin() {
@@ -52,6 +55,7 @@ export default function Page() {
     <DashboardWrapper>
       <NavBar selected="overview" />
       <TopBar title="Stats Overview" />
+      <GeneralWrapper stats={stats as StatsObject} />
       <ChartWrapper
         username={username}
         setError={setError}

@@ -25,14 +25,14 @@
 .hoursSubtitle {
   width: max-content;
   margin: 0 auto;
-  font-size: 20px;
+  font-size: min(3.3vw, 20px);
   text-align: center;
 }
 
 .hoursText {
   width: max-content;
   margin: 0 auto;
-  font-size: 50px;
+  font-size: min(8vw, 50px);
   text-align: center;
   display: flex;
   align-items: center;
@@ -44,7 +44,7 @@
   background-clip: text;
   color: transparent;
   padding-inline: 12px;
-  font-size: 60px;
+  font-size: min(10vw, 60px);
 }
 
 .loadingText {

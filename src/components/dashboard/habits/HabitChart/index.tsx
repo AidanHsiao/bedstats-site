@@ -6,6 +6,14 @@ interface ResourceProps {
   title: string;
 }
 
+const colorMapper = {
+  "#fa0": "Forge (Gold) Items Collected",
+  "#0ff": "Diamonds Collected",
+  "#0f0": "Emeralds Collected",
+  "#aaa": "Void Kills/Deaths",
+  "#f00c": "Damage-Based Kills/Deaths",
+};
+
 export default function HabitChart(props: ResourceProps) {
   const chartSize = props.values.length * 65 + 20;
 
@@ -33,6 +41,7 @@ export default function HabitChart(props: ResourceProps) {
                 backgroundColor: props.colors[idx],
                 fontSize: `${32 - num?.toString().length * 4 || 32}px`,
               }}
+              title={colorMapper[props.colors[idx] as keyof typeof colorMapper]}
             >
               {num / Math.max(...props.values) >= 0.5 ? num : ""}
             </div>

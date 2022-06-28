@@ -17,7 +17,6 @@ export default function Page() {
   const [resourceRatios, setResourceRatios] = useState<ResourceRatio[]>([]);
   const [kdRatios, setKDRatios] = useState<KillDeathRatios>();
   const [username, setUsername] = useState("");
-  const [dataReady, setDataReady] = useState(false);
 
   useEffect(() => {
     async function attemptLogin() {
@@ -38,7 +37,6 @@ export default function Page() {
       const dashboardStats = await getDashboardStats(username);
       setResourceRatios(dashboardStats.resourceRatios);
       setKDRatios(dashboardStats.killDeathRatios);
-      setDataReady(true);
     }
     if (!username) return;
     obtainStats();
