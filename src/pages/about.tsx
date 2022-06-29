@@ -10,12 +10,11 @@ export default function Page() {
         <AboutSection
           title="The all-in-one app for BedWars support."
           text="BedStats was built on a need to track statistics and check players. Back 
-          when I used to use discord bots to check player stats, there was no easy
-          method of comparison. Not only that, I had to go one by one in-lobby to
-          check if someone with a 99% win rate was in my lobby. I still believe
-          that it is valid to dodge BedWars games because there is no existing MMR
-          system, and that's the reason why BedStats exists; to improve the
-          playing experience. I created BedStats as a BW player, for BW players."
+          when Discord bots were used to check player stats, there was no simple and efficient
+          method of comparison. Not only that, going one by one in-lobby to
+          check for high level players was a pain. The lack of an MMR system can make BedWars
+          extremely frustrating to play, and that's the reason why BedStats exists; to improve the
+          playing experience. BedStats was created as a BedWars player, for BedWars players."
           background
         />
         <AboutSection
