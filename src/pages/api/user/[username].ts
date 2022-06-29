@@ -8,6 +8,10 @@ export default async function handler(
 ) {
   switch (req.method) {
     default: {
+      if (req.headers["x-api-key"] !== process.env.NEXT_PUBLIC_SITE_API_KEY) {
+        res.status(401).json({ success: false });
+        return;
+      }
       let error = false;
       const { username } = req.query;
       const userData = await fetch(
@@ -50,7 +54,7 @@ export default async function handler(
       break;
     }
     case "POST": {
-      if (req.headers["X-Api-Key"] !== process.env.NEXT_PUBLIC_SITE_API_KEY)
+      if (req.headers["x-api-key"] !== process.env.NEXT_PUBLIC_SITE_API_KEY)
         return;
       const user = req.body;
       const db = getFirestore();

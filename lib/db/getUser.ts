@@ -12,7 +12,13 @@ interface UserResponse {
 }
 
 export default async function getUser(username: string): Promise<UserResponse> {
-  const userData = await fetch(`${baseUrl}/api/user/${username}`)
+  const userData = await fetch(`${baseUrl}/api/user/${username}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Api-Key": process.env.NEXT_PUBLIC_SITE_API_KEY as string,
+    },
+  })
     .then((res) => res.json())
     .catch((e) => {});
   let msg = "";

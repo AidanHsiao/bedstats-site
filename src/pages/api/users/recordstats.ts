@@ -10,11 +10,13 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> {
-  if (req.query.key !== process.env.NEXT_PUBLIC_SITE_API_KEY) {
+  if (req.headers["x-api-key"] !== process.env.NEXT_PUBLIC_SITE_API_KEY) {
     res.status(401).json({ success: false });
     return;
   }
-  const userList = await getUserList();
+  const userList = await getUserList(
+    process.env.NEXT_PUBLIC_SITE_API_KEY as string
+  );
   const keys = userList.map((doc: User) => doc.hypixelAPIKey);
   const uuids = userList.map((doc: User) => doc.uuid);
   if (!uuids) {

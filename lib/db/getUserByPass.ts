@@ -5,6 +5,7 @@ export default async function getUserByPass(pass: string) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "x-api-key": process.env.NEXT_PUBLIC_SITE_API_KEY as string,
     },
     body: JSON.stringify({
       pass,
