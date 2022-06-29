@@ -1,0 +1,19 @@
+@use "../../../common/base";
+
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+}
+
+.backgroundGradient {
+  @extend .backgroundImage;
+  background-image: base.$background;
+}
+
+.image {
+  z-index: -2;
+}

@@ -1,0 +1,56 @@
+@use "../../../common/base";
+
+.wrapper {
+  position: absolute;
+  top: 25vh;
+  left: 20vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 60vw;
+  height: 50vh;
+  color: white;
+  text-shadow: base.$shadow;
+  border-radius: 5vw;
+  text-align: center;
+}
+
+.errorType {
+  width: 20vw;
+  font-size: max(2vw, 20px);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.errorNumber {
+  $size: max(10vw, 100px);
+  font-size: $size;
+  font-weight: bold;
+  line-height: $size;
+}
+
+.errorDescription {
+  width: 20vw;
+  font-size: max(1.5vw, 22px);
+}
+
+@media (width < 1200px) {
+  .wrapper,
+  .errorType,
+  .errorDescription {
+    width: 80vw;
+  }
+  .wrapper {
+    left: 10vw;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .errorType {
+    align-items: center;
+    margin-bottom: 5vh;
+  }
+  .errorNumber {
+    width: max-content;
+  }
+}
