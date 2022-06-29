@@ -9,13 +9,12 @@
 }
 
 .headerImage {
-  width: max(1500px, 100vw);
-  height: 650px;
   position: fixed;
-  display: flex;
-  justify-self: center;
-  z-index: -100;
-  background-color: #8400ff;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
 }
 
 .headerMain {
