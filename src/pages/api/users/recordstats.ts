@@ -11,7 +11,13 @@ export default async function handler(
   res: NextApiResponse
 ): Promise<void> {
   if (req.query.key !== process.env.NEXT_PUBLIC_SITE_API_KEY) {
-    res.status(401).json({ success: false });
+    res
+      .status(401)
+      .json({
+        success: false,
+        true_key: process.env.NEXT_PUBLIC_SITE_API_KEY,
+        input_key: req.query.key,
+      });
     return;
   }
   const userList = await getUserList();
