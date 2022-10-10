@@ -81,12 +81,12 @@ export default async function getStats(
       "four_four_beds_lost_bedwars",
     ];
     for (let item of dataArrayNone) {
-      if (!playerData.player.stats.Bedwars[item]) {
+      if (!playerData?.player?.stats?.Bedwars[item]) {
         playerData.player.stats.Bedwars[item] = 0;
       }
     }
     for (let item of dataArrayOne) {
-      if (!playerData.player.stats.Bedwars[item]) {
+      if (!playerData?.player?.stats?.Bedwars[item]) {
         playerData.player.stats.Bedwars[item] = 1;
       }
     }
