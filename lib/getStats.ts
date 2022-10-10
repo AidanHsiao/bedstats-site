@@ -91,7 +91,7 @@ export default async function getStats(
       }
     }
   } catch (e) {
-    return { code: 1 };
+    return { code: 1, stats: playerData };
   }
   const bedwars = playerData.player.stats.Bedwars;
   const prestiges = Math.floor(bedwars.Experience / xpPerPrestige);
