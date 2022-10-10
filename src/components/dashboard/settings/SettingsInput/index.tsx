@@ -33,7 +33,7 @@ export function SettingsInput(props: InputProps) {
       break;
     case "enum":
       const options = (props.enumValues as string[]).map((option) => (
-        <option>{option}</option>
+        <option key={Math.random()}>{option}</option>
       ));
       input = (
         <select
