@@ -11,13 +11,9 @@ export default async function handler(
   res: NextApiResponse
 ): Promise<void> {
   if (req.query.key !== process.env.NEXT_PUBLIC_SITE_API_KEY) {
-    res
-      .status(401)
-      .json({
-        success: false,
-        true_key: process.env.NEXT_PUBLIC_SITE_API_KEY,
-        input_key: req.query.key,
-      });
+    res.status(401).json({
+      success: false,
+    });
     return;
   }
   const userList = await getUserList();
@@ -68,7 +64,7 @@ export default async function handler(
         });
     } else {
       console.log(data);
-      res.status(404).json({ code: data.code });
+      res.status(404).json({ code: data.code, data: data });
       error = true;
     }
     await sleep(1000);
