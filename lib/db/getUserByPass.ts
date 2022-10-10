@@ -1,6 +1,7 @@
 import baseUrl from "../baseUrl";
+import { User } from "../interfaces";
 
-export default async function getUserByPass(pass: string) {
+export default async function getUserByPass(pass: string): Promise<User> {
   const user = await fetch(`${baseUrl}/api/pass`, {
     method: "POST",
     headers: {

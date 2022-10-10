@@ -79,7 +79,7 @@ export default function SignUpForm(props: FormProps) {
           <div className={styles.imageTitle}>{props.title}</div>
           <div className={styles.imageSubtitle}>
             {props.subtitle.split("\n").map((str) => (
-              <p key={str}>{str}</p>
+              <p key={Math.random()}>{str}</p>
             ))}
           </div>
         </div>

@@ -3,8 +3,6 @@ import BackgroundImage from "../components/error/BackgroundImage";
 import ErrorData from "../components/error/ErrorData";
 
 export default function NotFound() {
-  console.log(process.env);
-
   return (
     <div>
       <NavBar headerVisible={true} />

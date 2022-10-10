@@ -1,7 +1,7 @@
 {
-  "name": "bedstats-site-new",
+  "name": "bedstats-site",
   "version": "1.0.0",
-  "description": "Remake of the bedstats site using Next.js and React.",
+  "description": "Remake of the original bedstats site using Next.js and React.",
   "main": "src/index.tsx",
   "scripts": {
     "dev": "next dev",

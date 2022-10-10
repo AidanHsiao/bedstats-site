@@ -22,31 +22,7 @@ export interface User {
   password: string;
   hypixelAPIKey: string;
   friends: Friend[];
-  settings: {
-    theme: string;
-    animationEnabled: boolean;
-    animationRate: string;
-    hypixelAPIKey: string;
-    pollingRate: string;
-    loggingConfig: string;
-    scoreCutoff: number;
-    scoreConstant: number;
-    equations: {
-      stars: string;
-      fkdr: string;
-      bblr: string;
-      wlr: string;
-      finals: string;
-      beds: string;
-      wins: string;
-      fkdrMargin: number;
-      bblrMargin: number;
-      wlrMargin: number;
-      fkdrSecond: string;
-      bblrSecond: string;
-      wlrSecond: string;
-    };
-  };
+  settings: UserSettings;
 }
 
 export interface ResourceRatio {
@@ -65,4 +41,32 @@ export interface KDRatioObject {
   deaths: number;
   finalKills: number;
   finalDeaths: number;
+}
+
+export interface UserSettings {
+  theme: string;
+  animationEnabled: boolean;
+  animationRate: string;
+  hypixelAPIKey: string;
+  pollingRate: string;
+  loggingConfig: string;
+  scoreCutoff: number;
+  scoreConstant: number;
+  equations: Equations;
+}
+
+export interface Equations {
+  stars: string;
+  fkdr: string;
+  bblr: string;
+  wlr: string;
+  finals: string;
+  beds: string;
+  wins: string;
+  fkdrMargin: number;
+  bblrMargin: number;
+  wlrMargin: number;
+  fkdrSecond: string;
+  bblrSecond: string;
+  wlrSecond: string;
 }

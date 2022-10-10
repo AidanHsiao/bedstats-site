@@ -20,8 +20,8 @@ const links = [
   },
 
   {
-    id: "app_settings",
-    name: "App Settings",
+    id: "settings",
+    name: "General Settings",
     title: false,
   },
 
@@ -42,7 +42,7 @@ export default function NavBar(props: { selected: string }) {
       </div>
       {links.map((object) => (
         <div
-          key={object.id}
+          key={Math.random()}
           className={
             object.title
               ? styles.title

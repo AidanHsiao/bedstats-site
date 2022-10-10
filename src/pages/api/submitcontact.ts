@@ -2,10 +2,10 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { Client, Intents, MessageEmbed } from "discord.js";
 
 interface Contact {
-  email: string;
-  name: string;
-  discord: string;
-  subject: string;
+  email?: string;
+  name?: string;
+  discord?: string;
+  subject?: string;
 }
 
 export default async function handler(
@@ -17,11 +17,12 @@ export default async function handler(
   await client.login(token);
 
   const user = await client.users.fetch("302942608676880385");
+  const body = req.body as Contact;
   const data = {
-    email: req.body.email ? req.body.email : "Not given",
-    name: req.body.name ? req.body.name : "Not given",
-    discord: req.body.discord ? req.body.discord : "Not given",
-    subject: req.body.subject,
+    email: body.email || "Not given",
+    name: body.name || "Not given",
+    discord: body.discord || "Not given",
+    subject: body.subject || "",
   };
   const embed = new MessageEmbed()
     .setColor("#0099ff")
@@ -29,7 +30,7 @@ export default async function handler(
     .setDescription(
       `**Email**: ${data.email}\n**Name**: ${data.name}\n**Discord**: ${data.discord}`
     )
-    .addField("Message", data.subject)
+    .addField("Message", data.subject as string)
     .setTimestamp(Date.now());
 
   const result = await user.send({ embeds: [embed] });

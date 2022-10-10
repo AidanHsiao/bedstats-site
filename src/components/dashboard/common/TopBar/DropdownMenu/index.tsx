@@ -15,8 +15,8 @@ const sections = [
   ],
   [
     {
-      id: "app_settings",
-      name: "App Settings",
+      id: "settings",
+      name: "General Settings",
     },
     {
       id: "site_settings",
@@ -68,7 +68,7 @@ export function DropdownSection(props: DropdownProps) {
         {props.options.map((option) => (
           <div
             className={styles.dropdownItem}
-            key={option.id}
+            key={Math.random()}
             onClick={() => {
               router.push(
                 `/dashboard${option.id !== "overview" ? `/${option.id}` : ""}`

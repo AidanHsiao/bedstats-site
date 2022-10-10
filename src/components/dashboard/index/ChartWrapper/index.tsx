@@ -234,15 +234,12 @@ export function ChartSelector(props: ChartSelectorProps) {
     }
   }
   return (
-    <div
-      className={styles.chartSelector}
-      key={props.items.slice(0, 2).join("")}
-    >
+    <div className={styles.chartSelector} key={Math.random()}>
       {props.items.map((item: string) => {
         return (
           <div
             className={styles.selectorItem}
-            key={item}
+            key={Math.random()}
             onClick={() => {
               changeValue(item);
             }}
