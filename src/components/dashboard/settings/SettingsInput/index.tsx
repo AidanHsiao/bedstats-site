@@ -1,4 +1,5 @@
 import { useState } from "react";
+import updateSetting from "../../../../../lib/db/updateSetting";
 import { Equations } from "../../../../../lib/interfaces";
 import styles from "./main.module.scss";
 
@@ -7,14 +8,16 @@ interface InputProps {
   value: string | number | boolean | Equations | string[];
   type: "boolean" | "enum" | "uuid" | "equations" | "number";
   isFirst: boolean;
+  uuid: string;
   enumValues?: string[];
 }
 
 export function SettingsInput(props: InputProps) {
   const [value, setStateValue] = useState(props.value);
-
   function setValue(value: any) {
     setStateValue(value);
+    const updateValue = props.type === "number" ? parseFloat(value) : value;
+    if (updateValue) updateSetting(props.uuid, props.name, updateValue);
   }
 
   const name = `${props.name.charAt(0).toUpperCase()}${props.name.slice(1)}`;

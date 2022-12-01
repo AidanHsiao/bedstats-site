@@ -51,6 +51,7 @@ const settingTypes: SettingTypes = {
 
 export default function Page() {
   const [settings, setSettings] = useState<Partial<UserSettings>>({});
+  const [uuid, setUUID] = useState<string>("");
 
   useEffect(() => {
     async function attemptLogin() {
@@ -60,6 +61,7 @@ export default function Page() {
         router.push("/login");
         return;
       }
+      setUUID(user.uuid);
       setSettings(user.settings);
     }
 
@@ -87,6 +89,7 @@ export default function Page() {
           type={settingTypes[key].type}
           isFirst={!idx}
           enumValues={settingTypes[key]?.values}
+          uuid={uuid}
         />
       ))}
     </DashboardWrapper>

@@ -54,11 +54,26 @@ export default async function handler(
       break;
     }
     case "POST": {
-      if (req.headers["x-api-key"] !== process.env.NEXT_PUBLIC_SITE_API_KEY)
+      if (req.headers["x-api-key"] !== process.env.NEXT_PUBLIC_SITE_API_KEY) {
+        res.status(401).json({ success: false });
         return;
+      }
       const user = req.body;
       const db = getFirestore();
       await db.collection("users").doc(user.uuid).set(user);
+      res.status(200).json({ success: true });
+      break;
+    }
+    case "PATCH": {
+      if (req.headers["x-api-key"] !== process.env.NEXT_PUBLIC_SITE_API_KEY) {
+        res.status(401).json({ success: false });
+        return;
+      }
+      const updateObject: any = {}; // Any is used to bypass indexing issues and make code cleaner
+      updateObject[`settings.${req.body.name}`] = req.body.value;
+      const db = getFirestore();
+      await db.collection("users").doc(req.body.uuid).update(updateObject);
+      res.status(200).json({ success: true });
       break;
     }
   }
